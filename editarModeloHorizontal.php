@@ -180,7 +180,7 @@ include "includes/header_aplicacion.php";
                                         <input name="unidadesVendidas" id="unidadesVendidas" class="input-small" type="text" value="<?php echo $data1["unidadesVendidas"]?>">
                                         <span class="help-inline"></span>
                                     </div>
-                                </div>
+                                </div>                                 
                                   <div class="control-group">
                                     <label class="control-label" for="montoSeparacion">Monto de separaci&oacute;n</label>
                                     <div class="controls">

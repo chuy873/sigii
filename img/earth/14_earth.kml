@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<Placemark>
+		<Style>
+			<LineStyle>
+				<color>ddffffff</color>
+				<colorMode>random</colorMode>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ddffffff</color>
+				<colorMode>random</colorMode>
+			</PolyStyle>
+		</Style>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-57.95192718505859,35.75096130371094,0 -57.95193862915038,35.75095367431641,0 -57.72017288208008,34.84016799926758,0 -49.82763290405273,30.46923828125,0 -34.24273300170898,39.28816986083984,0 -19.00626182556152,35.89768218994141,0 -15.76047611236572,23.49139213562012,0 -17.17098999023438,21.89327812194824,0 -18.26804542541504,21.60481071472168,0 -40.45077896118164,7.279017448425293,0 -54.70661544799805,8.231060028076172,0 -55.65111541748047,8.115378379821777,0 -60.62960433959962,17.21495246887207,0 -60.7994270324707,18.55630302429199,0 -59.27438735961914,26.01671409606933,0 -57.87131500244141,30.25214576721192,0 -56.95192337036133,31.25364875793457,0 -56.95192337036133,31.25364875793457,0 -57.95192718505859,35.75096130371094,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

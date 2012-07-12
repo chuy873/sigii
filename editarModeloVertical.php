@@ -177,6 +177,13 @@ include "includes/header_aplicacion.php";
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
+                                    <div class="control-group">
+                                    <label class="control-label" for="aumentoXPiso">Aumento por piso</label>
+                                    <div class="controls">
+                                        <input name="aumentoXPiso" id="aumentoXPiso" class="input-small" type="text" value="<?php echo $data1["aumentoXPiso"]?>">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div>
                                   <div class="control-group">
                                     <label class="control-label" for="montoSeparacion">Monto de separaci&oacute;n</label>
                                     <div class="controls">

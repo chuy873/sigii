@@ -319,7 +319,7 @@ if (!$result) {
 								</tr>
 								<tr>
 									<th>Aumento por piso</th>
-									<td>$-</td>
+									<td>$<?php echo $dataModelo["aumentoXPiso"]?></td>
 								</tr>
 								<?php } else if($dataProyecto["tipo"]=="horizontal"){?>
 								<tr>

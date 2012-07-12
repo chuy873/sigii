@@ -76,7 +76,8 @@ $puntosAfluencia[($i-1)][0]=$_POST["puntoAfluencia".$i];
 $puntosAfluencia[($i-1)][1]=$_POST["distanciaAfluencia".$i];
 $i++;
 }
-//pendiente google earth
+//google earth
+$earth=$_POST["earth"];
 //amenidades
 $amenidades=$_POST["amenidades"];
 $entrega=$_POST["entrega"];
@@ -140,6 +141,18 @@ if (!$result) {
 		die('No se pudo realizar la consulta:' . mysql_error());
 		//header("Location: ../bienvenido.php");
 	} else {
+		
+		
+		$file = '../img/earth/'.$idproyecto[0].'_earth.kml.';
+		//Agregar al archivo la informacion de kml de google earth.
+		$current = $earth;
+		// Escribir los datos en servidor
+		file_put_contents($file, $current);
+		//Registrar en DB
+		$insertEarth=sprintf("INSERT INTO posicionearth (pathArchivoKML, proyecto_idproyecto)
+		VALUES ('%s','%s');", 'img/earth/'.$idproyecto[0].'_earth.kml',$idproyecto[0]);
+		$result = mysql_query( $insertEarth);
+		
 		if(isset($logoProyecto)){
 			guardarImagen("logoProyecto", "logo", $logoProyecto, $idproyecto[0]);
 		}
@@ -187,10 +200,11 @@ if (!$result) {
 			}
 			$i++;
 		}
-			header("Location: ../bienvenido.php");		
+			//header("Location: ../bienvenido.php");		
 		
 	}
 }
+
 //Se guardan las imagenes en la DB y en la carpeta de img
 //En el path se agrega el id del proyecto al inicio del nombre del archivo.
 function guardarImagen($name, $tipo, $path, $id){

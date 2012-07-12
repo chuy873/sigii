@@ -46,7 +46,7 @@ while($i <= $contFachadas){
 
 } else if($tipo=="vertical"){
 //vertical
-
+$aumentoXPiso=$_POST["aumentoXPiso"];
 $contPrecios=$_POST["contPrecios"];
 $preciosArray[]="";
 $i=1;
@@ -106,7 +106,7 @@ $insertModelo =  sprintf("INSERT INTO  modelo (proyecto_idproyecto, nombre, dife
 		mysql_real_escape_string($nombre),
 		 mysql_real_escape_string($diferenciadores), mysql_real_escape_string($metrosCuadrados),
 		mysql_real_escape_string($montoSeparacion), mysql_real_escape_string($porcentajeEngancheMin),
-		mysql_real_escape_string($unidades), mysql_real_escape_string($unidadesVendidas) );
+		mysql_real_escape_string($unidades), mysql_real_escape_string($unidadesVendidas)  );
 $result = mysql_query( $insertModelo );
 if (!$result) {
 	die('No se pudo realizar la consulta:' . mysql_error());
@@ -123,8 +123,8 @@ if (!$result) {
 			mysql_real_escape_string($precioTerreno));
 	} else if($tipo=="vertical"){ 
 		$insertModeloTipo=  sprintf("INSERT INTO modelodepartamento ( modelo_idmodelo,
-				precioPromedio, precioMin, precioMax ) VALUES ('%s','%f', '%f','%f');",
-				$idmodelo[0], $precioPromedio, $precioMin,$precioMax);
+				precioPromedio, precioMin, precioMax, aumentoXPiso ) VALUES ('%s','%f', '%f','%f', '%f');",
+				$idmodelo[0], $precioPromedio, $precioMin,$precioMax,mysql_real_escape_string($aumentoXPiso));
 	}
 	$result = mysql_query( $insertModeloTipo);	
 	if (!$result) {

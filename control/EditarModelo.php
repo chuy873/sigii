@@ -47,6 +47,7 @@ if($tipo=="horizontal"){
 
 } else if($tipo=="vertical"){
 	//vertical
+	$aumentoXPiso=$_POST["aumentoXPiso"];
 	$precioPromedio=$_POST["precioPromedio"];
 	$precioMin=$_POST["precioMin"];
 	$precioMax=$_POST["precioMax"];
@@ -108,8 +109,8 @@ if (!$result) {
 				mysql_real_escape_string($precioTerreno), $idModelo );
 	} else if($tipo=="vertical"){
 		$insertModeloTipo=  sprintf("UPDATE modelodepartamento SET 	precioPromedio='%s',
-				precioMin='%s', precioMax='%s' WHERE modelo_idmodelo='%s'",
-				$precioPromedio, $precioMin,$precioMax, $idModelo);
+				precioMin='%s', precioMax='%s', aumentoXPiso='%s' WHERE modelo_idmodelo='%s'",
+				$precioPromedio, $precioMin,$precioMax, $idModelo, mysql_real_escape_string($aumentoXPiso));
 	}
 	$result = mysql_query( $insertModeloTipo);
 	if (!$result) {
