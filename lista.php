@@ -96,11 +96,11 @@ INNER JOIN modelo m ON mf.modelo_idmodelo=m.idmodelo AND m.proyecto_idproyecto =
 				<td><?php echo $data["unidadesTotales"];?></td>
 				<td><?php echo $data["unidadesEtapa"];?></td>
 				<td><?php echo $data["unidadesVendidas"];?></td>
-				<td><?php echo ($data["unidadesEtapa"]-$data["unidadesVendidas"])?></td>
-				<td><?php echo round($data["unidadesVendidas"]/$data["tiempoMercado"],2)?></td>
+				<td><?php echo ($data["unidadesTotales"]-$data["unidadesVendidas"])?></td>
+				<td><?php if($data["tiempoMercado"]!=0){echo round($data["unidadesVendidas"]/$data["tiempoMercado"],2);}?></td>
 				<td><?php echo round($dataM2["promM2"], 0, PHP_ROUND_HALF_UP);?></td>
 				<td><?php echo round($dataM2Terr["promM2Terr"], 0, PHP_ROUND_HALF_UP);?></td>
-				<td>$<?php echo number_format(round(($dataprecioYcredito["precio"]/round($dataM2["promM2"], 0, PHP_ROUND_HALF_UP)),2), 2, '.', ',');?></td>
+				<td>$<?php if(round($dataM2["promM2"], PHP_ROUND_HALF_UP)!=0){echo number_format(round(($dataprecioYcredito["precio"]/round($dataM2["promM2"], 0, PHP_ROUND_HALF_UP)),2), 2, '.', ',');}?></td>
 			</tr>
 			<tr>
 			<td>

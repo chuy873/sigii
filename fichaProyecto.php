@@ -114,7 +114,7 @@ if (!$result) {
 								</tr>
 								<tr>
 									<th>Absorci&oacute;n</th>
-									<td><?php echo round($dataProyecto["unidadesVendidas"]/$dataProyecto["tiempoMercado"],2)?>
+									<td><?php if($dataProyecto["tiempoMercado"]!=0){ echo round($dataProyecto["unidadesVendidas"]/$dataProyecto["tiempoMercado"],2);}?>
 									</td>
 								</tr>
 								<tr>
