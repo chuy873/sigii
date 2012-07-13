@@ -10,6 +10,7 @@ Esta pagina es accesada por todos los usuarios registrados.
    include "clases/Conexion.php";
    $conexion = new Conexion();
    $link = $conexion->dbconn();
+   include "clases/Usuarios.php";
   session_start();
    //Verificar si el usuario tiene permiso para visualizar esta página
    $usuariologueado = new Usuarios();

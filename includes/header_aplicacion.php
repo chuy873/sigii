@@ -3,10 +3,13 @@ Header que se anexa a todas las páginas del sistema SIPROI
 Obtener datos de la sesión
 */
 include_once("clases/Usuarios.php");
-//Cerrar automaticamente la sesion
-if(!isset($_SESSION["earth"])){
+//Checar si esta activa la variable
+if(!isset($_SESSION)){
+if(!(isset($_SESSION["earth"]))){
 session_start();
 }
+}
+//Cerrar automaticamente la sesion
 $t = time();
 $t0 = $_SESSION['time'];
 $diff = $t - $t0;

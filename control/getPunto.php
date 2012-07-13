@@ -4,6 +4,14 @@
  * Se recibe la peticion por AJAX para obtener los tipos de puntos de afluencia, la informacion
  * y los puntos de acuerdo a un tipo.
  */
+include "../clases/Usuarios.php";
+session_start();
+$usuariologueado = new Usuarios();
+$usuariologueado = $_SESSION["usuario"];
+if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision" 
+		|| $usuariologueado->getTipo()=="captura" || $usuariologueado->getTipo()=="analisis"  )) {
+	header("Location: ../bienvenido.php");
+}
 include "../clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
