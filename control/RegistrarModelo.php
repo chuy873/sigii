@@ -171,11 +171,17 @@ if (!$result) {
 		$result = mysql_query( $insertAtributos);		
 		$k++;
 		}
+		if($_POST["agregar"]==1){
+			if($tipo=="horizontal"){		
+			header("Location: ../registrarModeloHorizontal.php");
+		}else if($tipo=="vertical"){
+				header("Location: ../registrarModeloVertical.php");
+		}} else {
 		
 		header("Location: ../bienvenido.php");		
-		
-	}
-}
+		}
+	}}
+
 //Se guardan las imagenes en la DB y en la carpeta de img
 //En el path se agrega el id del proyecto al inicio del nombre del archivo.
 function guardarImagen($name, $tipo, $path, $id){

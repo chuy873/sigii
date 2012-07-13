@@ -26,7 +26,7 @@ session_start();
   <button class="close" data-dismiss="alert">×</button>
   <strong>Atenci&oacute;n!</strong> Aseg&uacute;rate de llenar la informaci&oacute;n de todas las etiquetas.
 </div>
-  <form class="forma form-horizontal well" action="control/RegistrarModelo.php" method="post" enctype="multipart/form-data">                                                    
+  <form id="registroModelo" class="forma form-horizontal well" action="control/RegistrarModelo.php" method="post" enctype="multipart/form-data">                                                    
 		<div class="tabbable">
 				<!-- Only required for left/right tabs -->
 				<ul class="nav nav-tabs">
@@ -276,7 +276,8 @@ session_start();
 				</ul>
 					<div class="form-actions">                                   
                                    <button class="btn btn-primary" type="submit">Registrar</button>
-                                    <button class="btn btn-primary" type="submit">Registrar y agregar otro modelo...</button>
+                                    <button class="btn btn-primary" onclick="agregarOtro()">Registrar y agregar otro modelo...</button>
+                             	<input type="hidden" id="agregar" name="agregar"/>
                              	<a href="#modalCancel" data-toggle="modal" class="openCancel2 btn" 
 						> Cancelar</a>	   </div>
                                    
@@ -299,7 +300,14 @@ session_start();
 				 </form>		                 
             </div> <!-- /span -->
         </div><!-- /row -->
-        </div><!-- /container -->           
+        </div><!-- /container -->   
+        <script type="text/javascript">
+		function agregarOtro(){
+			document.getElementById("agregar").value=1;
+document.getElementById("registroModelo").submit();
+
+			}
+        </script>        
 <?php 
 include "includes/footer_principal.php";
  ?>

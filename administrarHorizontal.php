@@ -63,11 +63,13 @@
 							  		<td> 
 							  		<a href="editarProyectoHorizontal.php?idproyecto=<?php echo $data["idproyecto"]?>" class="btn btn-primary"><i class="icon-edit icon-white"></i> Editar</a>
 							  	</td>							  	
-							  		<td> 
-							  		<a href="#" class="confirm-delete btn btn-danger" data-id="23"><i class="icon-trash icon-white"></i> Eliminar</a>
-							  		<input type="hidden" value='<?php echo $data["idproyecto"]?>' name="idUsers_<?php echo $cont?>" />							  		
-							  		</td>							  		 
-							  		<td><input type="hidden" value='<?php echo $data["idproyecto"]?>' name="idUsers_<?php  echo $cont?>" /></td>
+							  		<?php if($usuariologueado->getTipo()=="administrador"){?>
+							  	<td> 							  	
+							  		<a href="#" class="openDeleteProyecto btn btn-danger" data-id="<?php echo $data["idproyecto"]?>"><i class="icon-trash icon-white"></i> Eliminar</a>							  	
+							  		</td>
+							  		<?php } else {?>
+							  		<td></td>
+							  		<?php }?>							  		 							  		
 							  	</tr>
 							  	<tr style='height:10px;'></tr>	
 						   <?php
@@ -86,19 +88,22 @@
 			</form>
 		</div>
 	</div>
-	<div id="modal1" class="modal hide fade in">
+	<div id="modalBorrar" class="modal hide fade in">
+	<form action="control/EliminarProyecto.php" method="post">
     <div class="modal-header">
      <button type="button" class="close" data-dismiss="modal">x</button>
       <h3>Eliminar proyecto</h3>
     </div>
     <div class="modal-body">
+    <input type="hidden" name="idproyecto" id="idproyectoD">
       <p>Atenci&oacute;n! Est&aacute;s a punto de eliminar el proyecto.</p>
       <p>Deseas continuar?</p>
     </div>
     <div class="modal-footer">
-      <a href="administrarProyectos.jsp" class="btn btn-danger">S&iacute;</a>
+      <button type="submit" class="btn btn-danger">S&iacute;</button>
       <a href="#" class="btn secondary" data-dismiss="modal">No</a>
     </div>
+    </form>
 </div>
 
 <?php include "includes/footer_principal.php" ?> 

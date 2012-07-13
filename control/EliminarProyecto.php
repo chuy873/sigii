@@ -32,5 +32,5 @@ while($data=mysql_fetch_array($result)){
 
 $eliminarProyecto="DELETE FROM proyecto WHERE idproyecto='".$idproyecto."'";
 $result=mysql_query($eliminarProyecto);
-header("Location: ../administrarProyectos.php");
+header("Location: ../".$_SESSION["pageFrom"].".php");
 ?>

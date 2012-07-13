@@ -49,9 +49,11 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
 					<div class="tab-pane active" id="tab1">
 						  <h1>Datos del proyecto vertical</h1>
                             <fieldset>
-                                <legend>Informaci&oacute;n necesaria</legend>                               
+                                <legend>Informaci&oacute;n necesaria</legend> 
+                                     <div class="control-group"> <label class="control-label"><i>* Campos obligatorios</i>	</label></div>
+                                                            
                                  <div class="control-group">
-                                    <label class="control-label" for="nombres">Nombre del proyecto</label>
+                                    <label class="control-label" for="nombres">Nombre del proyecto*</label>
                                     <div class="controls">
                                         <input name="nombre" id="nombre" class="input-large" type="text">
                                            <input type="hidden" name="tipo" value="vertical">                                      
@@ -59,7 +61,7 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
                                     </div>
                                 </div>                               
                                 <div class="control-group">
-                                    <label class="control-label" for="promotor">Promotor</label>
+                                    <label class="control-label" for="promotor">Promotor*</label>
                                     <div class="controls">
                                         <input name="promotor" id="promotor" class="input-medium" type="text">
                                         <span class="help-inline"></span>
@@ -110,7 +112,7 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
                                     </div>
                                 </div>                                                             
                                   <div class="control-group">
-                                  <label class="control-label" for="segmento">Segmento</label>
+                                  <label class="control-label" for="segmento">Segmento*</label>
                                   <div class="controls">
                                   <select class="span2" name='segmento'>
                                   <option value="Social" selected=selected>Social</option>
@@ -127,21 +129,21 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
                                  <fieldset>
                                 <legend>Informaci&oacute;n num&eacute;rica</legend>                                      
                                  <div class="control-group">
-                                    <label class="control-label" for="unidadesTotales">Unidades totales</label>
+                                    <label class="control-label" for="unidadesTotales">Unidades totales*</label>
                                     <div class="controls">
                                         <input name="unidadesTotales" id="unidadesTotales" class="input-small" type="text">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div> 
                                   <div class="control-group">
-                                    <label class="control-label" for="unidadesVendidas">Unidades vendidas</label>
+                                    <label class="control-label" for="unidadesVendidas">Unidades vendidas*</label>
                                     <div class="controls">
                                         <input name="unidadesVendidas" id="unidadesVendidas" class="input-small" type="text">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>                                
                                   <div class="control-group">
-                                    <label class="control-label" for="pisos">Pisos*</label>
+                                    <label class="control-label" for="pisos">Pisos</label>
                                     <div class="controls">
                                         <select class="span2" name='pisos'  id='pisos'  >
 										<option value="0" selected=selected>0</option>
@@ -158,7 +160,7 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
                                     </div>
                                 </div> 
                                   <div class="control-group">
-                                    <label class="control-label" for="torres">Torres*</label>
+                                    <label class="control-label" for="torres">Torres</label>
                                     <div class="controls">
                                        <select class="span2" name='torres'>
                                        <option value="0" selected=selected>0</option>
@@ -275,6 +277,7 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
 					 <h1>Ubicaci&oacute;n del proyecto</h1>
 							<fieldset>
 								<legend>Direcci&oacute;n</legend>
+								     <div class="control-group"> <label class="control-label"><i>* Campos obligatorios</i>	</label></div>                              
 								<div class="control-group">
 									<label class="control-label" for="colonia">Colonia</label>
 									<div class="controls">
@@ -283,14 +286,14 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label" for="municipio">Municipio</label>
+									<label class="control-label" for="municipio">Municipio*</label>
 									<div class="controls">
 										<input name="municipio" id="municipio" class="input-medium"
 											type="text"> <span class="help-inline"></span>
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label" for="municipio">Zona</label>
+									<label class="control-label" for="municipio">Zona*</label>
 									<div class="controls">
 										<select class="span2" name='ciudad' onchange="desplegarSubzona(this.value)">
 											<?php 
@@ -434,16 +437,16 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
                                     </div>
                                 </div>  
 						 <div class="control-group">
-                                  <label class="control-label">Seleccionar acabados: (Especificar los que s&iacute; incluye y los que se desea aclarar que no los incluye )</label>                                
-                                     <div id="tipo" class="controls">
-                                     <?php 
+                                    <label class="control-label">Seleccionar acabados: (Especificar los que s&iacute; incluye y los que se desea aclarar que no los incluye )</label>                                
+                                     <div id="tipoAcab" class="controls">
+                                    <?php 
                                     while ($data = mysql_fetch_array($acabado, MYSQL_ASSOC)) {						
                                     ?>
                                     <label class="inline">
                                       <p><?php echo $data["nombre"]?>	</p>
-                                      <input id="<?php echo $data["idacabado"]?>_si" type="radio" value="Si" name="acabado_<?php echo $data["idacabado"]?>">
+                                      <input type="radio" value="Si" name="acabado_<?php echo $data["idacabado"]?>">
                                      <i class="icon-ok-sign"></i>&nbsp;&nbsp;&nbsp; 
-                                     <input id="<?php echo $data["idacabado"]?>_no" type="radio" value="No" name="acabado_<?php echo $data["idacabado"]?>">
+                                     <input type="radio" value="No" name="acabado_<?php echo $data["idacabado"]?>">
                                       <i class="icon-remove-sign"></i>
                                     </label>
                                     <hr/>
