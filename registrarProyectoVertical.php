@@ -9,7 +9,6 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
  $earth = "earth";
  $_SESSION["earth"] = $earth;
  $_SESSION["datepicker"] = "date";
-   include "includes/header_aplicacion.php";
 	//Verificar si el usuario tiene permiso para visualizar esta página
 	$usuariologueado =  new Usuarios();
 	$usuariologueado = $_SESSION['usuario'];
@@ -18,6 +17,8 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
 			getTipo()=="captura")) {
 		header("Location: bienvenido.php");
    }
+   
+   include "includes/header_aplicacion.php";
  include "clases/Conexion.php";
    $conexion = new Conexion();
    $link = $conexion->dbconn();

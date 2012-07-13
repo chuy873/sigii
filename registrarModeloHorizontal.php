@@ -4,7 +4,8 @@ Se despliega la forma para ingresar los datos necesarios para el modelo de proye
 Esta pagina solo es accesada por el administrador, revision y captura.
  */
 $pageTitle = "SIGII | Registrar Modelo Horizontal";
-include "includes/header_aplicacion.php";
+include "clases/Usuarios.php";
+session_start();
 	//Verificar si el usuario tiene permiso para visualizar esta página
 	$usuariologueado = new Usuarios();
 	$usuariologueado = $_SESSION["usuario"];
@@ -12,6 +13,8 @@ include "includes/header_aplicacion.php";
 			|| $usuariologueado->getTipo()=="captura" )) {
 	header("Location: bienvenido.php");
 	}
+	
+	include "includes/header_aplicacion.php";
 	include "clases/Conexion.php";
 	$conexion = new Conexion();
 	$link = $conexion->dbconn();

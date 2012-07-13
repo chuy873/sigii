@@ -4,13 +4,15 @@ Se despliega la forma con los datos personales del usuario a editar.
 Esta pagina solo es accesada por el administrador.
 */
 $pageTitle = "SIGII | Editar Usuario";
-include "includes/header_aplicacion.php";
+include "clases/Usuarios.php";
+session_start();
 	//Verificar si el usuario tiene permiso para visualizar esta página
 	$usuariologueado = new Usuarios();
-	$usuariologueado = $_SESSION["usuario"];
-	if (!$usuariologueado->getTipo()=="administrador") {
+	$usuariologueado = $_SESSION["usuario"];	
+	if (!($usuariologueado->getTipo()=="administrador")) {		
 		header("Location: bienvenido.php");
 }
+include "includes/header_aplicacion.php";
 include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();

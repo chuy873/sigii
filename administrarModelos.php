@@ -5,7 +5,8 @@
 	 Esta pagina solo es accesada por el administrador y revision (no elimina).
 	 */
 $pageTitle = "SIGII | Administrar Modelos";
-include "includes/header_aplicacion.php";
+include "clases/Usuarios.php";
+session_start();
 $_SESSION['pageFrom']="administrarModelos";
 	//Verificar si el usuario tiene permiso para visualizar esta página
 	$usuariologueado = new Usuarios();
@@ -13,6 +14,7 @@ $_SESSION['pageFrom']="administrarModelos";
 	if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision")) {
 	header("Location: bienvenido.php");
 	}
+	include "includes/header_aplicacion.php";
 	include "clases/Conexion.php";
 	$conexion = new Conexion();
 	$link = $conexion->dbconn();

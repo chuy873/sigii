@@ -4,12 +4,11 @@
 			 Esta pagina solo es accesada por el administrador y revision.
 			 */
 $pageTitle = "SIGII | Editar proyecto horizontal";
- include "clases/Usuarios.php";
- session_start();
+include "clases/Usuarios.php";
+session_start();
  $earth = "earth";
  $_SESSION["earth"] = $earth;
  $_SESSION["datepicker"] = "date";
-   include "includes/header_aplicacion.php";
 	//Verificar si el usuario tiene permiso para visualizar esta página
 	$usuariologueado =  new Usuarios();
 	$usuariologueado = $_SESSION['usuario'];
@@ -17,6 +16,7 @@ $pageTitle = "SIGII | Editar proyecto horizontal";
 			|| $usuariologueado->getTipo()=="revision")) {
 		header("Location: bienvenido.php");
    }
+   include "includes/header_aplicacion.php";
  include "clases/Conexion.php";
    $conexion = new Conexion();
    $link = $conexion->dbconn();

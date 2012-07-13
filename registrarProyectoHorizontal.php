@@ -9,7 +9,6 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
  $earth = "earth";
  $_SESSION["earth"] = $earth;
  $_SESSION["datepicker"] = "date";
-   include "includes/header_aplicacion.php";
 	//Verificar si el usuario tiene permiso para visualizar esta página
 	$usuariologueado =  new Usuarios();
 	$usuariologueado = $_SESSION['usuario'];
@@ -18,6 +17,8 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
 			getTipo()=="captura")) {
 		header("Location: bienvenido.php");
    }
+   
+   include "includes/header_aplicacion.php";
  include "clases/Conexion.php";
    $conexion = new Conexion();
    $link = $conexion->dbconn();
@@ -218,7 +219,7 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
 						 <div class="control-group">
                                     <label class="control-label" for="logoProyecto">Logo del proyecto</label>
                                     <div class="controls">
-                                        <input name="logoProyecto" id="logoProyecto" class="input-medium" type="file"
+                                        <input name="logoProyecto" id="logoProyecto" class="input-medium" type="file" 
                                          onchange="comprueba_extension(this.value,'logo')">
                                         <span class="help-inline"></span>
                                         <div id="errorlogo"></div>

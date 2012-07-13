@@ -200,7 +200,7 @@ if (!$result) {
 			}
 			$i++;
 		}
-			//header("Location: ../bienvenido.php");		
+			header("Location: ../bienvenido.php");		
 		
 	}
 }

@@ -28,7 +28,7 @@ Esta pagina es accesada por cualquier usuario.
                               </div>
                             </div>
                               <div class="control-group">
-                                <label class="control-label" for="pwd">Contrase&nacute;a</label>
+                                <label class="control-label" for="pwd">Contrase&ntilde;a</label>
                                 <div class="controls">
                                   <input id="pwd" name="password" type="password" class="input-medium"  placeholder="Contraseña">
                                   <span class="help-inline" id="passInfo"></span>

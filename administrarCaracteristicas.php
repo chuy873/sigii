@@ -5,14 +5,16 @@ Además se pueden modificar y eliminar y tambien el usuario puede agregar una ame
 Esta pagina solo es accesada por el administrador, revision y captura.
 */
 $pageTitle = "SIGII | Administrar características";
-include "includes/header_aplicacion.php";
+include "clases/Usuarios.php";
+session_start();
 //Verificar si el usuario tiene permiso para visualizar esta pÃ¡gina
 $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];
 if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision" 
-		|| $usuariologueado->getTipo()!="captura")) {
+		|| $usuariologueado->getTipo()=="captura")) {
 	header("Location: bienvenido.php");
 }
+include "includes/header_aplicacion.php";
 include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();

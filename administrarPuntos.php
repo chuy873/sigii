@@ -5,14 +5,16 @@
 	 Esta pagina solo es accesada por el administrador, revision y captura.
 	 */
 $pageTitle = "SIGII | Administrar puntos de afluencia";
-include "includes/header_aplicacion.php";
+include "clases/Usuarios.php";
+session_start();
 //Verificar si el usuario tiene permiso para visualizar esta página
 $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];
 if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision" 
-		|| $usuariologueado->getTipo()!="captura")) {
+		|| $usuariologueado->getTipo()=="captura")) {
 	header("Location: bienvenido.php");
 }
+include "includes/header_aplicacion.php";
 include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();

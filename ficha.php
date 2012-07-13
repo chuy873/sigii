@@ -6,11 +6,11 @@ esta pagina y son calculados por el sistema.
 Esta pagina es accesada por todos los usuarios registrados.
 */
 	$pageTitle = "SIGII | Reporte Ficha";
-   include "includes/header_aplicacion.php";  
+
    include "clases/Conexion.php";
    $conexion = new Conexion();
    $link = $conexion->dbconn();
-  
+  session_start();
    //Verificar si el usuario tiene permiso para visualizar esta página
    $usuariologueado = new Usuarios();
    $usuariologueado = $_SESSION["usuario"];
@@ -19,6 +19,8 @@ Esta pagina es accesada por todos los usuarios registrados.
    		$usuariologueado->getTipo()=="cliente")) {
    	header("Location: index.php");
    }
+   
+   include "includes/header_aplicacion.php";
   $proyectos="SELECT idproyecto, nombre, promotor FROM proyecto";
    $result=mysql_query($proyectos);
    ?>
