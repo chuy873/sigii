@@ -3,11 +3,8 @@ Header que se anexa a todas las páginas del sistema SIPROI
 Obtener datos de la sesión
 */
 include_once("clases/Usuarios.php");
-//Checar si esta activa la variable
-if(!isset($_SESSION)){
-if(!(isset($_SESSION["earth"]))){
+if(!(isset($_SESSION))){
 session_start();
-}
 }
 //Cerrar automaticamente la sesion
 $t = time();
@@ -24,9 +21,7 @@ else {
 }
  // Obtener el objeto usuario, si es null redirige a inicio 
  include 'header1.php';
- if(isset($_SESSION["earth"]) && $_SESSION["earth"]=="earth"){
- 	include "header_earth.html";
- }
+ 
  include "style_bienvenido.html";
  include "hero_unit.html";
  include "header2.php";

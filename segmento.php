@@ -50,7 +50,8 @@ settype($ventasPremium, "integer");
 <div class="row">
 <div class="span10 offset2">
 		<h1>Ventas anuales por segmento</h1>
-		 <div id="chart_div" style="width: 900px; height: 500px;"></div>		 
+		 <div id="chart_div" style="width: 900px; height: 500px;"></div>
+		 <a href="javascript:window.print()">Imprimir esta página</a> 		 
 </div>
 </div>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>

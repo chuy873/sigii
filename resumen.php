@@ -37,12 +37,15 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 			<!-- Only required for left/right tabs -->
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#tab1" data-toggle="tab">Social</a></li>
-			<li><a href="#tab2" data-toggle="tab">Ec&oacute;nomico</a></li>
+			<li><a href="#tab2" data-toggle="tab">Econ&oacute;mico</a></li>
 			<li><a href="#tab3" data-toggle="tab">Medio</a></li>
 			<li><a href="#tab4" data-toggle="tab">Residencial</a></li>
 			<li><a href="#tab5" data-toggle="tab">Residencial Plus</a></li>
 			<li><a href="#tab6" data-toggle="tab">Premium</a></li>
-			<li><form action="control/exportarExcel.php" method="post" target="_blank" id="FormularioExportacion">
+			<br/><br/><br/>
+<li><a href="javascript:window.print()" >Imprimir esta página <img src="assets/img/Printer-icon.png"  /></a> </li>
+			<li>
+			<form action="control/exportarExcel.php" method="post" target="_blank" id="FormularioExportacion">
 <p>Exportar a Excel  <img src="assets/img/Excel-icon.png" class="botonExcel" /></p>
 <input type="hidden" id="datos_a_enviar" name="datos_a_enviar" />
 <input type="hidden"  name="tipo" value="resumen" />
@@ -52,7 +55,7 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 	<tr><td>
 		<div class="tab-content">
 		<?php $tab=1;
-		$segmentos= array(1=>"Social",2=>"Economico",3=>"Medio",4=>"Residencial",5=>"Residencial Plus",6=>"Premium");
+		$segmentos= array(1=>"Social",2=>"Económico",3=>"Medio",4=>"Residencial",5=>"Residencial Plus",6=>"Premium");
 		foreach($segmentos as $segmento){
 		?>
 				<div class="tab-pane <?php if($tab==1){?>active<?php }?>" id="tab<?php echo $tab?>">
@@ -64,7 +67,7 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 		$tablaResumen="SELECT avg(m.metrosCuadrados) AS metrosCuadrados, avg(md.precioPromedio) AS precio, avg(mf.precio) AS precio,
 		 avg(mf.m2Terreno) AS metrosCuadradosTerr, p.nombre AS nombreP, m.unidades AS unidades, m.unidadesVendidas AS unidadesVendidas,
 		 p.tiempoMercado AS tiempoMercado, p.idproyecto AS idproyecto, p.colonia AS colonia, p.municipio AS municipio,
-    p.segmento AS segmento, p.tipo AS tipo     
+    	p.segmento AS segmento, p.tipo AS tipo     
 		FROM proyecto p
 		LEFT JOIN modelo m ON m.proyecto_idproyecto=p.idproyecto
 		LEFT JOIN modelodepartamento md ON md.modelo_idmodelo=m.idmodelo
@@ -75,18 +78,10 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 		<table class="table table-bordered">
 		<tr><th>Num</th><th>Tipo</th><th>Nombre</th><th>Precio</th><th>M<sup>2</sup></th><th>M<sup>2</sup> Terr</th>
 		<th>Precio M<sup>2</sup></th><th>Unids</th><th>Vend</th><th>Inv</th><th>Abs</th>
-		<th>Rec</th><th>Bañ</th><th>Niv</th><th>Est</th><th>Ubicaci&oacute;n</th><th>Colonia</th>
+		<th>Ubicaci&oacute;n</th><th>Colonia</th>
 		</tr>
-		<?php 
-		$cont=1;
-					while ($data = mysql_fetch_array($result, MYSQL_ASSOC)) {
-						$promedioCaract="SELECT avg(cantidad) as cantidad, c.nombre as nombre FROM incluyecaracteristica ic
-						INNER JOIN modelo m ON ic.modelo_idmodelo=m.idmodelo
-						AND m.proyecto_idproyecto='".$data["idproyecto"]."'".
-						" INNER JOIN caracteristicas c ON c.idcaracteristicas=ic.caracteristicas_idcaracteristicas
-						GROUP BY c.nombre;";
-						$result1=mysql_query($promedioCaract);
-						?>
+		<?php $cont=1;
+		while ($data = mysql_fetch_array($result, MYSQL_ASSOC)) {?>		
 		<tr>
 		<td><?php echo $cont?></td>
 		<td><?php echo $data["tipo"]?></td>
@@ -99,23 +94,9 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 		<td><?php echo $data["unidadesVendidas"]?></td>
 		<td><?php echo ($data["unidades"]-$data["unidadesVendidas"])?></td>
 		<td><?php if($data["tiempoMercado"]){echo round($data["unidadesVendidas"]/$data["tiempoMercado"],2);}?></td>
-		<?php 		
-			if(mysql_num_rows($result1)>0){			
-		while($dataPromCaract=mysql_fetch_array($result1)){					
-					 if($dataPromCaract["nombre"]=="Recámaras"){?>
-					<td><?php echo round($dataPromCaract["cantidad"],0)?></td>
-					<?php } else if($dataPromCaract["nombre"]=="Baños"){?>
-					<td><?php echo round($dataPromCaract["cantidad"],0)?></td>
-					<?php } else if($dataPromCaract["nombre"]=="Niveles"){?>
-					<td><?php echo round($dataPromCaract["cantidad"],0)?></td>				
-					<?php } else if($dataPromCaract["nombre"]=="Estacionamientos"){?>
-					<td><?php echo round($dataPromCaract["cantidad"],0)?></td>
-					<?php 
-					 } }}else{?>
-					 <td>ND</td><td>ND</td><td>ND</td><td>ND</td>
-					 <?php }?>
-			<td><?php echo $data["municipio"]?></td>		
-			<td><?php echo $data["colonia"]?></td>						
+		<td><?php echo $data["municipio"]?></td>		
+			<td><?php echo $data["colonia"]?></td>		
+						
 		</tr>
 		<?php $cont++;}?>
 		</table>		

@@ -398,7 +398,7 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
 									
 										<p class="help-block">Google Earth.</p>
 										   <p>Instrucciones:</p>
-										   	<p>1. Haz clic en <button  class="btn btn-primary" id="posicionar" onclick="handlerPos()"><i
+										   	<p>1. Haz clic en <button  class="btn btn-primary" id="posicionar" onclick="init()"><i
 											class="icon-globe icon-white"></i> Posicionar</button></p>
 										   <p>2. Dir&iacute;gete a la ubicaci&oacute;n del proyecto.</p>
 										   <p>3. Haz clic en   <button class="btn btn-info" id="btnPoli" onclick="dibujar();"><i class="icon-pencil"></i>Dibujar pol&iacute;gono</button></p>
@@ -592,6 +592,7 @@ function initCB(object) {
   doc = ge.createDocument('');
   ge.getFeatures().appendChild(doc);
 
+  ge.getNavigationControl().setVisibility(ge.VISIBILITY_AUTO);
   google.earth.addEventListener(ge.getGlobe(), 'mousemove', onmousemove); 
   google.earth.addEventListener(ge.getGlobe(), 'mousedown', onmousedown);
 
@@ -609,6 +610,7 @@ function borrar() {
 	  }	 
 	  doc = ge.createDocument('');
 	  ge.getFeatures().appendChild(doc);
+	
 	  google.earth.addEventListener(ge.getGlobe(), 'mousemove', onmousemove); 
 	  google.earth.addEventListener(ge.getGlobe(), 'mousedown', onmousedown);
 		 

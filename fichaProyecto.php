@@ -62,6 +62,10 @@ if($dataProyecto["tipo"]=="vertical"){
 	INNER JOIN modelo m ON m.idmodelo = mf.modelo_idmodelo AND m.proyecto_idproyecto='".$idproyecto."'";
 	$result11 = mysql_query( $dataModelos );
 }
+$puntos="SELECT * FROM incluyepuntoafluencia ip
+INNER JOIN puntosafluencia p ON p.idpuntosAfluencia= ip.idpuntoafluencia
+AND ip.idproyecto='".$idproyecto."'";
+$result12 = mysql_query( $puntos );
 //Pasar datos a arrays
 $cont=mysql_fetch_array($result3);
 $dataProyectoDept=mysql_fetch_array($result8);
@@ -85,9 +89,11 @@ if (!$result) {
 				<?php $i=1;
 					 while($i<=$cont["numeroModelos"]){?>
 				<li><a href="#tab<?php echo ($i+2)?>" data-toggle="tab">Modelo <?php echo $i?>
-				</a></li>
+				</a></li>			
 				<?php $i++;
 }?>
+	<li><a href="javascript:window.print()" >Imprimir esta página <img src="assets/img/Printer-icon.png"  /></a> </li>
+	
 			</ul>
 			<div class="tab-content">
 				<!-- Portada -->
@@ -100,9 +106,26 @@ if (!$result) {
 								src="<?php echo $dataImagen["path"]?>" /> </a> <a href=""
 								target="_blank" class="thumbnail"><img
 								src="<?php echo $dataImagenPlano["path"]?>" /> </a>
-							<p>
-								<?php echo $dataProyecto["descripcion"]?>
-							</p>
+							<table class="table table-bordered table-striped">
+								<tr>
+									<th>Descipci&oacute;n</th>
+								</tr>
+							<tr>
+								<td><?php echo $dataProyecto["descripcion"]?></td>
+							</tr>
+						</table>
+						<table class="table table-bordered table-striped">
+								<tr>
+									<th colspan="2">Puntos de afluencia</th>									
+								</tr>
+								
+								<?php while($dataPuntos=mysql_fetch_array($result12)){?>
+							<tr>
+								<td><?php echo $dataPuntos["nombre"]?>  <img src="<?php echo $dataPuntos["logo"]?>"/></td>
+								<td><?php echo $dataPuntos["distancia"]?> kms.</td>
+							</tr>
+							<?php }?>
+						</table>
 						</div>
 						<!-- Div de la tabla con informacion basica -->
 						<div class="span4 offset4 hero-unit">

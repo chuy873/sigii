@@ -169,7 +169,7 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
                                     <label class="control-label" for="unidadesVendidas">Unidades vendidas</label>
                                     <div class="controls">
                                         <input name="unidadesVendidas" id="unidadesVendidas" class="input-small" type="text">
-                                        <span class="help-inline"><i>Dejar vac&iacute;o si se tiene informaci&oacute;n de unidades totales de los modelos.</i></span>                                
+                                        <span class="help-inline"><i>Dejar vac&iacute;o si se tiene informaci&oacute;n de unidades vendidas de los modelos.</i></span>                                
                                     </div>
                                 </div>   
                                    <div class="control-group">
@@ -388,7 +388,7 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
 									
 										<p class="help-block">Google Earth.</p>
 										   <p>Instrucciones:</p>
-										   	<p>1. Haz clic en <button  class="btn btn-primary" id="posicionar" onclick="handlerPos()"><i
+										   	<p>1. Haz clic en <button  class="btn btn-primary" id="posicionar" onclick="init()"><i
 											class="icon-globe icon-white"></i> Posicionar</button></p>
 										   <p>2. Dir&iacute;gete a la ubicaci&oacute;n del proyecto.</p>
 										   <p>3. Haz clic en   <button class="btn btn-info" id="btnPoli" onclick="dibujar();"><i class="icon-pencil"></i>Dibujar pol&iacute;gono</button></p>
@@ -401,7 +401,6 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
        <div id='map3d' style='border: 1px solid silver; height: 600px; width: 600px;'></div>  
      <textarea name="earth" id="kml-out" style="display:none;"></textarea>	
 									</div>
-
 								</div>
 							</fieldset>
 						</div>
@@ -589,7 +588,9 @@ function initCB(object) {
 
   doc = ge.createDocument('');
   ge.getFeatures().appendChild(doc);
-
+	// add a navigation control
+  ge.getNavigationControl().setVisibility(ge.VISIBILITY_AUTO);
+  
   google.earth.addEventListener(ge.getGlobe(), 'mousemove', onmousemove); 
   google.earth.addEventListener(ge.getGlobe(), 'mousedown', onmousedown);
 

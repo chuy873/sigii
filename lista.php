@@ -38,12 +38,15 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#tab1" data-toggle="tab">Horizontales</a></li>
 				<li><a href="#tab2" data-toggle="tab">Verticales</a></li>
+				<br/><br/><br/>
+				<li><a href="javascript:window.print()" >Imprimir esta página <img src="assets/img/Printer-icon.png"  /></a> </li>
+	
 				<li>	<form action="control/exportarExcel.php" method="post" target="_blank" id="FormularioExportacion">
 <p>Exportar a Excel  <img src="assets/img/Excel-icon.png" class="botonExcel" /></p>
 <input type="hidden" id="datos_a_enviar" name="datos_a_enviar" />
 <input type="hidden"  name="tipo" value="lista" />
 </form></li>										
-			</ul>		
+		</ul>		
 				<table  id="Exportar_a_Excel">
 	<tr><td>
 			<div class="tab-content">

@@ -21,10 +21,7 @@ $datosusuario = sprintf("SELECT * FROM usuarios WHERE username = '%s'
 				AND password = '%s' ",mysql_real_escape_string($username),mysql_real_escape_string($password));
 $result = mysql_query( $datosusuario );
 //Verificar si existe y redirigir en caso contrario
-if (!$result) {
-	die('No se pudo realizar la consulta:' . mysql_error());
-	header("Location: ../index.php");
-} else {
+
 	$data = mysql_fetch_array($result, MYSQL_ASSOC);
 	if($data['nombre']==""){
 		header("Location: ../index.php");
@@ -65,5 +62,5 @@ if (!$result) {
 	mysql_close($link);
 	header("Location: ../bienvenido.php");
 }
-} 
+
 ?>
