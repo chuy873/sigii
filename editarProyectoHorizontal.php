@@ -114,8 +114,10 @@ session_start();
                                     <div class="controls">
                                         <input name="nombre" id="nombre" class="input-large" type="text" value="<?php echo $data1["nombre"]?>">
                                          <input type="hidden" name="tipo" value="horizontal">
-                                           <input type="hidden" name="id" value="<?php echo $idProyecto?>">
-                                        <span class="help-inline"></span>
+                                           <input type="hidden" name="id" id="id" value="<?php echo $idProyecto?>">
+                                          <span class="help-inline"> <div class="alert alert-error" id="alertNombre" style="display:none">
+  <strong>Atenci&oacute;n!</strong> El nombre ya existe. Selecciona otro.
+</div></span>
                                     </div>
                                 </div>                               
                                 <div class="control-group">
@@ -256,6 +258,34 @@ session_start();
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>   
+                                   <div class="control-group">
+                                    <label class="control-label" for="vendidas1Q">Vendidas 1Q</label>
+                                    <div class="controls">
+                                        <input name="vendidas1Q" id="vendidas1Q" class="input-small" type="text"  value="<?php echo $data1["vendidas1Q"]?>">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div> 
+                                  <div class="control-group">
+                                    <label class="control-label" for="vendidas2Q">Vendidas 2Q</label>
+                                    <div class="controls">
+                                        <input name="vendidas2Q" id="vendidas2Q" class="input-small" type="text" value="<?php echo $data1["vendidas2Q"]?>">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div> 
+                                  <div class="control-group">
+                                    <label class="control-label" for="vendidas3Q">Vendidas 3Q</label>
+                                    <div class="controls">
+                                        <input name="vendidas3Q" id="vendidas3Q" class="input-small" type="text" value="<?php echo $data1["vendidas3Q"]?>">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div> 
+                                  <div class="control-group">
+                                    <label class="control-label" for="vendidas4Q">Vendidas 4Q</label>
+                                    <div class="controls">
+                                        <input name="vendidas4Q" id="vendidas4Q" class="input-small" type="text" value="<?php echo $data1["vendidas4Q"]?>">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div> 
                                   <div class="control-group">
                                     <label class="control-label" for="numeroModelos">N&uacute;mero de modelos</label>
                                     <div class="controls">

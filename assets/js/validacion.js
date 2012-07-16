@@ -36,7 +36,14 @@ $(function() {
     expression: "if (VAL) return true; else return false;",
     message: "No puede estar vacio"
   });
+  
+  $('#nombre').blur(function() {
+	  verificarNombre(this.value);
+	  });
+  $('#nombre').click(function() {
 
+	    document.getElementById("alertNombre").style.display='none';
+	  });
   $('#apellidos').validate( {
     expression: "if (VAL) return true; else return false;",
     message: "No puede estar vacio"
@@ -125,14 +132,7 @@ $('#segmento').validate( {
     expression: "if (VAL) return true; else return false;",
     message: "No has seleccionado el segmento"
   });
-$('#unidadesTotales').validate( {
-    expression: "if (VAL) return true; else return false;",
-    message: "No puede estar vacío"
-  });
-$('#unidadesVendidas').validate( {
-    expression: "if (VAL) return true; else return false;",
-    message: "No puede estar vacío"
-  });
+
 $('#municipio').validate( {
     expression: "if (VAL) return true; else return false;",
     message: "No puede estar vacío"

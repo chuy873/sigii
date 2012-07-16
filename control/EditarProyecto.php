@@ -36,6 +36,10 @@ $segmento=$_POST["segmento"];
 $unidadesEtapa=$_POST["unidadesEtapa"];
 $unidadesTotales=$_POST["unidadesTotales"];
 $unidadesVendidas=$_POST["unidadesVendidas"];
+$vendidas1Q=$_POST["vendidas1Q"];
+$vendidas2Q=$_POST["vendidas2Q"];
+$vendidas3Q=$_POST["vendidas3Q"];
+$vendidas4Q=$_POST["vendidas4Q"];
 $llamadasSeguimiento=$_POST["llamadasSeguimiento"];
 $tiempoMercado=$_POST["tiempoMercado"];
 if($tipo=="vertical"){	
@@ -106,7 +110,8 @@ $updateProyecto =  sprintf("UPDATE  proyecto SET nombre='%s', descripcion='%s',
 		unidadesVendidas='%s', tiempoMercado='%s', promotor='%s', colonia='%s', municipio='%s', zona_idzona='%s',
 		entrega='%s', fechaRevision='%s', linkWebpage='%s', promociones='%s', paquetesAcabados='%s',
 		comentarios='%s', inicioVentas='%s', numeroModelos='%s', etapa='%s', nombreEtapa='%s', 
-		llamadasSeguimiento='%s', tipo='%s', telefono='%s' WHERE idproyecto='%s'",mysql_real_escape_string($nombre),
+		llamadasSeguimiento='%s', tipo='%s', telefono='%s', vendidas1Q ='%s', vendidas2Q ='%s',
+		vendidas3Q ='%s',vendidas4Q ='%s' WHERE idproyecto='%s'",mysql_real_escape_string($nombre),
 		 mysql_real_escape_string($descripcion), mysql_real_escape_string($caracteristicas),
 		mysql_real_escape_string($amenidadesDescripcion), mysql_real_escape_string($segmento),
 		mysql_real_escape_string($unidadesTotales), mysql_real_escape_string($unidadesVendidas),
@@ -118,7 +123,9 @@ $updateProyecto =  sprintf("UPDATE  proyecto SET nombre='%s', descripcion='%s',
 		mysql_real_escape_string($comentarios), mysql_real_escape_string($inicioVentas),
 		mysql_real_escape_string($numeroModelos), mysql_real_escape_string($etapa),
 		mysql_real_escape_string($nombreEtapa), mysql_real_escape_string($llamadasSeguimiento),
-		mysql_real_escape_string($tipo), mysql_real_escape_string($telefono), $idproyecto  );
+		mysql_real_escape_string($tipo), mysql_real_escape_string($telefono),
+		mysql_real_escape_string($vendidas1Q), mysql_real_escape_string($vendidas2Q),
+		mysql_real_escape_string($vendidas3Q), mysql_real_escape_string($vendidas4Q), $idproyecto  );
 $result = mysql_query( $updateProyecto );
 if (!$result) {
 	die('No se pudo realizar la consulta:' . mysql_error());

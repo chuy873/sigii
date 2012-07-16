@@ -53,12 +53,17 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
                                      <div class="control-group"> <label class="control-label"><i>* Campos obligatorios</i>	</label></div>
                                                             
                                  <div class="control-group">
-                                    <label class="control-label" for="nombres">Nombre del proyecto*</label>
+                                    <label class="control-label" for="nombres">Nombre del proyecto*</label>                                   
                                     <div class="controls">
                                         <input name="nombre" id="nombre" class="input-large" type="text">
-                                           <input type="hidden" name="tipo" value="vertical">                                      
-                                        <span class="help-inline"></span>
-                                    </div>
+                                           <input type="hidden" name="tipo" value="vertical"> <span class="help-inline">
+											<div class="alert alert-error" id="alertNombre"
+												style="display: none">
+												<strong>Atenci&oacute;n!</strong> El nombre ya existe.
+												Selecciona otro.
+											</div>
+										</span>
+									</div>
                                 </div>                               
                                 <div class="control-group">
                                     <label class="control-label" for="promotor">Promotor*</label>
@@ -129,17 +134,17 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
                                  <fieldset>
                                 <legend>Informaci&oacute;n num&eacute;rica</legend>                                      
                                  <div class="control-group">
-                                    <label class="control-label" for="unidadesTotales">Unidades totales*</label>
+                                    <label class="control-label" for="unidadesTotales">Unidades totales</label>
                                     <div class="controls">
                                         <input name="unidadesTotales" id="unidadesTotales" class="input-small" type="text">
-                                        <span class="help-inline"></span>
+                                        <span class="help-inline"><i>Dejar vac&iacute;o si se tiene informaci&oacute;n de unidades totales de los modelos.</i></span>
                                     </div>
                                 </div> 
                                   <div class="control-group">
-                                    <label class="control-label" for="unidadesVendidas">Unidades vendidas*</label>
+                                    <label class="control-label" for="unidadesVendidas">Unidades vendidas</label>
                                     <div class="controls">
                                         <input name="unidadesVendidas" id="unidadesVendidas" class="input-small" type="text">
-                                        <span class="help-inline"></span>
+                                        <span class="help-inline"><i>Dejar vac&iacute;o si se tiene informaci&oacute;n de unidades vendidas de los modelos.</i></span>
                                     </div>
                                 </div>                                
                                   <div class="control-group">
@@ -157,6 +162,34 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
 										 }
 											?>
 										</select>  <span class="help-inline"></span>
+                                    </div>
+                                </div> 
+                                   <div class="control-group">
+                                    <label class="control-label" for="vendidas1Q">Vendidas 1Q</label>
+                                    <div class="controls">
+                                        <input name="vendidas1Q" id="vendidas1Q" class="input-small" type="text">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div> 
+                                  <div class="control-group">
+                                    <label class="control-label" for="vendidas2Q">Vendidas 2Q</label>
+                                    <div class="controls">
+                                        <input name="vendidas2Q" id="vendidas2Q" class="input-small" type="text">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div> 
+                                  <div class="control-group">
+                                    <label class="control-label" for="vendidas3Q">Vendidas 3Q</label>
+                                    <div class="controls">
+                                        <input name="vendidas3Q" id="vendidas3Q" class="input-small" type="text">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div> 
+                                  <div class="control-group">
+                                    <label class="control-label" for="vendidas4Q">Vendidas 4Q</label>
+                                    <div class="controls">
+                                        <input name="vendidas4Q" id="vendidas4Q" class="input-small" type="text">
+                                        <span class="help-inline"></span>
                                     </div>
                                 </div> 
                                   <div class="control-group">

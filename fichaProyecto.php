@@ -117,10 +117,31 @@ if (!$result) {
 									<td><?php if($dataProyecto["tiempoMercado"]!=0){ echo round($dataProyecto["unidadesVendidas"]/$dataProyecto["tiempoMercado"],2);}?>
 									</td>
 								</tr>
+								<?php if($dataProyecto["vendidas1Q"]>0){?>
 								<tr>
 									<th>Absorci&oacute;n 1Q</th>
-									<td><?php echo round($dataProyecto["unidadesVendidas"]/3,2)?></td>
+									<td><?php echo round($dataProyecto["vendidas1Q"]/3,2)?></td>
 								</tr>
+								<?php }
+								if($dataProyecto["vendidas2Q"]>0){
+								?>
+								<tr>
+									<th>Absorci&oacute;n 2Q</th>
+									<td><?php echo round($dataProyecto["vendidas2Q"]/3,2)?></td>
+								</tr>
+								<?php }
+								if($dataProyecto["vendidas3Q"]>0){?>
+								<tr>
+									<th>Absorci&oacute;n 3Q</th>
+									<td><?php echo round($dataProyecto["vendidas3Q"]/3,2)?></td>
+								</tr>
+								<?php }
+								if($dataProyecto["vendidas4Q"]>0){?>
+								<tr>
+									<th>Absorci&oacute;n 4Q</th>
+									<td><?php echo round($dataProyecto["vendidas4Q"]/3,2)?></td>
+								</tr>
+								<?php }?>
 								<tr>
 									<th>Unidades totales</th>
 									<td><?php echo $dataProyecto["unidadesTotales"]?></td>

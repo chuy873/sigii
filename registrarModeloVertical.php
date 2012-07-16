@@ -43,6 +43,8 @@ $link = $conexion->dbconn();
 							<h1>Datos del modelo vertical</h1>
 							<fieldset>
 								<legend>Informaci&oacute;n necesaria</legend>
+								 <input
+										type="hidden" id="modelo" value="1">
 								<?php 
 								$q = "SELECT idproyecto, nombre, promotor FROM proyecto WHERE tipo= 'vertical' ";
 								$proyectos = mysql_query( $q);
@@ -75,9 +77,14 @@ $link = $conexion->dbconn();
 									<label class="control-label" for="nombres">Nombre del modelo*</label>
 									<div class="controls">
 										<input name="nombre" id="nombre" class="input-large"
-											type="text"> <span class="help-inline"></span>
+											type="text"> 
+											 <div class="alert alert-error" id="alertNombre"	style="display: none">
+												<strong>Atenci&oacute;n!</strong> El nombre ya existe.
+												Selecciona otro.
+											</div>
 									</div>
 								</div>
+
 								<div class="control-group">
 									<label class="control-label" for="diferenciadores">Diferenciadores</label>
 									<div class="controls">

@@ -36,7 +36,6 @@ Se despliega el nombre y apellidos del usuario obtenidos de la session.
                 		<li><a href="administrarProyectos.php"><i class="icon-briefcase icon-white"></i> Todos </a></li>
                 		<li><a href="registrarProyectoVertical.php"><i class="icon-resize-vertical icon-white"></i> Registar Vertical </a></li>
                 		<li><a href="registrarProyectoHorizontal.php"><i class="icon-resize-horizontal icon-white"></i> Registar Horizontal </a></li>
-                	                	                
                 	</ul>                	
                 </li>
                 <li class="dropdown">

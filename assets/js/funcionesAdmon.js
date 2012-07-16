@@ -254,3 +254,41 @@ $(document).on("click", ".quit", function () {
     });
 	$('#modalCancel1').modal('hide'); 
 });
+
+/*
+ * Funcion AJAX para verificar si el nombre de proyecto/modelo ya existe
+ */
+function verificarNombre(nombre)
+{
+
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {	
+	 if(xmlhttp.responseText=="1"){
+		 document.getElementById("nombre").value="";			 
+    document.getElementById("alertNombre").style.display='block';
+	 }
+    }
+  }
+xmlhttp.open("POST","control/verificaNombre.php",true);
+xmlhttp.setRequestHeader("Content-Type",
+"application/x-www-form-urlencoded; charset=UTF-8");
+
+if(document.getElementById("modelo")!=null){
+xmlhttp.send("nombre="+escape(nombre)+"&modelo="+document.getElementById("modelo").value);
+}else{
+	if(document.getElementById("id")!=null){		
+		xmlhttp.send("nombre="+escape(nombre)+"&proyecto="+document.getElementById("id").value);
+	} else {
+xmlhttp.send("nombre="+escape(nombre));} 
+}
+}

@@ -32,8 +32,9 @@ session_start();
 						<th style='text-align:left; width:200px; padding:5px;'>Segmento</th>
 						<th style='text-align:left; width:70px; padding:5px;'>Pisos</th>
 						<th style='text-align:left; width:70px; padding:5px;'>Torres</th>					
-						<th style='text-align:left; width:270px; padding:5px;'></th>
-						<th style='text-align:left; width:270px; padding:5px;'></th>								
+						<th style='text-align:left; width:200px; padding:5px;'></th>
+						<th style='text-align:left; width:200px; padding:5px;'></th>	
+						<th style='text-align:left; width:200px; padding:5px;'></th>								
 					  	<th></th>
 					</tr>
 					<?php 
@@ -63,7 +64,10 @@ session_start();
 							  		<td><?php echo $dataDep["torres"]?></td>							  							  									  								  	
 							  		<td> 
 							  		<a href="editarProyectoVertical.php?idproyecto=<?php echo $data["idproyecto"]?>" class="btn btn-primary"><i class="icon-edit icon-white"></i> Editar</a>																					  	
-							  		</td>							  		
+							  		</td>	
+							  			<td>
+							  		 		<a href="actualizarProyecto.php?idproyecto=<?php echo $data["idproyecto"]?>" class="btn btn-info"><i class="icon-refresh icon-white"></i> Actualizar</a>
+								</td>						  		
 							  			<?php if($usuariologueado->getTipo()=="administrador"){?>
 							  	<td> 							  	
 							  		<a href="#" class="openDeleteProyecto btn btn-danger" data-id="<?php echo $data["idproyecto"]?>"><i class="icon-trash icon-white"></i> Eliminar</a>							  	

@@ -58,3 +58,10 @@ function extractFilename(path) {
     return path.substr(x+1);
   return path; // just the filename
 }
+//Exportar a excel
+$(document).ready(function() {
+    $(".botonExcel").click(function(event) {
+    $("#datos_a_enviar").val( $("<div>").append( $("#Exportar_a_Excel").eq(0).clone()).html());
+    $("#FormularioExportacion").submit();
+});
+});

@@ -92,7 +92,9 @@ session_start();
 						  <h1>Datos del modelo vertical</h1>
 						  <input type="hidden" name="idmodelo" value="<?php echo $idModelo?>">
                             <fieldset>
-                                <legend>Informaci&oacute;n necesaria</legend>                               
+                                <legend>Informaci&oacute;n necesaria</legend> 
+                                 <input
+										type="hidden" id="modelo" value="<?php echo $idModelo?>">                              
                                           <?php 
 					$q = "SELECT idproyecto, nombre, promotor FROM proyecto WHERE tipo= 'vertical' ";
 						$proyectos = mysql_query( $q);
@@ -124,7 +126,10 @@ session_start();
                                     <label class="control-label" for="nombres">Nombre del modelo</label>
                                     <div class="controls">
                                         <input name="nombre" id="nombre" class="input-large" type="text" value="<?php echo $data1["nombre"]?>">
-                                        <span class="help-inline"></span>
+                                         <div class="alert alert-error" id="alertNombre"	style="display: none">
+												<strong>Atenci&oacute;n!</strong> El nombre ya existe.
+												Selecciona otro.
+											</div>
                                     </div>
                                 </div>                               
                                 <div class="control-group">

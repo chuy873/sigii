@@ -42,7 +42,14 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 			<li><a href="#tab4" data-toggle="tab">Residencial</a></li>
 			<li><a href="#tab5" data-toggle="tab">Residencial Plus</a></li>
 			<li><a href="#tab6" data-toggle="tab">Premium</a></li>
+			<li><form action="control/exportarExcel.php" method="post" target="_blank" id="FormularioExportacion">
+<p>Exportar a Excel  <img src="assets/img/Excel-icon.png" class="botonExcel" /></p>
+<input type="hidden" id="datos_a_enviar" name="datos_a_enviar" />
+<input type="hidden"  name="tipo" value="resumen" />
+</form></li>
 		</ul>
+		<table  id="Exportar_a_Excel">
+	<tr><td>
 		<div class="tab-content">
 		<?php $tab=1;
 		$segmentos= array(1=>"Social",2=>"Economico",3=>"Medio",4=>"Residencial",5=>"Residencial Plus",6=>"Premium");
@@ -50,7 +57,7 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 		?>
 				<div class="tab-pane <?php if($tab==1){?>active<?php }?>" id="tab<?php echo $tab?>">
 					<div class="row-fluid">
-	<div class="span8 offset3">
+	<div class="span8 offset3">		
 		<h1>Resumen de proyectos</h1>
 		<h2>Clasificaci&oacute;n <?php echo $segmento?></h2>
 		<?php 
@@ -111,15 +118,13 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 			<td><?php echo $data["colonia"]?></td>						
 		</tr>
 		<?php $cont++;}?>
-		</table>
-		</div>
-		</div>
-		</div>
-		
-		<?php $tab++;}?>
-		
-		
+		</table>		
 		</div>
 		</div>
 		</div>		
+		<?php $tab++;}?>			
+		</div>	
+				</td></tr></table>
+		</div>		
+		</div>			
 <?php include "includes/footer_principal.php"?>

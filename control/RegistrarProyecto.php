@@ -37,6 +37,10 @@ $segmento=$_POST["segmento"];
 $unidadesEtapa=$_POST["unidadesEtapa"];
 $unidadesTotales=$_POST["unidadesTotales"];
 $unidadesVendidas=$_POST["unidadesVendidas"];
+$vendidas1Q=$_POST["vendidas1Q"];
+$vendidas2Q=$_POST["vendidas2Q"];
+$vendidas3Q=$_POST["vendidas3Q"];
+$vendidas4Q=$_POST["vendidas4Q"];
 $llamadasSeguimiento=$_POST["llamadasSeguimiento"];
 $tiempoMercado=$_POST["tiempoMercado"];
 $pisos=$_POST["pisos"];
@@ -105,9 +109,10 @@ $insertProyecto =  sprintf("INSERT INTO  proyecto (nombre, descripcion,
 		caracteristicas,  amenidadesDescripcion, segmento, unidadesTotales,
 		unidadesVendidas, tiempoMercado, promotor, colonia, municipio, zona_idzona,
 		entrega, fechaRevision, linkWebpage, promociones, paquetesAcabados,
-		comentarios, inicioVentas, numeroModelos, etapa, nombreEtapa, llamadasSeguimiento, tipo, telefono)
+		comentarios, inicioVentas, numeroModelos, etapa, nombreEtapa, llamadasSeguimiento, tipo, telefono,
+		vendidas1Q, vendidas2Q, vendidas3Q, vendidas4Q)
 			VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',
-		'%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');",mysql_real_escape_string($nombre),
+		'%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');",mysql_real_escape_string($nombre),
 		 mysql_real_escape_string($descripcion), mysql_real_escape_string($caracteristicas),
 		mysql_real_escape_string($amenidadesDescripcion), mysql_real_escape_string($segmento),
 		mysql_real_escape_string($unidadesTotales), mysql_real_escape_string($unidadesVendidas),
@@ -119,7 +124,10 @@ $insertProyecto =  sprintf("INSERT INTO  proyecto (nombre, descripcion,
 		mysql_real_escape_string($comentarios), mysql_real_escape_string($inicioVentas),
 		mysql_real_escape_string($numeroModelos), mysql_real_escape_string($etapa),
 		mysql_real_escape_string($nombreEtapa), mysql_real_escape_string($llamadasSeguimiento),
-		mysql_real_escape_string($tipo), mysql_real_escape_string($telefono)  );
+		mysql_real_escape_string($tipo), mysql_real_escape_string($telefono),
+		 mysql_real_escape_string($vendidas1Q), mysql_real_escape_string($vendidas2Q),
+		mysql_real_escape_string($vendidas3Q), mysql_real_escape_string($vendidas4Q)
+		  );
 $result = mysql_query( $insertProyecto );
 if (!$result) {
 	die('No se pudo realizar la consulta:' . mysql_error());

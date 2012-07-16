@@ -39,7 +39,9 @@ session_start();
 					<div class="tab-pane active" id="tab1">
 						  <h1>Datos del modelo horizontal</h1>
                             <fieldset>
-                                <legend>Informaci&oacute;n necesaria</legend>                               
+                                <legend>Informaci&oacute;n necesaria</legend> 
+                                 <input
+										type="hidden" id="modelo" value="1">                              
                      <?php 
                       $q = "SELECT idproyecto, nombre, promotor FROM proyecto WHERE tipo= 'horizontal' ";
 						$proyectos = mysql_query( $q);
@@ -68,7 +70,10 @@ session_start();
                                     <label class="control-label" for="nombres">Nombre del modelo</label>
                                     <div class="controls">
                                         <input name="nombre" id="nombre" class="input-large" type="text">
-                                        <span class="help-inline"></span>
+                                      <div class="alert alert-error" id="alertNombre"	style="display: none">
+												<strong>Atenci&oacute;n!</strong> El nombre ya existe.
+												Selecciona otro.
+											</div>
                                     </div>
                                 </div>                               
                                 <div class="control-group">
@@ -107,21 +112,28 @@ session_start();
                                     </div>
                                 </div>  
                                     <div class="control-group">
-                                    <label class="control-label" for="metros2Terreno">Metros cuadrados terreno</label>
+                                    <label class="control-label" for="anchoTerreno">Ancho del terreno</label>
                                     <div class="controls">
-                                        <input name="metros2Terreno" id="metros2Terreno" class="input-small" type="text">
+                                        <input name="anchoTerreno" id="anchoTerreno" class="input-small" type="text">
                                         <span class="help-inline"></span>
                                     </div>                              
-                                 </div>                                                             
+                                 </div>  
+                                     <div class="control-group">
+                                    <label class="control-label" for="largoTerreno">Largo del terreno</label>
+                                    <div class="controls">
+                                        <input name="largoTerreno" id="largoTerreno" class="input-small" type="text">
+                                        <span class="help-inline"></span>
+                                    </div>                              
+                                 </div>                                                              
                                  <div class="control-group">
-                                    <label class="control-label" for="unidadesTotales">Unidades totales</label>
+                                    <label class="control-label" for="unidadesTotales">Unidades totales*</label>
                                     <div class="controls">
                                         <input name="unidadesTotales" id="unidadesTotales" class="input-small" type="text">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div> 
                                   <div class="control-group">
-                                    <label class="control-label" for="unidadesVendidas">Unidades vendidas</label>
+                                    <label class="control-label" for="unidadesVendidas">Unidades vendidas*</label>
                                     <div class="controls">
                                         <input name="unidadesVendidas" id="unidadesVendidas" class="input-small" type="text">
                                         <span class="help-inline"></span>

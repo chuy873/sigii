@@ -37,8 +37,15 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 			<!-- Only required for left/right tabs -->
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#tab1" data-toggle="tab">Horizontales</a></li>
-				<li><a href="#tab2" data-toggle="tab">Verticales</a></li>							
-			</ul>
+				<li><a href="#tab2" data-toggle="tab">Verticales</a></li>
+				<li>	<form action="control/exportarExcel.php" method="post" target="_blank" id="FormularioExportacion">
+<p>Exportar a Excel  <img src="assets/img/Excel-icon.png" class="botonExcel" /></p>
+<input type="hidden" id="datos_a_enviar" name="datos_a_enviar" />
+<input type="hidden"  name="tipo" value="lista" />
+</form></li>										
+			</ul>		
+				<table  id="Exportar_a_Excel">
+	<tr><td>
 			<div class="tab-content">
 				<div class="tab-pane active" id="tab1">
 					<div class="row-fluid">
@@ -208,7 +215,7 @@ INNER JOIN modelo m ON m.idmodelo=md.modelo_idmodelo AND m.proyecto_idproyecto='
 						GROUP BY c.nombre;";
 						$result6=mysql_query($promedioCaract);
 		?>
-		<table class="table table-bordered">
+		<table class="table table-bordered"  >
 			<tr>
 				<!-- colspan="2" -->
 				<td>No. <?php echo $cont;?>
@@ -313,11 +320,13 @@ INNER JOIN modelo m ON m.idmodelo=md.modelo_idmodelo AND m.proyecto_idproyecto='
 					}
 
 					?>
+				
 	</div>
+		
 </div>
 </div>
 </div>
+</td></tr></table>
 </div>
 </div>
-
 <?php include "includes/footer_principal.php"?>
