@@ -121,7 +121,7 @@ if (!$result) {
 								
 								<?php while($dataPuntos=mysql_fetch_array($result12)){?>
 							<tr>
-								<td><?php echo $dataPuntos["nombre"]?>  <img src="<?php echo $dataPuntos["logo"]?>"/></td>
+								<td> <img src="<?php echo $dataPuntos["logo"]?>"/> <?php echo $dataPuntos["nombre"]?> </td>
 								<td><?php echo $dataPuntos["distancia"]?> kms.</td>
 							</tr>
 							<?php }?>

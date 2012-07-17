@@ -32,7 +32,7 @@ $link = $conexion->dbconn();
 					  	<th></th>
 					</tr>
 					<?php  
-                        $q = "SELECT * FROM `acabado`";
+                        $q = "SELECT * FROM `acabado` ORDER BY nombre ASC";
 						$cont = 0;
 					   	$dataAcabados = mysql_query( $q );	
 					   	if (!$dataAcabados) {
@@ -44,7 +44,8 @@ $link = $conexion->dbconn();
 					    	<tr>
 							  		<td><?php echo $data["nombre"]?></td>							  	
 							  		<td> 
-							  		<a href="#modalEdit" data-toggle="modal" class="openEditAcab btn btn-primary" data-id="<?php echo $data["idacabado"]?>"><i class="icon-edit icon-white"></i> Editar</a>
+							  		<a href="#modalEdit" data-toggle="modal" class="openEditAcab btn btn-primary" data-id="<?php echo $data["idacabado"]?>"
+							  		data-nombre="<?php echo $data["nombre"]?>"><i class="icon-edit icon-white"></i> Editar</a>
 							  		</td>
 							  		<td> 
 							  		<a href="#modalDelete" data-toggle="modal" class="openDeleteAcab btn btn-danger" data-id="<?php echo $data["idacabado"]?>"><i class="icon-trash icon-white"></i> Eliminar</a>
@@ -73,11 +74,11 @@ $link = $conexion->dbconn();
     </div>
     <div class="modal-body">       
    <label class="control-label" for="amenidad">Nombre</label>
-       <input type="text" class="input-small" id="editaracabado">
+       <input type="text" class="input-medium" id="editaracabado">
         <input type="hidden"  id="idacabado">
            </div>
     <div class="modal-footer">
-      <a href="#" class="btn btn-danger" onclick="editar('acabado')">Editar</a>
+      <a href="#" class="btn btn-primary" onclick="editar('acabado')">Editar</a>
       <a href="#" class="btn secondary" data-dismiss="modal">Cancelar</a>
     </div>
 </div>

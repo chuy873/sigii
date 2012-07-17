@@ -12,25 +12,34 @@ function insertarPunto(tipo){
 //para activar modal y enviar el id en un input hidden.
 $(document).on("click", ".openEditAmen", function () {
     var idamenidad = $(this).data('id');
+    var nombre = $(this).data('nombre');
     $(".modal-body #idamenidad").val(idamenidad);
+    $(".modal-body #editaramenidad").val(nombre);
+    $(".modal-body #editaramenidad").focus();
    $('#modalEditar').modal('show');
 });
 
 $(document).on("click", ".openEditAtrib", function () {
     var idatributos = $(this).data('id');
+    var nombre = $(this).data('nombre');
     $(".modal-body #idatributos").val(idatributos);
+    $(".modal-body #editaratributos").val(nombre);
    $('#modalEditar').modal('show');
 });
 
 $(document).on("click", ".openEditAcab", function () {
     var idacabado = $(this).data('id');
+    var nombre = $(this).data('nombre');
     $(".modal-body #idacabado").val(idacabado);
+    $(".modal-body #editaracabado").val(nombre);
    $('#modalEditar').modal('show');
 });
 
 $(document).on("click", ".openEditCaract", function () {
     var idcaracteristicas = $(this).data('id');
+    var nombre = $(this).data('nombre');
     $(".modal-body #idcaracteristicas").val(idcaracteristicas);
+    $(".modal-body #editarcaracteristicas").val(nombre);
    $('#modalEditar').modal('show');
 });
 

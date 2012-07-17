@@ -878,3 +878,31 @@ function outKml() {
 
   </script>
 <?php include "includes/footer_principal.php" ?>
+ <script type="text/javascript">
+/*
+ * LLamadas a seleccionador de fechas de bootstrap
+ */
+var currentTime = new Date();
+var month = currentTime.getMonth() + 1;
+var day = currentTime.getDate();
+var year = currentTime.getFullYear();
+
+function setToday(id){
+	document.getElementById(id).value=year+"-"+month+"-"+day;
+}
+$(document).ready(function () {
+$(function(){
+	window.prettyPrint && prettyPrint();
+	$('#dp1').datepicker({
+		format: 'yyyy-mm-dd'
+	});
+});
+
+$(function(){
+	window.prettyPrint && prettyPrint();
+	$('#dp2').datepicker({
+		format: 'yyyy-mm-dd'
+	});
+});
+});
+  </script>

@@ -32,7 +32,7 @@ $link = $conexion->dbconn();
 					  	<th></th>
 					</tr>
 					<?php  
-                        $q = "SELECT * FROM `atributos`";
+                        $q = "SELECT * FROM `atributos` ORDER BY nombre ASC";
 						$cont = 0;
 					   	$dataCaract = mysql_query( $q );	
 					   	if (!$dataCaract) {
@@ -44,7 +44,8 @@ $link = $conexion->dbconn();
 					    	<tr>
 							  		<td><?php echo $data["nombre"]?></td>							  	
 							  		<td> 
-							  		<a href="#modalEdit" data-toggle="modal" class="openEditAtrib btn btn-primary" data-id="<?php echo $data["idatributos"]?>"><i class="icon-edit icon-white"></i> Editar</a>
+							  		<a href="#modalEdit" data-toggle="modal" class="openEditAtrib btn btn-primary" data-id="<?php echo $data["idatributos"]?>"
+							  		data-nombre="<?php echo $data["nombre"]?>"><i class="icon-edit icon-white"></i> Editar</a>
 							  		</td>
 							  		<td> 
 							  	    <a href="#modalDelete" data-toggle="modal" class="openDeleteAtrib btn btn-danger" data-id="<?php echo $data["idatributos"]?>"><i class="icon-trash icon-white"></i> Eliminar</a>
@@ -73,7 +74,7 @@ $link = $conexion->dbconn();
     </div>
     <div class="modal-body">   
      <label class="control-label" for="atributo">Nombre</label>
-    <input type="text" class="input-small" id="editaratributos">
+    <input type="text" class="input-medium" id="editaratributos">
         <input type="hidden"  id="idatributos">
        
     </div>
