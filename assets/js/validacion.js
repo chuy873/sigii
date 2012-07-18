@@ -60,25 +60,22 @@ $().ready(function() {
 		unhighlight: function(element, errorClass, validClass)
 		{
 		$(element).parents('.control-group').removeClass('error');
-		$(element).parents('.control-group').addClass('success');
 		}
 		});
 		});
-//Validacion registro de proyecto
+//Validacion edicion de usuario
 $().ready(function() { 
+	
     // validate signup form on keyup and submit 
-	$("#registroUsuario").validate({
+	$("#edicionUsuario").validate({		
 		rules:{
 		nombre:"required",
 		apellidos:"required",		
 		email:{required:true,email: true},	
 		tipo:"required",
-		username:"required",
-		password:{required:true,minlength: 6},
-		passwordC:{required:true,equalTo: "#password"},
-		
+		username:{required:true, remote: { url: "control/verificarUsuario.php?idusuario=", async: false }},
+			password:{required:true,minlength: 6},				
 		},
-
 		messages:{
 		nombre:"Ingresa el nombre",
 		apellidos:"Ingresa los apellidos",
@@ -86,14 +83,45 @@ $().ready(function() {
 		required:"Ingresa el correo electrónico",
 		email:"Ingresa un correo válido (usuario@ejemplo.com)"},
 		tipo:"",
-		username:"Ingresa el nombre de usuario",
+		username: { required:"Ingresa el nombre de usuario", remote: "El nombre de usuario ya existe"},
 		password:{
 		required:"Ingresa la contraseña",
 		minlength:"La contraseña debe tener 6 caracteres como mínimo"},
 		passwordC:{
 		required:"Ingresa la confirmación de contraseña",
-		equalTo:"La contraseña y la confirmación de contraseña deben ser iguales"},
-		
+		equalTo:"La contraseña y la confirmación de contraseña deben ser iguales"},		
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').removeClass('error');
+		}
+		});
+		});
+
+//Validacion registrar proyecto vertical
+$().ready(function() { 
+    // validate signup form on keyup and submit 
+	$("#registroVertical").validate({
+		rules:{
+		nombre:{required:true, remote: { url: "control/verificaNombre.php", async: false }},
+		promotor:"required",	
+		municipio:"required",
+		segmento:"required",			
+		ciudad:"required",				
+		},
+
+		messages:{
+		nombre: { required:"Ingresa el nombre del proyecto", remote: "El nombre del proyecto ya existe"},		
+		promotor:"Ingresa el promotor",
+		segmento:"Ingresa el segmento",
+		municipio:"Ingresa el municipio",
+		ciudad:"Selecciona la zona",		
 		},
 
 		errorClass: "help-inline",
@@ -105,7 +133,6 @@ $().ready(function() {
 		unhighlight: function(element, errorClass, validClass)
 		{
 		$(element).parents('.control-group').removeClass('error');
-		$(element).parents('.control-group').addClass('success');
 		}
 		});
 		});

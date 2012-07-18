@@ -32,6 +32,7 @@ $amenidadesDescripcion=$_POST["amenidadesDescripcion"];
 $caracteristicas=$_POST["caracteristicas"];
 $link=$_POST["link"];
 $numeroModelos=$_POST["numeroModelos"];
+$numeroMedidores=$_POST["numeroMedidores"];
 $segmento=$_POST["segmento"];
 //datos numericos
 $unidadesEtapa=$_POST["unidadesEtapa"];
@@ -110,9 +111,9 @@ $insertProyecto =  sprintf("INSERT INTO  proyecto (nombre, descripcion,
 		unidadesVendidas, tiempoMercado, promotor, colonia, municipio, zona_idzona,
 		entrega, fechaRevision, linkWebpage, promociones, paquetesAcabados,
 		comentarios, inicioVentas, numeroModelos, etapa, nombreEtapa, llamadasSeguimiento, tipo, telefono,
-		vendidas1Q, vendidas2Q, vendidas3Q, vendidas4Q)
+		vendidas1Q, vendidas2Q, vendidas3Q, vendidas4Q, numeroMedidores)
 			VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',
-		'%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');",mysql_real_escape_string($nombre),
+		'%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');",mysql_real_escape_string($nombre),
 		 mysql_real_escape_string($descripcion), mysql_real_escape_string($caracteristicas),
 		mysql_real_escape_string($amenidadesDescripcion), mysql_real_escape_string($segmento),
 		mysql_real_escape_string($unidadesTotales), mysql_real_escape_string($unidadesVendidas),
@@ -126,7 +127,8 @@ $insertProyecto =  sprintf("INSERT INTO  proyecto (nombre, descripcion,
 		mysql_real_escape_string($nombreEtapa), mysql_real_escape_string($llamadasSeguimiento),
 		mysql_real_escape_string($tipo), mysql_real_escape_string($telefono),
 		 mysql_real_escape_string($vendidas1Q), mysql_real_escape_string($vendidas2Q),
-		mysql_real_escape_string($vendidas3Q), mysql_real_escape_string($vendidas4Q)
+		mysql_real_escape_string($vendidas3Q), mysql_real_escape_string($vendidas4Q),
+		mysql_real_escape_string($numeroMedidores)
 		  );
 $result = mysql_query( $insertProyecto );
 if (!$result) {

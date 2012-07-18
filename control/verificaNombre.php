@@ -14,7 +14,7 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 include "../clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
-$nombre=$_POST["nombre"];
+$nombre= $_REQUEST["nombre"];
 if(isset($_POST["modelo"])){
 	$sql="SELECT * FROM modelo WHERE nombre = '".$nombre."' AND idmodelo != '".$_POST["modelo"]."'";
 } else if(isset($_POST["proyecto"])) {
@@ -26,6 +26,8 @@ $result = mysql_query($sql);
 	if ($result) {
 		if(mysql_num_rows($result)>0){				
 		header("Content-Type: text/html; charset=iso-8859-1");
-						echo "1";															
+						echo "false";															
+					} else {
+					echo "true";
 					}
 	}

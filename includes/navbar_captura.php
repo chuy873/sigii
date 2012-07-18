@@ -6,7 +6,9 @@ Se despliega el nombre y apellidos del usuario obtenidos de la session.
 ?>
     <div id="wrap" class="wrapper">
       <!-- Barra de navegacion -->
-      <div id="nav" class="navbar navbar-fixed-top">
+       <div class="row pad3">
+      <div class="span2 offset0" align="right"><img src="assets/img/sigii.png"/></div>
+      <div id="nav" class="span10 navbar ">
         <div class="navbar-inner">
           <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -62,3 +64,4 @@ Se despliega el nombre y apellidos del usuario obtenidos de la session.
           </div> <!-- /.container -->
         </div> <!-- /navbar-inner -->
       </div> <!-- /navbar -->
+      </div>

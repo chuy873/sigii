@@ -36,8 +36,8 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 <div class="tabbable tabs-left">
 			<!-- Only required for left/right tabs -->
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab1" data-toggle="tab">Horizontales</a></li>
-				<li><a href="#tab2" data-toggle="tab">Verticales</a></li>
+				<li class="active"><a href="#tab1" data-toggle="tab"><img src="assets/img/black-spot.png" /> Horizontales</a></li>
+				<li><a href="#tab2" data-toggle="tab"><img src="assets/img/black-spot.png" /> Verticales</a></li>
 				<br/><br/><br/>
 				<li><a href="javascript:window.print()" >Imprimir esta página <img src="assets/img/Printer-icon.png"  /></a> </li>
 	

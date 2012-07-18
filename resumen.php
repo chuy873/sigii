@@ -75,9 +75,9 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 		GROUP BY p.idproyecto  HAVING segmento='".$segmento."'";
 		$result = mysql_query( $tablaResumen );
 		?>
-		<table class="table table-bordered">
-		<tr><th>Num</th><th>Tipo</th><th>Nombre</th><th>Precio</th><th>M<sup>2</sup></th><th>M<sup>2</sup> Terr</th>
-		<th>Precio M<sup>2</sup></th><th>Unids</th><th>Vend</th><th>Inv</th><th>Abs</th>
+		<table class="table table-condensed">
+		<tr><th>Num</th><th>Tipo</th><th>Nombre</th><th>Absorci&oacute;n</th><th>Precio</th><th>M<sup>2</sup></th><th>M<sup>2</sup> Terr</th>
+		<th>Precio M<sup>2</sup></th><th>Unidades</th><th>Vendidas</th><th>Inventario</th>
 		<th>Ubicaci&oacute;n</th><th>Colonia</th>
 		</tr>
 		<?php $cont=1;
@@ -86,14 +86,14 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 		<td><?php echo $cont?></td>
 		<td><?php echo $data["tipo"]?></td>
 		<td><?php echo $data["nombreP"]?></td>
+		<td><?php if($data["tiempoMercado"]){echo round($data["unidadesVendidas"]/$data["tiempoMercado"],2);}?></td>
 		<td>$<?php echo number_format(round($data["precio"],2), 2, '.', ',')?></td>
 		<td><?php echo round($data["metrosCuadrados"],0)?></td>
 		<td><?php echo round($data["metrosCuadradosTerr"],0)?></td>
 		<td>$ <?php if($data["metrosCuadrados"]!=0){echo number_format(round(($data["precio"]/$data["metrosCuadrados"]),2), 2, '.', ',');}?></td>
 		<td><?php echo $data["unidades"]?></td>
 		<td><?php echo $data["unidadesVendidas"]?></td>
-		<td><?php echo ($data["unidades"]-$data["unidadesVendidas"])?></td>
-		<td><?php if($data["tiempoMercado"]){echo round($data["unidadesVendidas"]/$data["tiempoMercado"],2);}?></td>
+		<td><?php echo ($data["unidades"]-$data["unidadesVendidas"])?></td>		
 		<td><?php echo $data["municipio"]?></td>		
 			<td><?php echo $data["colonia"]?></td>		
 						

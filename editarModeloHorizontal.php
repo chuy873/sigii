@@ -166,15 +166,15 @@ session_start();
                                         $ <input name="precioTerreno" id="precioTerreno" class="input-small" type="text" value="<?php echo $data2["precioTerreno"]?>">     
                                          <span class="help-inline"></span>
                                     </div>
-                                </div>  
-                                    <div class="control-group">
-                                    <label class="control-label" for="metros2Terreno">Metros cuadrados terreno</label>
+                                </div>                                                                                                 
+                                 <div class="control-group">
+                                   <div class="control-group">
+                                    <label class="control-label" for="m2Terreno">Metros cuadrados del terreno</label>
                                     <div class="controls">
-                                        <input name="metros2Terreno" id="metros2Terreno" class="input-small" type="text" value="<?php echo $data2["m2Terreno"]?>">
+                                        <input name="m2Terreno" id="m2Terreno" class="input-small" type="text">
                                         <span class="help-inline"></span>
                                     </div>                              
-                                 </div>                                                             
-                                 <div class="control-group">
+                                 </div>                                               
                                     <label class="control-label" for="unidadesTotales">Unidades totales*</label>
                                     <div class="controls">
                                         <input name="unidadesTotales" id="unidadesTotales" class="input-small" type="text" value="<?php echo $data1["unidades"]?>">

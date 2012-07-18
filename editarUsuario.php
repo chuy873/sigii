@@ -16,7 +16,7 @@ include "includes/header_aplicacion.php";
 include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
-$idusuario = $_POST["idusuario"];
+$idusuario = $_GET["idusuario"];
 $usuario = "SELECT * FROM usuarios WHERE idusuarios = '".$idusuario."'";
 $result = mysql_query( $usuario );
 if (!$result) {
@@ -28,7 +28,7 @@ if (!$result) {
         <div class="container">      
         <div class="row">      
             <div class="span7 offset2">          
-                        <form id="registroUsuario" class="form-horizontal well" action="control/admonUsuario.php" method="post">
+                        <form id="edicionUsuario" class="form-horizontal well" action="control/admonUsuario.php" method="post">
                             <h1>Editar usuario</h1>
                             <fieldset>
                                 <legend>Favor de llenar la informaci&oacute;n necesaria</legend> 
@@ -38,7 +38,7 @@ if (!$result) {
                                     <div class="controls">
                                         <input name="nombre" id="nombre" class="input-small" type="text" value="<?php echo $data["nombre"]?>"/>
                                             <input type="hidden" name="accion" value="editar">
-                                            <input type="hidden" name="idusuario" value="<?php echo $data["idusuarios"]?>">                                       
+                                            <input type="hidden"  id="idusuario" name="idusuario" value="<?php echo $data["idusuarios"]?>">                                       
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>                                

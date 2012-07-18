@@ -216,7 +216,25 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
 										</select>
                                         <span class="help-inline"></span>
                                     </div>
-                                </div>                                
+                                </div>    
+                                 <div class="control-group">
+                                    <label class="control-label" for="numeroMedidores">N&uacute;mero de medidores</label>
+                                    <div class="controls">
+                                    	 <select class="span2" name='numeroMedidores'>
+										<?php 
+										$int = 0;
+										while($int <=20){
+										?>
+										<option value="<?php echo $int?>"><?php echo $int?></option>
+											<?php 
+											$int++;
+										 }
+											?>
+										</select>
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div>  
+                                 <div clas                            
                                  <div class="control-group">
                                     <label class="control-label" for="llamadasSeguimiento">Llamadas de seguimiento</label>
                                     <div class="controls">

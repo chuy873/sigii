@@ -32,7 +32,7 @@ $almacenarHistorico="INSERT INTO datohistorico (idproyecto, vendidasTotales, fec
 VALUES ('".$idproyecto."','".$data["unidadesVendidas"]."','".$data["fechaRevision"]."')";
 mysql_query($almacenarHistorico);
 $actualizarProyecto=sprintf("UPDATE proyecto SET unidadesVendidas = '%s', fechaRevision='%s' WHERE idproyecto=' ".$idproyecto."'",
- mysql_real_escape_string($vendidasTotales), date("y-m-d"));
+ mysql_real_escape_string($vendidasTotales), date("Y-m-d"));
 mysql_query($actualizarProyecto);
 header("Location: ../".$_SESSION["pageFrom"].".php");
 ?>

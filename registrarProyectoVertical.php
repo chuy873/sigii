@@ -17,22 +17,19 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
 			getTipo()=="captura")) {
 		header("Location: bienvenido.php");
    }
-   
-   include "includes/header_aplicacion.php";
+ include "includes/header_aplicacion.php";
  include "clases/Conexion.php";
    $conexion = new Conexion();
    $link = $conexion->dbconn();
   ?>
-
-        <div class="container">      
-      
+        <div class="container">         
         <div class="row">      
             <div class="span10 offset1">
               <div class="alert alert-info">
   <button class="close" data-dismiss="alert">×</button>
   <strong>Atenci&oacute;n!</strong> Aseg&uacute;rate de llenar la informaci&oacute;n de todas las etiquetas.
 </div>
-  <form class="forma form-horizontal well" action="control/RegistrarProyecto.php" method="post" enctype="multipart/form-data">                                      
+  <form id="registroVertical" class="forma form-horizontal well" action="control/RegistrarProyecto.php" method="post" enctype="multipart/form-data">                                      
  	<div class="tabbable">
 				<!-- Only required for left/right tabs -->
 				<ul class="nav nav-tabs">
@@ -119,7 +116,7 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
                                   <div class="control-group">
                                   <label class="control-label" for="segmento">Segmento*</label>
                                   <div class="controls">
-                                  <select class="span2" name='segmento'>
+                                  <select class="span2" name='segmento' id='segmento'>
                                   <option value="Social" selected=selected>Social</option>
                                   <option value="Economico" >Econ&oacute;mico</option>
                                   <option value="Medio">Medio</option>
@@ -213,6 +210,23 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
                                     <label class="control-label" for="numeroModelos">N&uacute;mero de modelos</label>
                                     <div class="controls">
                                     	 <select class="span2" name='numeroModelos'>
+										<?php 
+										$int = 0;
+										while($int <=20){
+										?>
+										<option value="<?php echo $int?>"><?php echo $int?></option>
+											<?php 
+											$int++;
+										 }
+											?>
+										</select>
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div> 
+                                   <div class="control-group">
+                                    <label class="control-label" for="numeroMedidores">N&uacute;mero de medidores</label>
+                                    <div class="controls">
+                                    	 <select class="span2" name='numeroMedidores'>
 										<?php 
 										$int = 0;
 										while($int <=20){
@@ -328,7 +342,8 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
 								<div class="control-group">
 									<label class="control-label" for="municipio">Zona*</label>
 									<div class="controls">
-										<select class="span2" name='ciudad' onchange="desplegarSubzona(this.value)">
+										<select class="span2" name='ciudad' id='ciudad' onchange="desplegarSubzona(this.value)">
+											<option value="" selected=selected disabled=disabled>Selecciona la zona</option>
 											<?php 
 											while ($data = mysql_fetch_array($zona, MYSQL_ASSOC)) {						
 											?>
@@ -374,7 +389,7 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
 										</select>  <span class="help-inline"></span>
 									</div>
 									<div class="control-group">
-									<label class="control-label">Punto</label>
+									<label class="control-label">Punto 1</label>
 									<div class="controls" id="punto1">																	
 									</div>
 								</div>	
@@ -573,7 +588,6 @@ $pageTitle = "SIGII | Registrar proyecto vertical";
            <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAwbkbZLyhsmTCWXbTcjbgbRSzHs7K5SvaUdm8ua-Xxy_-2dYwMxQMhnagaawTo7L1FE1-amhuQxIlXw"></script>
   <script type="text/javascript">
 google.load("earth", "1");
-
 var ge = null;
 var isMouseDown = false;
 var lineStringPlacemark = null;

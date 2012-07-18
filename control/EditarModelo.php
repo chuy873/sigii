@@ -31,7 +31,7 @@ if($tipo=="horizontal"){
 	$absorcion=$_POST["absorcion"];
 	$precio=$_POST["precio"];
 	$creditoSobreEnganche=$_POST["creditoSobreEnganche"];
-	$m2Terreno=$_POST["metros2Terreno"];
+	$m2Terreno=$_POST["m2Terreno"];
 	$precioTerreno=$_POST["precioTerreno"];
 	$contFachadas=$_POST["contFachadas"];
 	if(isset($contFachadas)){

@@ -83,16 +83,16 @@ if (!$result) {
 	<div class="row">
 		<div class="tabbable tabs-left">
 			<!-- Only required for left/right tabs -->
-			<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab1" data-toggle="tab">Portada</a></li>
-				<li><a href="#tab2" data-toggle="tab">Amenidades</a></li>
+			<ul class="nav nav-tabs" >
+				<li class="active"><a href="#tab1" data-toggle="tab"><img src="assets/img/black-spot.png" /> PORTADA</a></li>
+				<li><a href="#tab2" data-toggle="tab"><img src="assets/img/black-spot.png" /> AMENIDADES</a></li>
 				<?php $i=1;
 					 while($i<=$cont["numeroModelos"]){?>
-				<li><a href="#tab<?php echo ($i+2)?>" data-toggle="tab">Modelo <?php echo $i?>
+				<li><a href="#tab<?php echo ($i+2)?>" data-toggle="tab"><img src="assets/img/black-spot.png" /> MODELO<?php echo $i?>
 				</a></li>			
 				<?php $i++;
 }?>
-	<li><a href="javascript:printDiv('tab1')" >Imprimir esta página <img src="assets/img/Printer-icon.png"  /></a> </li>
+	<li><a href="javascript:printDiv('tab1')">Imprimir esta página <img src="assets/img/Printer-icon.png"  /></a> </li>
 	
 			</ul>
 			<div class="tab-content">
@@ -100,7 +100,7 @@ if (!$result) {
 				<div class="tab-pane active" id="tab1">
 					<div class="row-fluid">
 						<!-- Div del logo, imagen de torre y descripcion  -->
-						<div class="span8 hero-unit">
+						<div class="span8 fondo">
 							<a href="<?php echo $dataProyecto["linkWebpage"]?>"
 								target="_blank" class="thumbnail"><img
 								src="<?php echo $dataImagen["path"]?>" /> </a> <a href=""
@@ -108,7 +108,7 @@ if (!$result) {
 								src="<?php echo $dataImagenPlano["path"]?>" /> </a>
 							<table class="table table-bordered table-striped">
 								<tr>
-									<th>Descipci&oacute;n</th>
+									<th style="background-color:#343434; color:#eae7e5;">DESCRIPCI&Oacute;N</th>
 								</tr>
 							<tr>
 								<td><?php echo $dataProyecto["descripcion"]?></td>
@@ -116,7 +116,7 @@ if (!$result) {
 						</table>
 						<table class="table table-bordered table-striped">
 								<tr>
-									<th colspan="2">Puntos de afluencia</th>									
+									<th colspan="2" style="background-color:#343434; color:#eae7e5;">PUNTOS DE AFLUENCIA</th>									
 								</tr>
 								
 								<?php while($dataPuntos=mysql_fetch_array($result12)){?>
@@ -128,12 +128,11 @@ if (!$result) {
 						</table>
 						</div>
 						<!-- Div de la tabla con informacion basica -->
-						<div class="span4 offset4 hero-unit">
+						<div class="span4 offset4 fondo">
 							<!--Body content-->
 							<table class="table table-condensed">
 								<tr>
-									<td></td>
-									<td></td>
+									<th colspan="2" style="background-color:#343434; color:#eae7e5;">DATOS GENERALES</th>
 								</tr>
 								<tr>
 									<th>Absorci&oacute;n</th>
@@ -227,11 +226,11 @@ if (!$result) {
 							</table>
 						</div>
 						<!-- Div de la tabla con caracteristicas -->
-						<div class="span4 offset4 hero-unit">
+						<div class="span4 offset4 fondo">
 							<!--Body content-->
 							<table class="table table-condensed table-striped">
 								<tr>
-									<th>Caracter&iacute;sticas generales</th>
+									<th style="background-color:#343434; color:#eae7e5;">CARACTER&Iacute;STICAS GENERALES</th>
 								</tr>
 								<tr>
 									<td><?php echo $dataProyecto["caracteristicas"]?></td>
@@ -239,11 +238,11 @@ if (!$result) {
 							</table>
 						</div>
 						<!-- Div de la tabla con amenidades -->
-						<div class="span4 offset4 hero-unit">
+						<div class="span4 offset4 fondo">
 							<!--Body content-->
 							<table class="table table-condensed">
 								<tr>
-									<th>Amenidades</th>
+									<th style="background-color:#343434; color:#eae7e5;">AMENIDADES</th>
 								</tr>
 								<?php while($dataAmenidad=mysql_fetch_array($result10)){?>
 								<tr>
@@ -256,16 +255,20 @@ if (!$result) {
 				</div>
 				<!-- Amenidades -->
 				<div class="tab-pane" id="tab2">
-					<div class="span2 hero-unit">
+					<div class="span2 fondo">
 						<?php while($data1=mysql_fetch_array($result5)){?>
 						<a href="#" class="thumbnail"><img
 							src="<?php echo $data1["path"]?>" /> </a>
 						<?php }?>
 					</div>
-					<div class="span6 hero-unit">
-						<p>
-							<?php echo $dataProyecto["amenidadesDescripcion"]?>
-						</p>
+					<div class="span6 fondo">
+						<table class="table table-bordered table-striped">					
+						<tr>
+								<th colspan="2" style="background-color:#343434; color:#eae7e5;">DESCRIPCI&Oacute;N DE AMENIDADES</th>								
+						</tr>
+						<tr><td>	<?php echo $dataProyecto["amenidadesDescripcion"]?></td>
+						</tr>
+						</table>
 					</div>
 				</div>
 				<!-- Modelos del proyecto -->
@@ -289,9 +292,9 @@ if (!$result) {
 					?>
 				<div class="tab-pane" id="tab<?php echo $i?>">
 					<div class="row-fluid">
-						<div class="span5 hero-unit">
-							<h3>
-								Modelo
+						<div class="span5 fondo">
+							<h3  style="background-color:#343434; color:#eae7e5;">
+								MODELO
 								<?php echo $dataModelo["nombre"]?>
 							</h3>
 							<a href="#" class="thumbnail"><img
@@ -300,7 +303,7 @@ if (!$result) {
 								src="<?php echo $imagenModelo["path"]?>" /> </a> </br>
 							<table class="table table-bordered table-striped">
 								<tr>
-									<th>Diferenciadores</th>
+									<th  style="background-color:#343434; color:#eae7e5;">DIFERENCIADORES</th>
 								</tr>
 								<tr>
 									<td>
@@ -314,8 +317,11 @@ if (!$result) {
 							</table>
 						</div>
 						<!-- principal -->
-						<div class="span4 hero-unit">
+						<div class="span4 fondo">
 							<table class="table table-condensed">								
+									<tr>
+									<th colspan="2" style="background-color:#343434; color:#eae7e5;">DATOS GENERALES</th>
+									</tr>
 									<tr>
 									<th>M<sup>2</sup>
 									</th>
@@ -405,7 +411,7 @@ if (!$result) {
 								</tr>
 
 								<?php }?>							
-								<?php 
+								<?php								
        while( $caracteristicasModelo=mysql_fetch_array($res1)){?>
 								<tr>
 									<th><?php echo $caracteristicasModelo["nombre"]?></th>
@@ -441,8 +447,11 @@ if (!$result) {
 							</table>
 						</div>
 						<!-- atributo -->
-						<div class="span3 hero-unit">
+						<div class="span3 fondo">
 							<table class="table table-condensed">
+								<tr>
+								<th colspan="2" style="background-color:#343434; color:#eae7e5;">ATRIBUTOS</th>
+								</tr>
 								<tr>
 									<th>Atributo</th>
 									<th>Evaluaci&oacute;n</th>
@@ -462,8 +471,11 @@ if (!$result) {
 							</table>
 						</div>
 						<!-- acabado -->
-						<div class="span3 hero-unit">
+						<div class="span3 fondo">
 							<table class="table table-condensed">
+								<tr>
+								<th colspan="2" style="background-color:#343434; color:#eae7e5;">ACABADOS</th>
+								</tr>
 								<tr>
 									<th>Acabado</th>
 									<th>Cumplimiento</th>

@@ -12,9 +12,11 @@ include "../clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
 $username = $_REQUEST["username"];
-$datosUsuarios = "SELECT * FROM usuarios WHERE username='".$username."'";
+if(isset($_GET["idusuario"])){
+	$datosUsuarios = "SELECT * FROM usuarios WHERE username='".$username."' AND idusuario != '".$_GET["idusuario"]."'";
+} else {
+$datosUsuarios = "SELECT * FROM usuarios WHERE username='".$username."'";}
 $result=mysql_query($datosUsuarios);
-
 if (mysql_num_rows($result)>0){
     echo "false";
 } else {

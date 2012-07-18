@@ -12,13 +12,11 @@ session_start();
 	if (!($usuariologueado->getTipo()=="administrador")) {
 		header("Location: bienvenido.php");
 }    	
-
 include "includes/header_aplicacion.php";
 ?>
         <div class="container">      
         <div class="row">      
-            <div class="span7 offset2">  
-                 
+            <div class="span7 offset2">                   
                         <form id="registroUsuario" class="form-horizontal well" action="control/admonUsuario.php" method="post">
                             <h1>Registro</h1>
                             <fieldset>

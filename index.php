@@ -12,7 +12,7 @@ Esta pagina es accesada por cualquier usuario.
                 <div class="span4 offset1" align="left" >
                      <div >
                         <h1>Bienvenido a SIGII</h1>
-                        <i>0.6 alpha</i>
+                        <i>0.8 alpha</i>
                         <p>SISTEMA DE INFORMACI&Oacute;N DE GEOMERCADOS DE LA INDUSTRIA INMOBILIARIA</p>
                     </div>
                 </div> <!-- /span -->

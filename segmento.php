@@ -17,33 +17,43 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 		$usuariologueado->getTipo()=="cliente")) {
 	header("Location: index.php");
 }
-$ventas="SELECT SUM(unidadesVendidas) AS ventas, segmento FROM sigii.proyecto GROUP BY segmento ASC;";
-$result = mysql_query( $ventas );
+$ventasH="SELECT SUM(unidadesVendidas) AS ventas, segmento FROM sigii.proyecto 
+	WHERE tipo='horizontal' GROUP BY segmento ASC;";
+$result = mysql_query( $ventasH );
+$ventasV="SELECT SUM(unidadesVendidas) AS ventas, segmento FROM sigii.proyecto
+WHERE tipo='vertical' GROUP BY segmento ASC;";
+$result2 = mysql_query( $ventasV );
 include "includes/header_aplicacion.php";
 while ($data=mysql_fetch_array($result)){
-	if($data["segmento"]=="Social"){
-		$ventasSocial=$data["ventas"];
-	} else 
 		if($data["segmento"]=="Económico"){
-			$ventasEconomico=$data["ventas"];
+			$ventasEconomicoH=$data["ventas"];
 		}
 		else if($data["segmento"]=="Medio"){
-		$ventasMedio=$data["ventas"];
+		$ventasMedioH=$data["ventas"];
 	} else 
 		if($data["segmento"]=="Residencial"){
-			$ventasResidencial=$data["ventas"];
+			$ventasResidencialH=$data["ventas"];
 		} else if($data["segmento"]=="Residencial Plus"){
-		$ventasResidencialPlus=$data["ventas"];
-	}else if($data["segmento"]=="Premium"){
-		$ventasPremium=$data["ventas"];
+		$ventasResidencialPlusH=$data["ventas"];
 	}
 }
-settype($ventasSocial, "integer");
-settype($ventasEconomico, "integer");
-settype($ventasMedio, "integer");
-settype($ventasResidencial, "integer");
-settype($ventasResidencialPlus, "integer");
-settype($ventasPremium, "integer");
+while ($data=mysql_fetch_array($result2)){	
+		if($data["segmento"]=="Residencial"){
+		$ventasResidencialV=$data["ventas"];
+	} else if($data["segmento"]=="Residencial Plus"){
+		$ventasResidencialPlusV=$data["ventas"];
+	}else if($data["segmento"]=="Premium"){
+		$ventasPremiumV=$data["ventas"];
+	}
+}
+settype($ventasEconomicoH, "integer");
+settype($ventasMedioH, "integer");
+settype($ventasResidencialH, "integer");
+settype($ventasResidencialPlusH, "integer");
+
+settype($ventasResidencialV, "integer");
+settype($ventasResidencialPlusV, "integer");
+settype($ventasPremiumV, "integer");
 
 ?>
 
@@ -51,7 +61,8 @@ settype($ventasPremium, "integer");
 <div class="span10 offset2">
 		<h1>Ventas anuales por segmento</h1>
 		 <div id="chart_div" style="width: 900px; height: 500px;"></div>
-		 <a href="javascript:window.print()">Imprimir esta página</a> 		 
+		 <div id="chart_div2" style="width: 900px; height: 500px;"></div>
+		 <a href="javascript:window.print()">Imprimir esta página<img src="assets/img/Printer-icon.png"  /></a> 		 
 </div>
 </div>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -64,21 +75,41 @@ settype($ventasPremium, "integer");
            data.addColumn('number', '2012');
            data.addColumn('number', '2013');
            data.addRows([
-             ['Social',  <?php echo json_encode($ventasSocial)?>, 23],
-             ['Económico',  <?php echo  json_encode($ventasEconomico)?>,56],
-             ['Medio', <?php echo  json_encode($ventasMedio)?>,43],
-             ['Residencial', <?php echo  json_encode($ventasResidencial)?>, 56	],
-             ['Residencial Plus',  <?php echo  json_encode($ventasResidencialPlus)?>, 32],
-             ['Premium',  <?php echo  json_encode($ventasPremium)?>, 20]
+            ['Económico',  <?php echo  json_encode($ventasEconomicoH)?>,56],
+             ['Medio', <?php echo  json_encode($ventasMedioH)?>,43],
+             ['Residencial', <?php echo  json_encode($ventasResidencialH)?>, 56	],
+             ['Residencial Plus',  <?php echo  json_encode($ventasResidencialPlusH)?>, 32],            
            ]);
        
 
         var options = {
-          title: 'Ventas anuales de proyectos horizontales y verticales',
+          title: 'Ventas anuales de proyectos horizontales',
           hAxis: {title: 'Segmento', titleTextStyle: {color: 'red'}}
         };
 
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+      google.load("visualization", "2", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart2);
+      function drawChart2() {
+    	   data = new google.visualization.DataTable();
+           data.addColumn('string', 'Segmento');
+           data.addColumn('number', '2012');
+           data.addColumn('number', '2013');
+           data.addRows([           
+             ['Residencial', <?php echo  json_encode($ventasResidencialV)?>, 56	],
+             ['Residencial Plus',  <?php echo  json_encode($ventasResidencialPlusV)?>, 32],
+             ['Premium',  <?php echo  json_encode($ventasPremiumV)?>, 20]
+           ]);
+       
+
+        var options = {
+          title: 'Ventas anuales de proyectos verticales',
+          hAxis: {title: 'Segmento', titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
         chart.draw(data, options);
       }
     </script>

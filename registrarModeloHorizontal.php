@@ -112,7 +112,7 @@ session_start();
                                     </div>
                                 </div>  
                                     <div class="control-group">
-                                    <label class="control-label" for="anchoTerreno">Ancho del terreno</label>
+                                    <label class="control-label" for="anchoTerreno">Frente del terreno</label>
                                     <div class="controls">
                                         <input name="anchoTerreno" id="anchoTerreno" class="input-small" type="text">
                                         <span class="help-inline"></span>

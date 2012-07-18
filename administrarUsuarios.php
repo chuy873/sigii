@@ -56,19 +56,15 @@ $link = $conexion->dbconn();
 						<td><?php echo $data["username"]?></td>
 						<td><?php echo $data["password"]?></td>
 						<td><?php echo $data["tipo"]?></td>																							
-						<td>
-							 <form action="editarUsuario.php" method="post">	
-							 <input	type="hidden" name="idusuario" value='<?php echo $data["idusuarios"]?>'  />					
-						<button type="submit" class="btn btn-primary"><i
-								class="icon-edit icon-white"></i> Editar</button>								 
-						</form>
+						<td>							 			
+						<a href="editarUsuario.php?idusuario=<?php echo $data["idusuarios"]?>"
+						 class="btn btn-primary"><i	class="icon-edit icon-white"></i> Editar</a>								 						
 						</td>
 						<td>						
 						<a href="#modalDelete" data-toggle="modal" class="openDeleteUser btn btn-danger" 
 						data-id="<?php echo $data["idusuarios"]?>"><i class="icon-trash icon-white"></i> Eliminar</a>						
 						</td>
-						<td><input type="hidden" value='<?php $data["idusuarios"]?>'
-							name="idUsers_<?php $cont?>" /></td>
+						
 					</tr>
 					<tr style='height: 10px;'></tr>
 					<?php
