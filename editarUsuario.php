@@ -28,12 +28,13 @@ if (!$result) {
         <div class="container">      
         <div class="row">      
             <div class="span7 offset2">          
-                        <form class="form-horizontal well" action="control/admonUsuario.php" method="post">
+                        <form id="registroUsuario" class="form-horizontal well" action="control/admonUsuario.php" method="post">
                             <h1>Editar usuario</h1>
                             <fieldset>
-                                <legend>Favor de llenar la informaci&oacute;n necesaria</legend>                               
+                                <legend>Favor de llenar la informaci&oacute;n necesaria</legend> 
+                                <i>* Campos obligatorios</i>                              
                                  <div class="control-group">
-                                    <label class="control-label" for="nombres">Nombre(s)</label>
+                                    <label class="control-label" for="nombres">Nombre(s)*</label>
                                     <div class="controls">
                                         <input name="nombre" id="nombre" class="input-small" type="text" value="<?php echo $data["nombre"]?>"/>
                                             <input type="hidden" name="accion" value="editar">
@@ -42,14 +43,14 @@ if (!$result) {
                                     </div>
                                 </div>                                
                                 <div class="control-group">
-                                    <label class="control-label" for="apellidos">Apellido(s)</label>
+                                    <label class="control-label" for="apellidos">Apellido(s)*</label>
                                     <div class="controls">
                                         <input id="apellidos" name="apellidos" class="input-small" type="text"  value="<?php echo $data["apellidos"]?>">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
                                  <div class="control-group">
-                                    <label class="control-label" for="email">E-mail</label>
+                                    <label class="control-label" for="email">E-mail*</label>
                                     <div class="controls">
                                         <input id="email" name="email" class="input-large" type="text"  value="<?php echo $data["email"]?>">
                                         <span class="help-inline"></span>
@@ -63,7 +64,7 @@ if (!$result) {
                                   </div>
                                 </div>
                                  <div class="control-group">
-                                  <label class="control-label">Tipo</label>                                
+                                  <label class="control-label">Tipo*</label>                                
                                      <div id="tipo" class="controls">                                    
                                     <label class="radio inline">
                                      <?php if( $data["tipo"]=="administrador"){?>
@@ -109,14 +110,14 @@ if (!$result) {
                                  <fieldset>
                                 <legend>Datos de acceso al sistema</legend>
                                 <div class="control-group">
-                                    <label class="control-label" for="username">Nombre de usuario</label>
+                                    <label class="control-label" for="username">Nombre de usuario*</label>
                                     <div class="controls">
                                         <input name="username" id="username" class="input-small" type="text" value="<?php echo $data["username"]?>">                                        
                                         <span class="help-inline"></span>
                                     </div>                                  
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="password">Contrase&ntilde;a</label>
+                                    <label class="control-label" for="password">Contrase&ntilde;a*</label>
                                     <div class="controls">
                                         <input name="password" id="password" class="input-medium" type="text" value="<?php echo $data["password"]?>">
                                         <span class="help-inline"></span>

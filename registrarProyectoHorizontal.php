@@ -542,7 +542,8 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
 					<li><a href="#tab8" data-toggle="tab">Comentarios</a></li>						
 				</ul>
 					<div class="form-actions">                                   
-                                   <button class="btn btn-primary" type="submit">Registrar</button>                                					
+                                   <button class="btn btn-primary" type="submit">Registrar</button> 
+                                    <span class="help-inline"></span>                              					
 						<a href="#modalCancel" data-toggle="modal" class="openCancel2 btn" 
 						> Cancelar</a>											                                 
                                 </div>

@@ -16,8 +16,7 @@ session_start();
 	include "includes/header_aplicacion.php";
 	include "clases/Conexion.php";
 	$conexion = new Conexion();
-	$link = $conexion->dbconn();
-	$_SESSION['pageFrom']="administrarModelosProy";
+	$link = $conexion->dbconn();	
 	$idProyecto=$_POST["idproyecto"];
 	$data ="SELECT p.nombre AS proyecto, m.nombre AS modelo, p.promotor, p.segmento, ".
 			"z.ciudad, z.subzona, m.metrosCuadrados, m.idmodelo, p.tipo  ".

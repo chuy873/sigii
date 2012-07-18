@@ -8,34 +8,33 @@ Esta pagina es accesada por cualquier usuario.
 	$pageTitle = "SIGII | Iniciar Sesi&oacute;n";
     include "includes/header_principal.php" ?> 
          <div class="container">
-            <div class="row">
-                <div class="span8 offset2">
-                     <div class="hero-unit">
+            <div class="row pad" >
+                <div class="span4 offset1" align="left" >
+                     <div >
                         <h1>Bienvenido a SIGII</h1>
                         <i>0.6 alpha</i>
-                        <p>Sistema de informaci&oacute;n de geomercados de la industria inmobiliaria</p>
+                        <p>SISTEMA DE INFORMACI&Oacute;N DE GEOMERCADOS DE LA INDUSTRIA INMOBILIARIA</p>
                     </div>
                 </div> <!-- /span -->
-                    <div class="span4 offset4">
-                     <form action="control/IniciarSesion.php" class="well" method="post">
+                    <div class="span3 offset3">
+                     <form action="control/IniciarSesion.php"  method="post">
                         <fieldset>
-                          <h1>Iniciar Sesi&oacute;n</h1>
                           <div class="control-group">
-                              <label class="control-label" for="usuario">Usuario</label>
+                              <label class="control-label" for="usuario">USUARIO</label>
                               <div class="controls">
                                 <input id="usuario" name="username" type="text" class="input-medium"  placeholder="Nombre de usuario">
                                 <span class="help-inline" id="usuarioInfo"></span>
                               </div>
                             </div>
                               <div class="control-group">
-                                <label class="control-label" for="pwd">Contrase&ntilde;a</label>
+                                <label class="control-label" for="pwd">CONTRASE&Ntilde;A</label>
                                 <div class="controls">
                                   <input id="pwd" name="password" type="password" class="input-medium"  placeholder="Contraseña">
                                   <span class="help-inline" id="passInfo"></span>
                                 </div>
                               </div>
                             <div>
-                              <button type="submit" class="btn btn-primary">Entrar</button>
+                              <button type="submit" class="btn">ENTRAR</button>
                             </div>
                           </fieldset>
                         </form>

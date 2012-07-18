@@ -1,7 +1,7 @@
 <?php
 /*
- * Control getZonas
-* Se recibe la peticion por AJAX para obtener las subzonas, de acuerdo a una ciudad.
+ * Control verificaNombre
+* Se recibe la peticion por AJAX para verificar si el nombre de un proyecto o modelo ya existe.
 */
 include "../clases/Usuarios.php";
 session_start();

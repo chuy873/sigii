@@ -92,7 +92,7 @@ if (!$result) {
 				</a></li>			
 				<?php $i++;
 }?>
-	<li><a href="javascript:window.print()" >Imprimir esta página <img src="assets/img/Printer-icon.png"  /></a> </li>
+	<li><a href="javascript:printDiv('tab1')" >Imprimir esta página <img src="assets/img/Printer-icon.png"  /></a> </li>
 	
 			</ul>
 			<div class="tab-content">
@@ -484,5 +484,15 @@ if (!$result) {
 	</div>
 	<!-- row -->
 </div>
+<iframe name=print_frame width=0 height=0 frameborder=0 src=about:blank></iframe>
+
 <!-- /container -->
+<script type="text/javascript">
+printDivCSS = new String ('<link href="myprintstyle.css" rel="stylesheet" type="text/css">')
+function printDiv(divId) {
+    window.frames["print_frame"].document.body.innerHTML=document.getElementById(divId).innerHTML
+    window.frames["print_frame"].window.focus()
+    window.frames["print_frame"].window.print()
+}
+</script>
 <?php  include "includes/footer_aplicacion_1.php" ?>

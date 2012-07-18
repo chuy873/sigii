@@ -427,7 +427,7 @@
   }
   .navbar .nav > li > a:hover,
   .navbar .dropdown-menu a:hover {
-    background-color: #74a437;
+    background-color: #272727;
   }
   .navbar .dropdown-menu {
     position: static;

@@ -1,42 +1,48 @@
 <style>
       body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */              
+         /*
         background-image: url('assets/img/gpo4sbg.png');
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-position:bottom right;
-        background-size:50%;
+        background-size:50%;*/
       }
+     
 
       html, body {
           height: 92%;
       }
-      footer {
-          padding: 17px 0 18px 0;
-          /*border-top: 1px solid #eee;*/
-      }
-      footer > p {
-        /*color: white;*/
-        font-weight: bold;
-      }
-      /* para quitar el borde */
-      legend {
-        border-bottom: none;
+     
+      #nav {
+          height: 40px;
       }
       .wrapper {
-          min-height: 100%;
-          height: auto !important;
-          height: 100%;
-          margin: 0 auto -63px;
+        min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto 1em;
       }
-      .push {
-          height: 63px;
-      }
+     
+.footer, .push {
+    height: 0em;
+    clear: both;
+}
+     
       /* not required for sticky footer; just pushes hero down a bit */
-      .wrapper > .container {
+      .wrapper > .container {      
+           padding-top: 20px; /* 60px to make the container go all the way to the bottom of the topbar */              
+      
           height: 95%;
-      } 
-      form {
-        background-color: white;
+      }
+       .pad{
+       padding-top: 100px;  
+      }
+     .pad2{
+       padding-top: 100px;  
+      }
+      .pad3{
+       padding-top: 20px;  
+      }
+      a{color:#343434;
       }
 </style>

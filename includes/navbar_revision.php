@@ -17,52 +17,53 @@ Se despliega el nombre y apellidos del usuario obtenidos de la session.
             <span class="brand">SIGII</span>
             <div class="nav-collapse">
              <ul class="nav">
-                <li><a href="bienvenido.php"><i class="icon-home icon-white"></i> Inicio</a></li>               
-                 <li class="dropdown">
-                	<a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class=" icon-wrench icon-white"></i> Administraci&oacute;n<b class="caret"></b></a>
+             <li><a href="bienvenido.php"><i class="icon-home icon-white"></i> INICIO</a></li>
+                <li class="dropdown">
+                	<a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class=" icon-wrench icon-white"></i> ADMINISTRACI&Oacute;N<b class="caret"></b></a>
                 	<ul class="dropdown-menu">
-                		<li><a href="administrarAmenidades.php"><i class="icon-star-empty icon-white"></i> Amenidades</a></li>
-                        <li><a href="administrarAcabados.php"><i class="icon-star icon-white"></i> Acabados</a></li>
-                		<li><a href="administrarAtributos.php"><i class="icon-star-empty icon-white"></i> Atributos</a></li>
-                		<li><a href="administrarCaracteristicas.php"><i class="icon-star icon-white"></i> Caracter&iacute;sticas</a></li>
-             		    <li><a href="administrarPuntos.php"><i class="icon-screenshot icon-white"></i> Puntos de afluencia</a></li>             		   
-             		</ul>
+                		<li><a href="administrarAmenidades.php"><i class="icon-star-empty icon-white"></i> AMENIDADES</a></li>
+                        <li><a href="administrarAcabados.php"><i class="icon-star icon-white"></i> ACABADOS</a></li>
+                		<li><a href="administrarAtributos.php"><i class="icon-star-empty icon-white"></i> ATRIBUTOS</a></li>
+                		<li><a href="administrarCaracteristicas.php"><i class="icon-star icon-white"></i> CARACTER&Iacute;STICAS</a></li>
+             		    <li><a href="administrarPuntos.php"><i class="icon-screenshot icon-white"></i> PUNTOS DE AFLUENCIA</a></li>             		   
+             			</ul>
                 </li>
                 <li class="dropdown">
-                	<a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-search icon-white"></i> Proyectos <b class="caret"></b></a>
+                	<a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-search icon-white"></i> PROYECTOS <b class="caret"></b></a>
                 	<ul class="dropdown-menu">
-                		<li><a href="administrarVertical.php"><i class="icon-resize-vertical icon-white"></i> Vertical </a></li>
-                		<li><a href="administrarHorizontal.php"><i class="icon-resize-horizontal icon-white"></i> Horizontal </a></li>
-                		<li><a href="administrarProyectos.php"><i class="icon-briefcase icon-white"></i> Todos </a></li>
-                		<li><a href="registrarProyectoVertical.php"><i class="icon-resize-vertical icon-white"></i> Registar Vertical </a></li>
-                		<li><a href="registrarProyectoHorizontal.php"><i class="icon-resize-horizontal icon-white"></i> Registar Horizontal </a></li>
+                		<li><a href="administrarVertical.php"><i class="icon-resize-vertical icon-white"></i> VERTICAL </a></li>
+                		<li><a href="administrarHorizontal.php"><i class="icon-resize-horizontal icon-white"></i> HORIZONTAL </a></li>
+                		<li><a href="administrarProyectos.php"><i class="icon-briefcase icon-white"></i> TODOS </a></li>
+                		<li><a href="registrarProyectoVertical.php"><i class="icon-resize-vertical icon-white"></i> REGISTRAR VERTICAL </a></li>
+                		<li><a href="registrarProyectoHorizontal.php"><i class="icon-resize-horizontal icon-white"></i> REGISTRAR HORIZONTAL </a></li>
                 	</ul>                	
                 </li>
                 <li class="dropdown">
-                	<a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-search icon-white"></i> Modelos <b class="caret"></b></a>
+                	<a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-search icon-white"></i> MODELOS <b class="caret"></b></a>
                 	<ul class="dropdown-menu">
-                		<li><a href="administrarModeloVertical.php"><i class="icon-resize-vertical icon-white"></i> Administrar Vertical </a></li>
-                		<li><a href="administrarModeloHorizontal.php"><i class="icon-resize-horizontal icon-white"></i> Administrar Horizontal </a></li>
-                		<li><a href="administrarModelos.php"><i class="icon-fullscreen icon-white"></i> Administrar Todos </a></li>
-                		<li><a href="seleccionarProyAdmin.php"><i class="icon-briefcase icon-white"></i> Administrar por proyecto </a></li>                	
-                		<li><a href="registrarModeloVertical.php"><i class="icon-resize-vertical icon-white"></i> Registar Vertical </a></li>
-                		<li><a href="registrarModeloHorizontal.php"><i class="icon-resize-horizontal icon-white"></i> Registar Horizontal </a></li>
-                		</ul>                	
+                		<li><a href="administrarModeloVertical.php"><i class="icon-resize-vertical icon-white"></i> ADMINISTRAR VERTICAL </a></li>
+                		<li><a href="administrarModeloHorizontal.php"><i class="icon-resize-horizontal icon-white"></i> ADMINISTAR HORIZONTAL </a></li>
+                		<li><a href="administrarModelos.php"><i class="icon-fullscreen icon-white"></i> ADMINISTRAR TODOS </a></li>
+                		<li><a href="seleccionarProyAdmin.php"><i class="icon-briefcase icon-white"></i> ADMINISTRAR POR PROYECTO </a></li>                	
+                		<li><a href="registrarModeloVertical.php"><i class="icon-resize-vertical icon-white"></i> REGISTRAR VERTICAL </a></li>
+                		<li><a href="registrarModeloHorizontal.php"><i class="icon-resize-horizontal icon-white"></i> REGISTRAR HORIZONTAL </a></li>
+                	</ul>                	
                 </li>
                 <li class="dropdown">
-                	<a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-th-list icon-white"></i> Reportes <b class="caret"></b></a>
+                	<a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-th-list icon-white"></i> REPORTES <b class="caret"></b></a>
                 	<ul class="dropdown-menu">
-                		<li><a href="ficha.php"><i class="icon-th icon-white"></i> Ficha </a></li>
-                		<li><a href="lista.php"><i class="icon-list icon-white"></i> Lista </a></li>
-                		<li><a href="resumen.php"><i class="icon-list-alt icon-white"></i> Resumen </a></li>
-                		<li><a href="segmento.php"><i class="icon-globe icon-white"></i> Segmento </a></li>                		
-                	</ul>               	
+                		<li><a href="ficha.php"><i class="icon-th icon-white"></i> FICHA </a></li>
+                		<li><a href="lista.php"><i class="icon-list icon-white"></i> LISTA </a></li>
+                		<li><a href="resumen.php"><i class="icon-list-alt icon-white"></i> RESUMEN </a></li>
+                		<li><a href="segmento.php"><i class="icon-globe icon-white"></i> SEGMENTO </a></li>                		
+                	</ul>                	
                 </li>               
-                 <li><a href="consultar.php"><i class="icon-search icon-white"></i> Consultar </a></li>
+                 <li><a href="consultar.php"><i class="icon-search icon-white"></i> CONSULTAR </a></li>
               </ul>
+           
               <ul class="nav pull-right">
-				<li><a href="#"><i class="icon-user icon-white"></i> <?php echo $usuario->getNombre()." ".$usuario->getApellidos() ?></a></li>
-                <li><a href="control/CerrarSesion.php"><i class="icon-off icon-white"></i> Cerrar Sesi&oacute;n</a></li>               
+				<li><a href="#"><i class="icon-user icon-white"></i> </a></li>
+                <li><a href="control/CerrarSesion.php"><i class="icon-off icon-white"></i></a></li>               
               </ul>
             </div><!--/.nav-collapse -->
           </div> <!-- /.container -->

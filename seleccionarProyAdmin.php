@@ -22,6 +22,7 @@ $proyectosHori="SELECT idproyecto, nombre FROM proyecto WHERE tipo='horizontal'"
 $result1=mysql_query($proyectosHori);
 $proyectosVert="SELECT idproyecto, nombre FROM proyecto WHERE tipo='vertical'";
 $result2=mysql_query($proyectosVert);
+$_SESSION['pageFrom']="seleccionarProyAdmin";
 ?>
 <div class="row">
 		<div class="span6 offset4">
