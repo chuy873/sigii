@@ -89,7 +89,7 @@ session_start();
   <button class="close" data-dismiss="alert">×</button>
   <strong>Atenci&oacute;n!</strong> Aseg&uacute;rate de llenar la informaci&oacute;n de todas las etiquetas.
 </div>
-  <form class="forma form-horizontal well" action="control/EditarProyecto.php" method="post" enctype="multipart/form-data">                                                    			                                  
+  <form id="edicionHorizontal" class="forma form-horizontal well" action="control/EditarProyecto.php" method="post" enctype="multipart/form-data">                                                    			                                  
 			<div class="tabbable">
 			<!-- Only required for left/right tabs -->
 				<ul class="nav nav-tabs">
@@ -115,9 +115,7 @@ session_start();
                                         <input name="nombre" id="nombre" class="input-large" type="text" value="<?php echo $data1["nombre"]?>">
                                          <input type="hidden" name="tipo" value="horizontal">
                                            <input type="hidden" name="id" id="id" value="<?php echo $idProyecto?>">
-                                          <span class="help-inline"> <div class="alert alert-error" id="alertNombre" style="display:none">
-  <strong>Atenci&oacute;n!</strong> El nombre ya existe. Selecciona otro.
-</div></span>
+                                          <span class="help-inline"> </span>
                                     </div>
                                 </div>                               
                                 <div class="control-group">
@@ -435,9 +433,9 @@ session_start();
 								$infozona =  mysql_fetch_array($result);								
 								?>								
 								<div class="control-group">
-									<label class="control-label" for="ciudad">Zona </label><br/>									
+									<label class="control-label" for="zona">Zona*</label><br/>									
 									<div class="controls">									
-										<select class="span2" name='ciudad' id='ciudad'  onchange="desplegarSubzona(this.value)" >
+										<select class="span2" name='ciudad' id='zona'  onchange="desplegarSubzona(this.value)" >
 											<option value="" disabled=disabled>Selecciona la zona</option>
 											<?php 
 											while ($data = mysql_fetch_array($zona, MYSQL_ASSOC)) {
@@ -735,7 +733,9 @@ session_start();
 					<div class="form-actions">                                   
                                    <button class="btn btn-primary" type="submit">Editar</button>                                					
 						<a href="#modalCancel" data-toggle="modal" class="openCancel2 btn" 
-						> Cancelar</a>											                                 
+						> Cancelar</a>	
+						 <span id="errorBoton"
+								style="color: red"></span>												                                 
                                 </div>
                                    
 				</div>

@@ -12,14 +12,20 @@ include "../clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
 $username = $_REQUEST["username"];
-if(isset($_GET["idusuario"])){
-	$datosUsuarios = "SELECT * FROM usuarios WHERE username='".$username."' AND idusuario != '".$_GET["idusuario"]."'";
+if(isset($_POST["usuario"])){
+	$datosUsuarios =sprintf("SELECT * FROM usuarios WHERE username = '%s' AND idusuarios != '".$_POST["usuario"]."'",
+			mysql_real_escape_string($username));
 } else {
-$datosUsuarios = "SELECT * FROM usuarios WHERE username='".$username."'";}
+	$datosUsuarios = sprintf("SELECT * FROM usuarios WHERE username = '%s'",
+			mysql_real_escape_string($username));
+}
 $result=mysql_query($datosUsuarios);
+if($result){
 if (mysql_num_rows($result)>0){
-    echo "false";
+	header("Content-Type: text/html; charset=iso-8859-1");
+	echo "false";
 } else {
-    echo "true";
+	echo "true";
+}
 }
 ?>

@@ -16,11 +16,14 @@ $conexion = new Conexion();
 $link = $conexion->dbconn();
 $nombre= $_REQUEST["nombre"];
 if(isset($_POST["modelo"])){
-	$sql="SELECT * FROM modelo WHERE nombre = '".$nombre."' AND idmodelo != '".$_POST["modelo"]."'";
+	$sql=sprintf("SELECT * FROM modelo WHERE nombre = '%s' AND idmodelo != '".$_POST["modelo"]."'",
+	mysql_real_escape_string($nombre));
 } else if(isset($_POST["proyecto"])) {
-$sql="SELECT * FROM proyecto WHERE nombre = '".$nombre."' AND idproyecto != '".$_POST["proyecto"]."'";
+$sql=sprintf("SELECT * FROM proyecto WHERE nombre = '%s' AND idproyecto != '".$_POST["proyecto"]."'",
+mysql_real_escape_string($nombre));
 } else {
-	$sql="SELECT * FROM proyecto WHERE nombre = '".$nombre."'";
+	$sql=sprintf("SELECT * FROM proyecto WHERE nombre = '%s'",
+			mysql_real_escape_string($nombre));
 } 
 $result = mysql_query($sql);
 	if ($result) {

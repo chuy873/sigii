@@ -38,7 +38,7 @@ if (!$result) {
                                     <div class="controls">
                                         <input name="nombre" id="nombre" class="input-small" type="text" value="<?php echo $data["nombre"]?>"/>
                                             <input type="hidden" name="accion" value="editar">
-                                            <input type="hidden"  id="idusuario" name="idusuario" value="<?php echo $data["idusuarios"]?>">                                       
+                                            <input type="hidden"  id="id" name="idusuario" value="<?php echo $data["idusuarios"]?>">                                       
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>                                

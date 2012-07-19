@@ -68,13 +68,17 @@ $().ready(function() {
 	
     // validate signup form on keyup and submit 
 	$("#edicionUsuario").validate({		
+		
 		rules:{
 		nombre:"required",
 		apellidos:"required",		
 		email:{required:true,email: true},	
 		tipo:"required",
-		username:{required:true, remote: { url: "control/verificarUsuario.php?idusuario=", async: false }},
-			password:{required:true,minlength: 6},				
+		username:{required:true, remote: { url: "control/verificarUsuario.php",   type: 'post',
+		    data: {
+		        usuario:$("#id").val()  
+		        } }},		
+		password:{required:true,minlength: 6},				
 		},
 		messages:{
 		nombre:"Ingresa el nombre",
@@ -86,11 +90,9 @@ $().ready(function() {
 		username: { required:"Ingresa el nombre de usuario", remote: "El nombre de usuario ya existe"},
 		password:{
 		required:"Ingresa la contraseña",
-		minlength:"La contraseña debe tener 6 caracteres como mínimo"},
-		passwordC:{
-		required:"Ingresa la confirmación de contraseña",
-		equalTo:"La contraseña y la confirmación de contraseña deben ser iguales"},		
+		minlength:"La contraseña debe tener 6 caracteres como mínimo"},			
 		},
+		ignore: "",
 		errorClass: "help-inline",
 		errorElement: "span",
 		highlight:function(element, errorClass, validClass)
@@ -117,18 +119,19 @@ $().ready(function() {
 		},
 
 		messages:{
-		nombre: { required:"Ingresa el nombre del proyecto", remote: "El nombre del proyecto ya existe"},		
+		nombre: { required:"Ingresa el nombre del proyecto", remote: "El nombre del proyecto ya existe. Selecciona otro."},		
 		promotor:"Ingresa el promotor",
 		segmento:"Ingresa el segmento",
 		municipio:"Ingresa el municipio",
 		ciudad:"Selecciona la zona",		
 		},
-
+		ignore: "",
 		errorClass: "help-inline",
 		errorElement: "span",
 		highlight:function(element, errorClass, validClass)
 		{
 		$(element).parents('.control-group').addClass('error');
+		$("#errorBoton").html("Error: Verifica el campo '" + $(element).attr("id")+"'");
 		},
 		unhighlight: function(element, errorClass, validClass)
 		{
@@ -136,13 +139,155 @@ $().ready(function() {
 		}
 		});
 		});
+
+//Validacion registrar proyecto horizontal
+$().ready(function() { 
+    // validate signup form on keyup and submit 
+	$("#registroHorizontal").validate({
+		rules:{
+		nombre:{required:true, remote: { url: "control/verificaNombre.php", async: false }},
+		promotor:"required",
+		etapa:"required",
+		segmento:"required",
+		municipio:"required",				
+		ciudad:"required",				
+		},
+
+		messages:{
+		nombre: { required:"Ingresa el nombre del proyecto", remote: "El nombre del proyecto ya existe. Selecciona otro"},		
+		promotor:"Ingresa el promotor",
+		segmento:"Ingresa el segmento",
+		etapa:"Ingresa el número de etapa",
+		municipio:"Ingresa el municipio",
+		ciudad:"Selecciona la zona",		
+		},
+		ignore: "",
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').addClass('error');
+		$("#errorBoton").html("Error: Verifica el campo '" + $(element).attr("id")+"'");
+		},
+		unhighlight: function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').removeClass('error');
+		}
+		});
+		});
+
+//Validacion edicion proyecto horizontal
+$().ready(function() { 
+    // validate signup form on keyup and submit 
+	$("#edicionHorizontal").validate({		
+		rules:{
+		nombre:{required:true, remote: { url: "control/verificaNombre.php",   type: 'post',
+		    data: {
+		        proyecto:$("#id").val()  
+		        } }},
+		promotor:"required",
+		etapa:"required",
+		segmento:"required",
+		municipio:"required",				
+		ciudad:"required",				
+		},
+
+		messages:{
+		nombre: { required:"Ingresa el nombre del proyecto", remote: "El nombre del proyecto ya existe. Selecciona otro"},		
+		promotor:"Ingresa el promotor",
+		segmento:"Ingresa el segmento",
+		etapa:"Ingresa el número de etapa",
+		municipio:"Ingresa el municipio",
+		ciudad:"Selecciona la zona",		
+		},
+		ignore: "",
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').addClass('error');
+		$("#errorBoton").html("Error: Verifica el campo '" + $(element).attr("id")+"'");
+		},
+		unhighlight: function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').removeClass('error');
+		}
+		});
+		});
+//Validacion edicion proyecto vertical
+$().ready(function() { 
+    // validate signup form on keyup and submit 
+	$("#edicionVertical").validate({		
+		rules:{
+		nombre:{required:true, remote: { url: "control/verificaNombre.php",   type: 'post',
+		    data: {
+		        proyecto:$("#id").val()  
+		        } }},
+		promotor:"required",
+		segmento:"required",
+		municipio:"required",				
+		ciudad:"required",				
+		},
+
+		messages:{
+		nombre: { required:"Ingresa el nombre del proyecto", remote: "El nombre del proyecto ya existe. Selecciona otro"},		
+		promotor:"Ingresa el promotor",
+		segmento:"Ingresa el segmento",
+		etapa:"Ingresa el número de etapa",
+		municipio:"Ingresa el municipio",
+		ciudad:"Selecciona la zona",		
+		},
+		ignore: "",
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').addClass('error');
+		$("#errorBoton").html("Error: Verifica el campo '" + $(element).attr("id")+"'");
+		},
+		unhighlight: function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').removeClass('error');
+		}
+		});
+		});
+
+//Validacion registrar modelo horizontal
+$().ready(function() { 
+    // validate signup form on keyup and submit 
+	$("#registroModelo").validate({
+		rules:{
+		nombre:"required",
+		unidades:"required",
+		unidadesTotales:"required",
+		unidadesVendidas:"required",
+					
+		},
+
+		messages:{
+		nombre: "Ingresa el nombre del modelo", 		
+		unidadesTotales:"Ingresa las unidades",
+		unidades:"Ingresa las unidades",
+		unidadesVendidas:"Ingresa las unidades vendidas",
+				
+		},
+		ignore: "",
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').addClass('error');
+		$("#errorBoton").html("Error: Verifica el campo '" + $(element).attr("id")+"'");
+		},
+		unhighlight: function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').removeClass('error');		
+		}
+		});
+		});
+
 /*
-
-
-$(document).ready(function(){
-    $("#registroUsuario").validate();
-  });
-  //empieza pagina de registrar
+//empieza pagina de registrar
 
   $('#password').validate( {
     expression: "if (VAL) return true; else return false;",

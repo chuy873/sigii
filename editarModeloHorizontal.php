@@ -77,7 +77,7 @@ session_start();
   <button class="close" data-dismiss="alert">×</button>
   <strong>Atenci&oacute;n!</strong> Aseg&uacute;rate de llenar la informaci&oacute;n de todas las etiquetas.
 </div>
-  <form class="forma form-horizontal well" action="control/EditarModelo.php" method="post" enctype="multipart/form-data">                                                    
+  <form id="registroModelo" class="forma form-horizontal well" action="control/EditarModelo.php" method="post" enctype="multipart/form-data">                                                    
 		<div class="tabbable">
 				<!-- Only required for left/right tabs -->
 				<ul class="nav nav-tabs">
@@ -396,7 +396,10 @@ session_start();
 					<div class="form-actions">                                   
                                    <button class="btn btn-primary" type="submit">Editar</button>
                                <a href="#modalCancel" data-toggle="modal" class="openCancel2 btn" 
-						> Cancelar</a>	   </div>
+						> Cancelar</a>	  
+						 <span id="errorBoton"
+								style="color: red"></span>	
+						 </div>
                                    
 				</div>
 				</div>

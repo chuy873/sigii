@@ -78,7 +78,7 @@ session_start();
   <button class="close" data-dismiss="alert">×</button>
   <strong>Atenci&oacute;n!</strong> Aseg&uacute;rate de llenar la informaci&oacute;n de todas las etiquetas.
 </div>
-  <form class="forma form-horizontal well" action="control/EditarModelo.php" method="post" enctype="multipart/form-data">                                                    
+  <form id="registroModelo" class="forma form-horizontal well" action="control/EditarModelo.php" method="post" enctype="multipart/form-data">                                                    
 		<div class="tabbable">
 				<!-- Only required for left/right tabs -->
 				<ul class="nav nav-tabs">
@@ -143,21 +143,21 @@ session_start();
                                  <fieldset>
                                 <legend>Informaci&oacute;n num&eacute;rica</legend> 
                                  <div class="control-group">
-                                    <label class="control-label" for="precioPromedio">Precio promedio*</label>
+                                    <label class="control-label" for="precioPromedio">Precio promedio</label>
                                     <div class="controls">
                                         $ <input name="precioPromedio" id="precioPromedio" class="input-small" type="text" value="<?php echo $data2["precioPromedio"]?>">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>  
                                   <div class="control-group">
-                                    <label class="control-label" for="precioMin">Precio m&iacute;nimo*</label>
+                                    <label class="control-label" for="precioMin">Precio m&iacute;nimo</label>
                                     <div class="controls">
                                        $ <input name="precioMin" id="precioMin" class="input-small" type="text" value="<?php echo $data2["precioMin"]?>">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="precioMax">Precio m&aacute;ximo*</label>
+                                    <label class="control-label" for="precioMax">Precio m&aacute;ximo</label>
                                     <div class="controls">
                                         $ <input name="precioMax" id="precioMax" class="input-small" type="text" value="<?php echo $data2["precioMax"]?>">
                                         <span class="help-inline"></span>
@@ -172,14 +172,14 @@ session_start();
                                 </div> 
                                                                               
                                  <div class="control-group">
-                                    <label class="control-label" for="unidadesTotales">Unidades totales</label>
+                                    <label class="control-label" for="unidadesTotales">Unidades totales*</label>
                                     <div class="controls">
                                         <input name="unidadesTotales" id="unidadesTotales" class="input-small" type="text" value="<?php echo $data1["unidades"]?>">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div> 
                                   <div class="control-group">
-                                    <label class="control-label" for="unidadesVendidas">Unidades vendidas</label>
+                                    <label class="control-label" for="unidadesVendidas">Unidades vendidas*</label>
                                     <div class="controls">
                                         <input name="unidadesVendidas" id="unidadesVendidas" class="input-small" type="text" value="<?php echo $data1["unidadesVendidas"]?>">
                                         <span class="help-inline"></span>
@@ -372,7 +372,9 @@ session_start();
 					<div class="form-actions">                                   
                                    <button class="btn btn-primary" type="submit">Editar</button>
                             	<a href="#modalCancel" data-toggle="modal" class="openCancel2 btn" 
-						> Cancelar</a>	   </div>
+						> Cancelar</a>	  
+						 <span id="errorBoton"
+								style="color: red"></span>	 </div>
                                    
 				</div>
 				</div>

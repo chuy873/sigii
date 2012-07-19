@@ -92,7 +92,7 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 				<strong>Atenci&oacute;n!</strong> Aseg&uacute;rate de llenar la
 				informaci&oacute;n de todas las etiquetas.
 			</div>
-			<form class="forma form-horizontal well"
+			<form id="edicionVertical" class="forma form-horizontal well"
 				action="control/EditarProyecto.php" method="post"
 				enctype="multipart/form-data">
 				<div class="tabbable">
@@ -114,7 +114,7 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 							<fieldset>
 								<legend>Informaci&oacute;n necesaria</legend>
 								<div class="control-group">
-									<label class="control-label" for="nombres">Nombre del proyecto</label>
+									<label class="control-label" for="nombres">Nombre del proyecto*</label>
 									<div class="controls">
 										<input name="nombre" id="nombre" class="input-large"
 											type="text" value="<?php echo $data1["nombre"]?>"> <input
@@ -130,7 +130,7 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label" for="promotor">Promotor</label>
+									<label class="control-label" for="promotor">Promotor*</label>
 									<div class="controls">
 										<input name="promotor" id="promotor" class="input-medium"
 											type="text" value="<?php echo $data1["promotor"]?>"> <span
@@ -194,7 +194,7 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 								</div>
 
 								<div class="control-group">
-									<label class="control-label" for="segmento">Segmento</label>
+									<label class="control-label" for="segmento">Segmento*</label>
 									<div class="controls">
 										<select class="span2" name='segmento'>
 											<?php if($data1["segmento"]=="Social"){?>
@@ -493,7 +493,7 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label" for="municipio">Municipio</label>
+									<label class="control-label" for="municipio">Municipio*</label>
 									<div class="controls">
 										<input name="municipio" id="municipio" class="input-medium"
 											type="text" value="<?php echo $data1["municipio"]?>"> <span
@@ -507,7 +507,7 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 								$infozona =  mysql_fetch_array($result);
 								?>
 								<div class="control-group">
-									<label class="control-label" for="zona">Zona </label><br />
+									<label class="control-label" for="zona">Zona* </label><br />
 									<div class="controls">
 										<select class="span2" name='ciudad'
 											onchange="desplegarSubzona(this.value)">
@@ -855,6 +855,8 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 							<button class="btn btn-primary" type="submit">Editar</button>
 							<a href="#modalCancel" data-toggle="modal"
 								class="openCancel2 btn"> Cancelar</a>
+								 <span id="errorBoton"
+								style="color: red"></span>		
 						</div>
 
 					</div>

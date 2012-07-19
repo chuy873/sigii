@@ -69,11 +69,7 @@ session_start();
                                  <div class="control-group">
                                     <label class="control-label" for="nombres">Nombre del modelo</label>
                                     <div class="controls">
-                                        <input name="nombre" id="nombre" class="input-large" type="text">
-                                      <div class="alert alert-error" id="alertNombre"	style="display: none">
-												<strong>Atenci&oacute;n!</strong> El nombre ya existe.
-												Selecciona otro.
-											</div>
+                                        <input name="nombre" id="nombre" class="input-large" type="text">                                     
                                     </div>
                                 </div>                               
                                 <div class="control-group">
@@ -291,7 +287,10 @@ session_start();
                                     <button class="btn btn-primary" onclick="agregarOtro()">Registrar y agregar otro modelo...</button>
                              	<input type="hidden" id="agregar" name="agregar"/>
                              	<a href="#modalCancel" data-toggle="modal" class="openCancel2 btn" 
-						> Cancelar</a>	   </div>
+						> Cancelar</a>	
+						 <span id="errorBoton"
+								style="color: red"></span>	
+						   </div>
                                    
 				</div>
 				</div>
