@@ -11,7 +11,10 @@ session_start();
 	$usuariologueado = new Usuarios();
 	$usuariologueado = $_SESSION["usuario"];
 	if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision")) {
-	header("Location: bienvenido.php");
+		$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: error.php");	
 	}
 	include "includes/header_aplicacion.php";
 	include "clases/Conexion.php";
@@ -32,7 +35,7 @@ session_start();
 	$data1=mysql_fetch_array($result);
 	if (!$dataModelo) {
 		die('No se pudo realizar la consulta:' . mysql_error());
-		header("Location: ../index.php");
+		header("Location: ../bienvenido.php");
 	} else {
 ?>
 	<div class="row">

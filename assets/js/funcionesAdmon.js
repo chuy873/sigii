@@ -113,7 +113,13 @@ function eliminarUsuario(){
 	var id = document.getElementById("idusuarioD").value;	
 	location.replace("control/admonUsuario.php?accion=delete&id="+id);
 	}
-
+//Otras funciones con modal
+$('.confirm-add').click(function(e) {
+    e.preventDefault();
+    
+    var id = $(this).data('id');
+    $('#modal4').modal('show');
+});
 /*
  * Funcion AJAX para obtener las subzonas de una zona seleccionada.(registro)
  */
@@ -300,4 +306,9 @@ xmlhttp.send("nombre="+escape(nombre)+"&modelo="+document.getElementById("modelo
 	} else {
 xmlhttp.send("nombre="+escape(nombre));} 
 }
+}
+
+//Funcion para enviar la forma de modelo y regresar a la pagina de registro de modelo nuevo
+function agregarOtro(){
+	document.getElementById("agregar").value="add";
 }

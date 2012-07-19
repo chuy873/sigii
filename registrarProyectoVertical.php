@@ -15,7 +15,10 @@ $usuariologueado = $_SESSION['usuario'];
 if (!($usuariologueado->getTipo()=="administrador"
 		|| $usuariologueado->getTipo()=="revision" || $usuariologueado->
 		getTipo()=="captura")) {
-	header("Location: bienvenido.php");
+	$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: error.php");	
 }
 include "includes/header_aplicacion.php";
 include "clases/Conexion.php";
@@ -462,7 +465,7 @@ $link = $conexion->dbconn();
 										<p>Instrucciones:</p>
 										<p>
 											1. Haz clic en
-											<button class="btn btn-primary" id="posicionar"
+											<button type="button" class="btn btn-primary" id="posicionar"
 												onclick="init()">
 												<i class="icon-globe icon-white"></i> Posicionar
 											</button>
@@ -485,13 +488,13 @@ $link = $conexion->dbconn();
 											rat&oacute;n. (Se rellenara el pol&iacute;gono de un color).</p>
 										<p>
 											6. Para guardar el pol&iacute;gono, haz clic en
-											<button class="btn btn-primary" onclick="outKml();">
+											<button type="button" class="btn btn-primary" onclick="outKml();">
 												<i class="icon-pencil"></i>Guardar pol&iacute;gono
 											</button>
 										</p>
 										<p>
 											*Si deseas eliminar el pol&iacute;gono, haz clic en
-											<button class="btn btn-danger" onclick="borrar();">
+											<button type="button" class="btn btn-danger" onclick="borrar();">
 												<i class="icon-trash"></i>Eliminar pol&iacute;gono
 											</button>
 										</p>

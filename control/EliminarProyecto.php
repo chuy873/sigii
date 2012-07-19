@@ -9,8 +9,11 @@ session_start();
 $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];
 if (!($usuariologueado->getTipo()=="administrador")) {
-	header("Location: ../bienvenido.php");
-}
+	$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: ../error.php");	
+} else {
 include "../clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
@@ -33,4 +36,5 @@ while($data=mysql_fetch_array($result)){
 $eliminarProyecto="DELETE FROM proyecto WHERE idproyecto='".$idproyecto."'";
 $result=mysql_query($eliminarProyecto);
 header("Location: ../".$_SESSION["pageFrom"].".php");
+}
 ?>

@@ -11,7 +11,10 @@ $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];
 if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision"
 		|| $usuariologueado->getTipo()=="captura" )) {
-	header("Location: bienvenido.php");
+	$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: error.php");	
 }
 
 include "includes/header_aplicacion.php";
@@ -320,7 +323,7 @@ $link = $conexion->dbconn();
 						<p>Deseas continuar?</p>
 					</div>
 					<div class="modal-footer">
-						<button class="quit btn btn-danger" type="reset">Cancelar</button>
+						  <a href="<?php echo $_SESSION['pageFrom']?>.php" class="quit btn btn-danger"  >Cancelar</a>
 						<a href="#" class="btn secondary" data-dismiss="modal">Regresar</a>
 					</div>
 				</div>

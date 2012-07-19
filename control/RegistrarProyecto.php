@@ -12,8 +12,11 @@ $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];
 if (!($usuariologueado->getTipo()=="administrador" || ($usuariologueado->getTipo()=="revision")
 		|| ($usuariologueado->getTipo()=="captura"))) {
-	header("Location: ../bienvenido.php");
-}
+	$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: ../error.php");	
+} else {
 include "../clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
@@ -102,7 +105,6 @@ if(isset($_POST["acabado_".$data["idacabado"]])){
 $promociones=$_POST["promociones"];
 $paquetesAcabados=$_POST["paquetesAcabados"];
 $comentarios=$_POST["comentarios"];
-print_r($_POST);
 
 //Insertar a DB
 //Seguridad SQLi
@@ -214,7 +216,7 @@ if (!$result) {
 		
 	}
 }
-
+}
 //Se guardan las imagenes en la DB y en la carpeta de img
 //En el path se agrega el id del proyecto al inicio del nombre del archivo.
 function guardarImagen($name, $tipo, $path, $id){

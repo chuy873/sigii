@@ -5,14 +5,20 @@
 */
 //Verificar si el usuario tiene acceso
 include "../clases/Usuarios.php";
+if(!isset($_SESSION)){
+	header("Location: ../index.php");
+}	
 session_start();
 //Verificar si el usuario tiene permiso para visualizar esta pÃ¡gina
 $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];
 if (!($usuariologueado->getTipo()=="administrador" || ($usuariologueado->getTipo()=="revision")
 		|| ($usuariologueado->getTipo()=="captura"))) {
-	header("Location: ../bienvenido.php");
-}
+	$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: ../error.php");	
+} else {
 include "../clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
@@ -35,4 +41,5 @@ $actualizarProyecto=sprintf("UPDATE proyecto SET unidadesVendidas = '%s', fechaR
  mysql_real_escape_string($vendidasTotales), date("Y-m-d"));
 mysql_query($actualizarProyecto);
 header("Location: ../".$_SESSION["pageFrom"].".php");
+}
 ?>

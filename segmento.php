@@ -15,7 +15,10 @@ $usuariologueado = $_SESSION["usuario"];
 if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision" ||
 		$usuariologueado->getTipo()=="captura" || $usuariologueado->getTipo()=="analisis" ||
 		$usuariologueado->getTipo()=="cliente")) {
-	header("Location: index.php");
+	$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: error.php");	
 }
 $ventasH="SELECT SUM(unidadesVendidas) AS ventas, segmento FROM sigii.proyecto 
 	WHERE tipo='horizontal' GROUP BY segmento ASC;";

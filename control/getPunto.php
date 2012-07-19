@@ -10,8 +10,11 @@ $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];
 if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision" 
 		|| $usuariologueado->getTipo()=="captura" || $usuariologueado->getTipo()=="analisis"  )) {
-	header("Location: ../bienvenido.php");
-}
+	$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: ../error.php");	
+} else {
 include "../clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
@@ -52,3 +55,5 @@ $result = mysql_query($sql);
 						echo $array;				
 					}
 					}
+}
+?>

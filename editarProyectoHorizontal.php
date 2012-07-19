@@ -13,7 +13,10 @@ session_start();
 	$usuariologueado =  new Usuarios();
 	$usuariologueado = $_SESSION['usuario'];
 	if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision")) {
-		header("Location: bienvenido.php");
+			$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: error.php");	
    }
    include "includes/header_aplicacion.php";
  include "clases/Conexion.php";
@@ -552,10 +555,10 @@ session_start();
 									
 										<p class="help-block">Google Earth.</p>
 										   <p>Instrucciones:</p>
-										   	<p>1. Haz clic en <button  class="btn btn-primary" id="posicionar" onclick="init();"><i
+										   	<p>1. Haz clic en <button type="button"  class="btn btn-primary" id="posicionar" onclick="init();"><i
 											class="icon-globe icon-white"></i> Editar posici&oacute;n</button></p>
 										   <p>2. Dir&iacute;gete a la ubicaci&oacute;n del proyecto.</p>
-										   <p>3. Haz clic en   <button class="btn btn-info" id="btnPoli" onclick="dibujar();"><i class="icon-pencil"></i>Dibujar pol&iacute;gono</button></p>
+										   <p>3. Haz clic en   <button type="button" class="btn btn-info" id="btnPoli" onclick="dibujar();"><i class="icon-pencil"></i>Dibujar pol&iacute;gono</button></p>
 										   <p>4. Haz s&oacute;lo <b>1 clic</b> en el mapa donde deseas empezar el pol&iacute;gono y arrastra el rat&oacute;n para completar la forma.(No necesitas dejar
 										   presionado el bot&oacute;n del rat&oacute;n)</p>
 										   <p>5. Al terminar el pol&iacute;gono, haz otro clic con el rat&oacute;n. (Se rellenara el pol&iacute;gono de un color).</p>

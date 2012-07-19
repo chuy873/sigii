@@ -11,8 +11,11 @@ session_start();
 $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];
 if (!($usuariologueado->getTipo()=="administrador")) {
-	header("Location: ../bienvenido.php");
-}
+	$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: ../error.php");	
+} else {
 //Conexion a DB
 include "../clases/Conexion.php";
 $conexion = new Conexion();
@@ -74,5 +77,5 @@ if($accion == "registrar"){
 			header("Location: ../administrarUsuarios.php");
 		}
 }
-
+}
 ?>

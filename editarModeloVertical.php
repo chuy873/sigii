@@ -10,7 +10,10 @@ session_start();
 	$usuariologueado = new Usuarios();
 	$usuariologueado = $_SESSION["usuario"];
 	if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision")) {
-	header("Location: bienvenido.php");
+		$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: error.php");	
 	}
 	
 	include "includes/header_aplicacion.php";
@@ -123,7 +126,7 @@ session_start();
 									</div>
 								</div>
                                  <div class="control-group">
-                                    <label class="control-label" for="nombres">Nombre del modelo</label>
+                                    <label class="control-label" for="nombres">Nombre del modelo*</label>
                                     <div class="controls">
                                         <input name="nombre" id="nombre" class="input-large" type="text" value="<?php echo $data1["nombre"]?>">
                                          <div class="alert alert-error" id="alertNombre"	style="display: none">
@@ -169,8 +172,7 @@ session_start();
                                         <input name="metrosCuadrados" id="metrosCuadrados" class="input-small" type="text" value="<?php echo $data1["metrosCuadrados"]?>">
                                         <span class="help-inline"></span>
                                     </div>
-                                </div> 
-                                                                              
+                                </div>                                                                             
                                  <div class="control-group">
                                     <label class="control-label" for="unidadesTotales">Unidades totales*</label>
                                     <div class="controls">
@@ -388,7 +390,7 @@ session_start();
       <p>Deseas continuar?</p>            
      </div>
     <div class="modal-footer">
-      <button class="quit btn btn-danger" type="reset" >Cancelar</button>
+      <a href="<?php echo $_SESSION['pageFrom']?>.php" class="quit btn btn-danger"  >Cancelar</a>
       <a href="#" class="btn secondary" data-dismiss="modal">Regresar</a>
     </div>
 </div>       		

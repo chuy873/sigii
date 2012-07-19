@@ -12,8 +12,11 @@ $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];
 if (!($usuariologueado->getTipo()=="administrador" || ($usuariologueado->getTipo()=="revision")
 		|| ($usuariologueado->getTipo()=="captura"))) {
-	header("Location: ../bienvenido.php");
-}
+	$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: ../error.php");	
+} else {
 include "../clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
@@ -94,8 +97,9 @@ while($data = mysql_fetch_array($result, MYSQL_ASSOC)){
 		$contcaract++;
 	}
 }
-
-
+echo "data";
+print_r($_POST);
+echo $_POST["agregar"];
 //Insertar a DB
 //Seguridad SQLi
 
@@ -171,8 +175,9 @@ if (!$result) {
 		$result = mysql_query( $insertAtributos);		
 		$k++;
 		}
-		if($_POST["agregar"]==1){
-			if($tipo=="horizontal"){		
+		if($_POST["agregar"]=="add"){
+			if($tipo=="horizontal"){	
+				echo "aqui";
 			header("Location: ../registrarModeloHorizontal.php");
 		}else if($tipo=="vertical"){
 				header("Location: ../registrarModeloVertical.php");
@@ -181,7 +186,7 @@ if (!$result) {
 		header("Location: ../bienvenido.php");		
 		}
 	}}
-
+}
 //Se guardan las imagenes en la DB y en la carpeta de img
 //En el path se agrega el id del proyecto al inicio del nombre del archivo.
 function guardarImagen($name, $tipo, $path, $id){

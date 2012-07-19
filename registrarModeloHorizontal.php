@@ -11,7 +11,10 @@ session_start();
 	$usuariologueado = $_SESSION["usuario"];
 	if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision"
 			|| $usuariologueado->getTipo()=="captura" )) {
-	header("Location: bienvenido.php");
+	$_SESSION['error'] = "acceso";
+	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
+	$_SESSION['pageFrom']="bienvenido";
+	header("Location: error.php");	
 	}
 	
 	include "includes/header_aplicacion.php";
@@ -67,7 +70,7 @@ session_start();
 									</div>
 								</div>
                                  <div class="control-group">
-                                    <label class="control-label" for="nombres">Nombre del modelo</label>
+                                    <label class="control-label" for="nombres">Nombre del modelo*</label>
                                     <div class="controls">
                                         <input name="nombre" id="nombre" class="input-large" type="text">                                     
                                     </div>
@@ -271,6 +274,7 @@ session_start();
                                      <span class="help-inline"></span>     
                                   </div>
                                 </div>
+                                <input type="hidden" id="agregar" name="agregar"/>
                                 </fieldset>
 					</div>										
 					</div><!-- div tab-content -->
@@ -284,8 +288,7 @@ session_start();
 				</ul>
 					<div class="form-actions">                                   
                                    <button class="btn btn-primary" type="submit">Registrar</button>
-                                    <button class="btn btn-primary" onclick="agregarOtro()">Registrar y agregar otro modelo...</button>
-                             	<input type="hidden" id="agregar" name="agregar"/>
+                                    <button type="submit" class="btn btn-primary" onclick="agregarOtro()">Registrar y agregar otro modelo...</button>                             	
                              	<a href="#modalCancel" data-toggle="modal" class="openCancel2 btn" 
 						> Cancelar</a>	
 						 <span id="errorBoton"
@@ -304,7 +307,7 @@ session_start();
       <p>Deseas continuar?</p>            
      </div>
     <div class="modal-footer">
-      <button class="quit btn btn-danger" type="reset" >Cancelar</button>
+       <a href="<?php echo $_SESSION['pageFrom']?>.php" class="quit btn btn-danger"  >Cancelar</a>
       <a href="#" class="btn secondary" data-dismiss="modal">Regresar</a>
     </div>
 </div>       		

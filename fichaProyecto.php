@@ -7,6 +7,16 @@ Esta pagina es accesada por todos los usuarios registrados.
 */
 $pageTitle = "SIGII | Reporte Ficha";
 include "includes/header_aplicacion.php";
+
+//Verificar si el usuario tiene permiso para visualizar esta página
+$usuariologueado = new Usuarios();
+$usuariologueado = $_SESSION["usuario"];
+if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo()=="revision" ||
+		$usuariologueado->getTipo()=="captura" || $usuariologueado->getTipo()=="analisis" ||
+		$usuariologueado->getTipo()=="cliente")) {
+	header("Location: index.php");
+}
+
 include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
