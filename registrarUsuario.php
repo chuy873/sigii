@@ -106,7 +106,7 @@ include "includes/header_aplicacion.php";
                                 </div>                                                            
                                 <div class="form-actions">                                   
                                    <button class="btn btn-primary" type="submit">Registrar</button>
-                                   <button class="btn" type="reset">Cancelar</button>
+                                    <a href="<?php echo $_SESSION['pageFrom']?>.php" class="quit btn"  >Cancelar</a>
                                 </div>
                             </fieldset>
                         </form>

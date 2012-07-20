@@ -35,6 +35,7 @@ $result = mysql_query($sql);
 						die('No se pudo realizar la consulta:' . mysql_error());
 						header("Location: ../bienvenido.php");
 					} else {
+						header("Content-Type: text/html; charset=iso-8859-1");
 						if(isset($_POST["accion"]) && $_POST["accion"]=="registro"){//Obtener el select de los puntos de acuerdo al tipo
 							echo "<select class='span2' id='selectPunto' name='puntoAfluencia".$numero."' >
 							<option value=''>Seleccione un punto</option>";

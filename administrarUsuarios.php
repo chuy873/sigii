@@ -20,6 +20,7 @@ include "includes/header_aplicacion.php";
 include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
+$_SESSION['pageFrom']="administrarUsuarios";
 ?>
 <div class="row">
 	<div class="span10 offset2">

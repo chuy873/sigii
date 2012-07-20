@@ -27,6 +27,7 @@ $().ready(function() {
 		nombre:"required",
 		apellidos:"required",		
 		email:{required:true,email: true},	
+		telefono:'number',
 		tipo:"required",
 		username:{required:true, remote: { url: "control/verificarUsuario.php", async: false }},
 		password:{required:true,minlength: 6},
@@ -40,6 +41,7 @@ $().ready(function() {
 		email:{
 		required:"Ingresa el correo electrónico",
 		email:"Ingresa un correo válido (usuario@ejemplo.com)"},
+		telefono:"Ingresa solo números",
 		tipo:"",
 		username: { required:"Ingresa el nombre de usuario", remote: "El nombre de usuario ya existe"},
 		password:{
@@ -73,6 +75,7 @@ $().ready(function() {
 		nombre:"required",
 		apellidos:"required",		
 		email:{required:true,email: true},	
+		telefono:'number',
 		tipo:"required",
 		username:{required:true, remote: { url: "control/verificarUsuario.php",   type: 'post',
 		    data: {
@@ -86,6 +89,7 @@ $().ready(function() {
 		email:{
 		required:"Ingresa el correo electrónico",
 		email:"Ingresa un correo válido (usuario@ejemplo.com)"},
+		telefono:"Ingresa solo números",
 		tipo:"",
 		username: { required:"Ingresa el nombre de usuario", remote: "El nombre de usuario ya existe"},
 		password:{
@@ -115,7 +119,7 @@ $().ready(function() {
 		promotor:"required",	
 		municipio:"required",
 		segmento:"required",			
-		ciudad:"required",				
+		ciudad:"required",
 		},
 
 		messages:{
@@ -123,7 +127,7 @@ $().ready(function() {
 		promotor:"Ingresa el promotor",
 		segmento:"Ingresa el segmento",
 		municipio:"Ingresa el municipio",
-		ciudad:"Selecciona la zona",		
+		ciudad:"Selecciona la zona",
 		},
 		ignore: "",
 		errorClass: "help-inline",

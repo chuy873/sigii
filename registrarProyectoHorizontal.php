@@ -26,6 +26,7 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
    $conexion = new Conexion();
    $link = $conexion->dbconn();
   ?>
+
         <div class="container">           
         <div class="row">      
            <div class="span10 offset1">
@@ -398,32 +399,8 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
 									<hr/>
 									</div>
 									<a class="btn" onclick="desplegarOtro()">Otro...</a>																																																				
-							</fieldset>
-							<fieldset>
-								<legend>Ubicaci&oacute;n geogr&aacute;fica</legend>
-								<div class="control-group">
-									<label class="control-label" for="posicionamiento">Posicionamiento
-										en mapa</label>
-									<div class="controls">
-									
-										<p class="help-block">Google Earth.</p>
-										   <p>Instrucciones:</p>
-										   	<p>1. Haz clic en <button  type="button" class="btn btn-primary" id="posicionar" onclick="init()"><i
-											class="icon-globe icon-white"></i> Posicionar</button></p>
-										   <p>2. Dir&iacute;gete a la ubicaci&oacute;n del proyecto.</p>
-										   <p>3. Haz clic en   <button class="btn btn-info" id="btnPoli" onclick="dibujar();"><i class="icon-pencil"></i>Dibujar pol&iacute;gono</button></p>
-										   <p>4. Haz s&oacute;lo <b>1 clic</b> en el mapa donde deseas empezar el pol&iacute;gono y arrastra el rat&oacute;n para completar la forma.(No necesitas dejar
-										   presionado el bot&oacute;n del rat&oacute;n)</p>
-										   <p>5. Al terminar el pol&iacute;gono, haz otro clic con el rat&oacute;n. (Se rellenara el pol&iacute;gono de un color).</p>
-										   <p>6. Para guardar  el pol&iacute;gono, haz clic en <button type="button" class="btn btn-primary" onclick="outKml();"><i class="icon-pencil"></i>Guardar pol&iacute;gono</button></p>
-										   <p>*Si deseas eliminar el pol&iacute;gono, haz clic en 
-     <button  type="button" class="btn btn-danger" onclick="borrar();"><i class="icon-trash"></i>Eliminar pol&iacute;gono</button></p>
-       <div id='map3d' style='border: 1px solid silver; height: 600px; width: 600px;'></div>  
-     <textarea name="earth" id="kml-out" style="display:none;"></textarea>	
-									</div>
+							</fieldset>							
 								</div>
-							</fieldset>
-						</div>
 					<?php 
 						$a = "SELECT * FROM `amenidad` ORDER BY nombre ASC";
 						$amenidades = mysql_query( $a);
@@ -586,148 +563,41 @@ $pageTitle = "SIGII | Registrar proyecto horizontal";
       <a href="#" class="btn secondary" data-dismiss="modal">Regresar</a>
     </div>
 </div>       		
-				 </form>	
+		</form>		 
+				  
+
+				 	<div id="pluginEarth" class="modal hide fade in">
+    <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal">x</button>
+      <h3>Crear poligono</h3>
+    </div>
+    <div class="modal-body">     
+     <p>Atenci&oacute;n! Se borrarán los campos capturados.</p>
+       <div id="map3d_container" style="width: 500px; height: 500px;">
+    <div id="map3d" style="height: 100%"></div>
+  </div>
+<textarea id="code" style="font-family: monospace; width: 500px; height: 200px;">
+gex.dom.clearFeatures();
+
+var placemark = gex.dom.addPlacemark({
+  polygon: [],
+  style: {
+    line: { width: 15, color: '#ff0' },
+    poly: { color: '8000ffff' }
+  }
+});
+
+gex.edit.drawLineString(placemark.getGeometry().getOuterBoundary());
+</textarea><br/>
+<input type="button" onclick="eval(document.getElementById('code').value);" value="Run"/>  
+     </div>
+    <div class="modal-footer">
+      <button class="quit btn btn-danger" type="reset" >Cancelar</button>
+      <a href="#" class="btn secondary" data-dismiss="modal">Regresar</a>
+    </div>
+</div>       		
 				  </div> <!-- /span -->				  				                          
         </div><!-- /row -->
         </div><!-- /container -->  
-          <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAwbkbZLyhsmTCWXbTcjbgbRSzHs7K5SvaUdm8ua-Xxy_-2dYwMxQMhnagaawTo7L1FE1-amhuQxIlXw"></script>
-  <script type="text/javascript">
-google.load("earth", "1");
-
-var ge = null;
-var isMouseDown = false;
-var lineStringPlacemark = null;
-var coords = null;
-var pointCount = 0;
-var doc = null;
-var dibuja=false;
-function init() {
-  google.earth.createInstance("map3d", initCB, failureCB);
-}
-
-function initCB(object) {
-  ge = object;
-  ge.getWindow().setVisibility(true);
-
-  doc = ge.createDocument('');
-  ge.getFeatures().appendChild(doc);
-	// add a navigation control
-  ge.getNavigationControl().setVisibility(ge.VISIBILITY_AUTO);
-  
-  google.earth.addEventListener(ge.getGlobe(), 'mousemove', onmousemove); 
-  google.earth.addEventListener(ge.getGlobe(), 'mousedown', onmousedown);
-
-}
-function dibujar(){
-	document.getElementById("btnPoli").disabled=true;
-	dibuja=true;
-	
-	//document.getElementById("btnPoli").disabled=true;
-}
-function borrar() {
-	  var features = ge.getFeatures();	  
-	  while (features.getFirstChild()) {
-	    features.removeChild(features.getFirstChild());
-	  }	 
-	  doc = ge.createDocument('');
-	  ge.getFeatures().appendChild(doc);
-	  google.earth.addEventListener(ge.getGlobe(), 'mousemove', onmousemove); 
-	  google.earth.addEventListener(ge.getGlobe(), 'mousedown', onmousedown);
-		 
-		  
-	} 
-function onmousemove(event) {
-if(dibuja){
-	  if (isMouseDown) {
-    coords.pushLatLngAlt(event.getLatitude(), event.getLongitude(), 0);
-  }
-}
-}
-
-function convertLineStringToPolygon(placemark) {
-  var polygon = ge.createPolygon('');
-  var outer = ge.createLinearRing('');
-  polygon.setOuterBoundary(outer);
-
-  var lineString = placemark.getGeometry();
-  for (var i = 0; i < lineString.getCoordinates().getLength(); i++) {
-    var coord = lineString.getCoordinates().get(i);
-    outer.getCoordinates().pushLatLngAlt(coord.getLatitude(), 
-                                         coord.getLongitude(), 
-                                         coord.getAltitude());
-  }
-
-  placemark.setGeometry(polygon);
-}
-
-
-function onmousedown(event) {
-	if(dibuja){
-  if (isMouseDown) {
-    isMouseDown = false;
-    coords.pushLatLngAlt(event.getLatitude(), event.getLongitude(), 0);
-
-    convertLineStringToPolygon(lineStringPlacemark);
-    dibuja=false;
-    document.getElementById("btnPoli").disabled=false;
-  } else {
-    isMouseDown = true;
-
-    lineStringPlacemark = ge.createPlacemark('');
-    var lineString = ge.createLineString('');
-    lineStringPlacemark.setGeometry(lineString);
-    lineString.setTessellate(true);
-    lineString.setAltitudeMode(ge.ALTITUDE_CLAMP_TO_GROUND);
-
-    lineStringPlacemark.setStyleSelector(ge.createStyle(''));
-    var lineStyle = lineStringPlacemark.getStyleSelector().getLineStyle();
-    lineStyle.setWidth(4);
-    lineStyle.getColor().set('ddffffff');  // aabbggrr formatx
-    lineStyle.setColorMode(ge.COLOR_RANDOM);
-    var polyStyle = lineStringPlacemark.getStyleSelector().getPolyStyle();
-    polyStyle.getColor().set('ddffffff');  // aabbggrr format
-    polyStyle.setColorMode(ge.COLOR_RANDOM);
-
-    coords = lineString.getCoordinates();
-    coords.pushLatLngAlt(event.getLatitude(), event.getLongitude(), 0);
-
-    doc.getFeatures().appendChild(lineStringPlacemark);
-  }
-}
-}
-function failureCB(object) {
-}
-
-function outKml() {
-  document.getElementById('kml-out').value = doc.getKml();
-}
-</script>
-  <?php include "includes/footer_principal.php" ?>
-  <script type="text/javascript">
-/*
- * LLamadas a seleccionador de fechas de bootstrap
- */
-var currentTime = new Date();
-var month = currentTime.getMonth() + 1;
-var day = currentTime.getDate();
-var year = currentTime.getFullYear();
-
-function setToday(id){
-	document.getElementById(id).value=year+"-"+month+"-"+day;
-}
-$(document).ready(function () {
-$(function(){
-	window.prettyPrint && prettyPrint();
-	$('#dp1').datepicker({
-		format: 'yyyy-mm-dd'
-	});
-});
-
-$(function(){
-	window.prettyPrint && prettyPrint();
-	$('#dp2').datepicker({
-		format: 'yyyy-mm-dd'
-	});
-});
-});
-  </script>
+        
+<?php include "includes/footer_principal.php" ?>

@@ -84,8 +84,6 @@ $puntosAfluencia[($i-1)][0]=$_POST["puntoAfluencia".$i];
 $puntosAfluencia[($i-1)][1]=$_POST["distanciaAfluencia".$i];
 $i++;
 }
-//google earth
-$earth=$_POST["earth"];
 //amenidades
 $amenidades=$_POST["amenidades"];
 $entrega=$_POST["entrega"];
@@ -154,16 +152,7 @@ if (!$result) {
 		//header("Location: ../bienvenido.php");
 	} else {
 		
-		
-		$file = '../img/earth/'.$idproyecto[0].'_earth.kml.';
-		//Agregar al archivo la informacion de kml de google earth.
-		$current = $earth;
-		// Escribir los datos en servidor
-		file_put_contents($file, $current);
-		//Registrar en DB
-		$insertEarth=sprintf("INSERT INTO posicionearth (pathArchivoKML, proyecto_idproyecto)
-		VALUES ('%s','%s');", 'img/earth/'.$idproyecto[0].'_earth.kml',$idproyecto[0]);
-		$result = mysql_query( $insertEarth);
+				
 		
 		if(isset($logoProyecto)){
 			guardarImagen("logoProyecto", "logo", $logoProyecto, $idproyecto[0]);

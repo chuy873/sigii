@@ -206,6 +206,7 @@ if (!$result) {
 		header("Location: ../".$_SESSION["pageFrom"].".php");		
 	}
 }
+}
 //Se guardan las imagenes en la DB y en la carpeta de img
 //En el path se agrega el id del proyecto al inicio del nombre del archivo.
 function guardarImagen($name, $tipo, $path, $id){	
@@ -226,6 +227,7 @@ function guardarImagen($name, $tipo, $path, $id){
 			"..\img\proyectos\\" .$id."_". $_FILES[$name]["name"]);
 	$result = mysql_query( $insertImagen);	
 }
+
 	function verificarTamañoYTipo($nombre){
 	if (isset($_FILES[$nombre]) && (($_FILES[$nombre]["type"] == "image/gif")
 			|| ($_FILES[$nombre]["type"] == "image/jpeg")
@@ -242,5 +244,5 @@ function guardarImagen($name, $tipo, $path, $id){
 		return true;
 }
 	}
-}
+
 ?>

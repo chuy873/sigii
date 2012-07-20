@@ -682,6 +682,7 @@ var doc = null;
 var dibuja=false;
 function init() {
   google.earth.createInstance("map3d", initCB, failureCB);
+  document.getElementById("posicionar").disabled=true;
 }
 
 function initCB(object) {

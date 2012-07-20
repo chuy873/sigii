@@ -30,15 +30,16 @@ session_start();
 		        <legend><i class="icon-briefcase"></i> Administrar proyectos</legend>
 		        <table class="table">
 		        	<tr>
-						<th style='text-align:left; width:220px; padding:5px;'>Nombre</th>
-						<th style='text-align:left; width:220px; padding:5px;'>Promotor</th>
+						<th style='text-align:left; width:180px; padding:5px;'>Nombre</th>
+						<th style='text-align:left; width:150px; padding:5px;'>Promotor</th>
 						<th style='text-align:left; width:270px; padding:5px;'>Zona</th>
-						<th style='text-align:left; width:200px; padding:5px;'>Segmento</th>
+						<th style='text-align:left; width:150px; padding:5px;'>Segmento</th>
 						<th style='text-align:left; width:70px; padding:5px;'>Unidades</th>
 						<th style='text-align:left; width:70px; padding:5px;'>Unidades Vendidas</th>					
-						<th style='text-align:left; width:200px; padding:5px;'></th>
-						<th style='text-align:left; width:200px; padding:5px;'></th>	
-						<th style='text-align:left; width:200px; padding:5px;'></th>								
+						<th style='text-align:left; width:100px; padding:5px;'></th>
+						<th style='text-align:left; width:150px; padding:5px;'></th>
+						<th style='text-align:left; width:150px; padding:5px;'></th>	
+						<th style='text-align:left; width:150px; padding:5px;'></th>								
 					  	<th></th>
 					</tr>
 					<?php 
@@ -70,6 +71,8 @@ session_start();
 							  	 		<a href="editarProyectoVertical.php?idproyecto=<?php echo $data["idproyecto"]?>" class="btn btn-primary"><i class="icon-edit icon-white"></i> Editar</a>
 								<?php }?>						 
 							  	</td>
+							  	<td> 	 		<a href="earth.php?idproyecto=<?php echo $data["idproyecto"]?>&nombre=<?php echo $data["nombre"]?>" class="btn "><i class="icon-globe"></i>Posicionar</a>
+							</td>
 							  	<td>
 							  		 		<a href="actualizarProyecto.php?idproyecto=<?php echo $data["idproyecto"]?>" class="btn btn-info"><i class="icon-refresh icon-white"></i> Actualizar</a>
 								</td>
