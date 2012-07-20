@@ -3,6 +3,7 @@
  * Se despliega un mensaje de error informando de la causa que lo provocó.
  */
 $pageTitle = "SIGII | Error";
+
 include "includes/header_aplicacion.php";
 
 ?>

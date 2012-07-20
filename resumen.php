@@ -4,6 +4,7 @@
 * Se muestra la informacion de los proyectos resumida en una tabla.
 */
 $pageTitle = "SIGII | Resumen de proyectos";
+
 include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
@@ -85,12 +86,12 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 		<tr>
 		<td><?php echo $cont?></td>
 		<td><?php echo $data["tipo"]?></td>
-		<td><?php echo $data["nombreP"]?></td>
+		<td><?php echo $data["nombreP"]?> </td>
 		<td><?php if($data["tiempoMercado"]){echo round($data["unidadesVendidas"]/$data["tiempoMercado"],2);}?></td>
 		<td>$<?php echo number_format(round($data["precio"],2), 2, '.', ',')?></td>
 		<td><?php echo round($data["metrosCuadrados"],0)?></td>
 		<td><?php echo round($data["metrosCuadradosTerr"],0)?></td>
-		<td>$ <?php if($data["metrosCuadrados"]!=0){echo number_format(round(($data["precio"]/$data["metrosCuadrados"]),2), 2, '.', ',');}?></td>
+		<td>$<?php if($data["metrosCuadrados"]!=0){echo number_format(round(($data["precio"]/$data["metrosCuadrados"]),2), 2, '.', ',');}?> </td>
 		<td><?php echo $data["unidades"]?></td>
 		<td><?php echo $data["unidadesVendidas"]?></td>
 		<td><?php echo ($data["unidades"]-$data["unidadesVendidas"])?></td>		

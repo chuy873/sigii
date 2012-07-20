@@ -5,6 +5,7 @@ Esta pagina solo es accesada por el administrador, revision y captura.
  */
 $pageTitle = "SIGII | Registrar Modelo Horizontal";
 include "clases/Usuarios.php";
+
 session_start();
 	//Verificar si el usuario tiene permiso para visualizar esta página
 	$usuariologueado = new Usuarios();
@@ -54,10 +55,11 @@ session_start();
 						} else {
 					?>           
 					<div class="control-group">
-									<label class="control-label" for="proyecto">Proyecto</label>
+									<label class="control-label" for="proyecto">Proyecto*</label>
 									<div class="controls">
-									  <input type="hidden" name="tipo" value="horizontal">
-										<select class="span2" name='proyecto'>
+									  <input type="hidden" name="tipo" value="horizontal">									
+										<select class="span2" name='proyecto' id='proyecto'>
+										<option value="" disabled="disabled" selected="selected">Selecciona el proyecto</option>
 											<?php 
 											while ($data = mysql_fetch_array($proyectos, MYSQL_ASSOC)) {						
 											?>

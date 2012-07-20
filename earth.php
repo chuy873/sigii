@@ -3,6 +3,7 @@
 			 */
 $pageTitle = "SIGII | Añadir posición geográfica";
  include "clases/Usuarios.php";
+
  session_start();
  $earth = "earth";
 	//Verificar si el usuario tiene permiso para visualizar esta página

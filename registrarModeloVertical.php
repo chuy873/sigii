@@ -5,6 +5,7 @@ Esta pagina solo es accesada por el administrador, revision y captura.
 */
 $pageTitle = "SIGII | Registrar Modelo Vertical";
 include "clases/Usuarios.php";
+
 session_start();
 //Verificar si el usuario tiene permiso para visualizar esta página
 $usuariologueado = new Usuarios();
@@ -57,10 +58,11 @@ $link = $conexion->dbconn();
 								} else {
 									?>
 								<div class="control-group">
-									<label class="control-label" for="proyecto">Proyecto</label> <input
+									<label class="control-label" for="proyecto">Proyecto*</label> <input
 										type="hidden" name="tipo" value="vertical">
 									<div class="controls">
 										<select class="span2" name='proyecto'>
+											<option value="" disabled="disabled" selected="selected">Selecciona el proyecto</option>										
 											<?php 
 											while ($data = mysql_fetch_array($proyectos, MYSQL_ASSOC)) {
 												?>

@@ -256,11 +256,12 @@ $().ready(function() {
 		});
 		});
 
-//Validacion registrar modelo horizontal
+//Validacion registrar modelo horizontal y vertical
 $().ready(function() { 
     // validate signup form on keyup and submit 
 	$("#registroModelo").validate({
 		rules:{
+			proyecto:"required",
 		nombre:"required",
 		unidades:"required",
 		unidadesTotales:"required",
@@ -269,6 +270,7 @@ $().ready(function() {
 		},
 
 		messages:{
+			proyecto:"Selecciona el proyecto",
 		nombre: "Ingresa el nombre del modelo", 		
 		unidadesTotales:"Ingresa las unidades",
 		unidades:"Ingresa las unidades",

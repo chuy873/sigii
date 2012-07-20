@@ -5,6 +5,7 @@
 			 */
 $pageTitle = "SIGII | Editar proyecto horizontal";
 include "clases/Usuarios.php";
+
 session_start();
  $earth = "earth";
  $_SESSION["earth"] = $earth;
@@ -546,30 +547,7 @@ session_start();
 									</div>
 									<a class="btn" onclick="desplegarOtro()">Otro...</a>																																																				
 							</fieldset>
-							<fieldset>
-								<legend>Ubicaci&oacute;n geogr&aacute;fica</legend>
-								<div class="control-group">
-									<label class="control-label" for="posicionamiento">Posicionamiento
-										en mapa</label>
-									<div class="controls">
-									
-										<p class="help-block">Google Earth.</p>
-										   <p>Instrucciones:</p>
-										   	<p>1. Haz clic en <button type="button"  class="btn btn-primary" id="posicionar" onclick="init();"><i
-											class="icon-globe icon-white"></i> Editar posici&oacute;n</button></p>
-										   <p>2. Dir&iacute;gete a la ubicaci&oacute;n del proyecto.</p>
-										   <p>3. Haz clic en   <button type="button" class="btn btn-info" id="btnPoli" onclick="dibujar();"><i class="icon-pencil"></i>Dibujar pol&iacute;gono</button></p>
-										   <p>4. Haz s&oacute;lo <b>1 clic</b> en el mapa donde deseas empezar el pol&iacute;gono y arrastra el rat&oacute;n para completar la forma.(No necesitas dejar
-										   presionado el bot&oacute;n del rat&oacute;n)</p>
-										   <p>5. Al terminar el pol&iacute;gono, haz otro clic con el rat&oacute;n. (Se rellenara el pol&iacute;gono de un color).</p>
-										   <p>6. Para guardar  el pol&iacute;gono, haz clic en <a class="btn btn-primary" onclick="outKml();"><i class="icon-pencil"></i>Guardar pol&iacute;gono</a></p>
-										   <p>*Si deseas eliminar el pol&iacute;gono, haz clic en 
-     <a  class="btn btn-danger" onclick="borrar();"><i class="icon-trash"></i>Eliminar pol&iacute;gono</a></p>
-       <div id='map3d' style='border: 1px solid silver; height: 600px; width: 600px;'></div>  
-     <textarea name="earth" id="kml-out" style="display:none;"></textarea>	
-									</div>
-									</div>
-							</fieldset>
+							
 						</div>
 					<?php 					
 						$a = "SELECT * FROM `amenidad` ORDER BY nombre ASC";

@@ -7,6 +7,7 @@
  
    $pageTitle = "SIGII | Administrar Proyectos";
    include "clases/Usuarios.php";
+  
 session_start();
    //Verificar si el usuario tiene permiso para visualizar esta página
    $usuariologueado = new Usuarios();

@@ -6,6 +6,7 @@ esta pagina y son calculados por el sistema.
 Esta pagina es accesada por todos los usuarios registrados.
 */
 $pageTitle = "SIGII | Reporte Ficha";
+
 include "includes/header_aplicacion.php";
 
 //Verificar si el usuario tiene permiso para visualizar esta página

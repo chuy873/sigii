@@ -5,6 +5,7 @@
 			 */
 $pageTitle = "SIGII | Registrar proyecto horizontal";
  include "clases/Usuarios.php";
+
  session_start();
  $earth = "earth";
  $_SESSION["earth"] = $earth;

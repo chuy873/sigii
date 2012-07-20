@@ -6,6 +6,7 @@ Esta pagina solo es accesada por el administrador, revision y captura.
 */
 $pageTitle = "SIGII | Administrar características";
 include "clases/Usuarios.php";
+
 session_start();
 //Verificar si el usuario tiene permiso para visualizar esta pÃ¡gina
 $usuariologueado = new Usuarios();

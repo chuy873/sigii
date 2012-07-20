@@ -4,6 +4,7 @@
 * Se muestra la gráfica de las ventas anuales por segmento.
 */
 $pageTitle = "SIGII | Ventas por segmento";
+
 include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();

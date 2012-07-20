@@ -5,6 +5,7 @@ Se despliegan los modulos de acuerdo al tipo de usuario logueado.
 Esta pagina es accesada por todos los usuarios registrados.
 */
   $pageTitle = "SIGII | Bienvenido";  
+ 
  include "includes/header_aplicacion.php";
  ?>
 <div class="container">

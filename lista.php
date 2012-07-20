@@ -4,6 +4,7 @@
  * Se muestra la informacion de los proyectos en tablas.
  */
 $pageTitle = "SIGII | Listado de proyectos";
+
 include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();

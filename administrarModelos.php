@@ -6,6 +6,7 @@
 	 */
 $pageTitle = "SIGII | Administrar Modelos";
 include "clases/Usuarios.php";
+
 session_start();
 $_SESSION['pageFrom']="administrarModelos";
 	//Verificar si el usuario tiene permiso para visualizar esta página

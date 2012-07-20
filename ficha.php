@@ -6,7 +6,7 @@ esta pagina y son calculados por el sistema.
 Esta pagina es accesada por todos los usuarios registrados.
 */
 	$pageTitle = "SIGII | Reporte Ficha";
-
+	
    include "clases/Conexion.php";
    $conexion = new Conexion();
    $link = $conexion->dbconn();
