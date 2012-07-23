@@ -15,15 +15,15 @@
 			<outerBoundaryIs>
 				<LinearRing>
 					<coordinates>
-						-100.3398208618164,25.6580696105957,0 -100.3395614624023,25.65876007080079,0 -100.3402862548828,25.65926933288574,0 -100.3404312133789,25.65907669067383,0 -100.3408737182617,25.65914154052734,0 -100.3406295776367,25.65862274169922,0 -100.3404998779297,25.65855407714844,0 -100.3398208618164,25.6580696105957,0 -100.3398208618164,25.6580696105957,0 
+						-100.2454986572266,25.64188766479492,0 -100.2454986572266,25.64188766479492,0 -100.2625961303711,25.70380783081055,0 -100.3678970336914,25.66037750244141,0 -100.2861251831055,25.61526679992676,0 -100.2454986572266,25.64188766479492,0 -100.2454986572266,25.64188766479492,0 
 					</coordinates>
 				</LinearRing>
 			</outerBoundaryIs>
 		</Polygon>
 	</Placemark>
 	<Placemark id="marca">
-		<name>Torres Verona</name>
-		<description><![CDATA[<p>Promotor: Grupo SDS</p><p>Segmento: Residencial Plus</p><p>Unidades totales: 150</p><p>Unidades vendidas: 100</p><p>Tiempo en el mercado: 15</p><p>Entrega: Blanca</p><p>Telefono: 12344567</p>]]></description>
+		<name>adfgdfg</name>
+		<description><![CDATA[<p>Promotor: dfsgdfg</p><p>Segmento: Medio</p><p>Unidades totales: 0</p><p>Unidades vendidas: 0</p><p>Tiempo en el mercado: 0</p><p>Entrega: Gris</p><p>Telefono: </p>]]></description>
 		<Style>
 			<IconStyle>
 				<Icon>
@@ -33,7 +33,7 @@
 		</Style>
 		<Point>
 			<altitudeMode>relativeToGround</altitudeMode>
-			<coordinates>-100.340217590332,25.65866947174072,0</coordinates>
+			<coordinates>-100.306697845459,25.65953731536865,0</coordinates>
 		</Point>
 	</Placemark>
 </Document>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<Placemark id="poligono">
+		<Style>
+			<LineStyle>
+				<color>ff00ff00</color>
+				<width>3</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>8000ffff</color>
+			</PolyStyle>
+		</Style>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-100.2339096069336,25.69460296630859,0 -100.2349319458008,25.69460296630859,0 -100.2789764404297,25.74444580078125,0 -100.356689453125,25.67052841186523,0 -100.2830657958984,25.62262916564941,0 -100.2339096069336,25.69460296630859,0 -100.2339096069336,25.69460296630859,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="marca">
+		<name>check 1Q a</name>
+		<description><![CDATA[<p>Promotor: dfsgdfg</p><p>Segmento: Medio</p><p>Unidades totales: 323</p><p>Unidades vendidas: 89</p><p>Tiempo en el mercado: 0</p><p>Entrega: Gris</p><p>Telefono: </p>]]></description>
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-3875d7/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/apartment-3.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-100.2952995300293,25.68353748321534,0</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>

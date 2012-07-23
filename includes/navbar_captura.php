@@ -50,7 +50,8 @@ Se despliega el nombre y apellidos del usuario obtenidos de la session.
                 		<li><a href="ficha.php"><i class="icon-th icon-white"></i> FICHA </a></li>
                 		<li><a href="lista.php"><i class="icon-list icon-white"></i> LISTA </a></li>
                 		<li><a href="resumen.php"><i class="icon-list-alt icon-white"></i> RESUMEN </a></li>
-                		<li><a href="segmento.php"><i class="icon-globe icon-white"></i> SEGMENTO </a></li>                		
+                		<li><a href="segmento.php"><i class="icon-signal icon-white"></i> SEGMENTO </a></li>  
+                		<li><a href="proyEarth.php"><i class="icon-globe icon-white"></i> EARTH </a></li>              		
                 	</ul>                	
                 </li>               
                  <li><a href="consultar.php"><i class="icon-search icon-white"></i> CONSULTAR </a></li>

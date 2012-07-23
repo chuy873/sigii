@@ -21,6 +21,16 @@ if (!($usuariologueado->getTipo()=="administrador" || ($usuariologueado->getTipo
 	$conexion = new Conexion();
 	$link = $conexion->dbconn();
 $idproyecto=$_POST["idproyecto"];
+//Eliminar los antiguos
+$kmlantiguo="SELECT * FROM posicionearth WHERE proyecto_idproyecto = '".$idproyecto."'";
+$result=mysql_query($kmlantiguo);
+if(mysql_num_rows($result)>0){
+$data=mysql_fetch_array($result);
+unlink("../".$data['pathArchivoKML']);
+$eliminaDB="DELETE FROM posicionearth WHERE proyecto_idproyecto = '".$idproyecto."'";
+mysql_query($eliminaDB);
+}
+
 //google earth
 $earth=$_POST["earth"];
 $file = '../img/earth/'.$idproyecto.'_earth.kml.';

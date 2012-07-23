@@ -7,6 +7,7 @@ Esta pagina es accesada por todos los usuarios registrados.
   $pageTitle = "SIGII | Bienvenido";  
  
  include "includes/header_aplicacion.php";
+ $_SESSION['pageFrom']="bienvenido";
  ?>
 <div class="container">
 	<div class="row pad">
@@ -50,8 +51,9 @@ Esta pagina es accesada por todos los usuarios registrados.
 			<div class="span3 " align="center"><img src="assets/img/glyphicons_040_stats.png"/></div><div class="span9"><h2>REPORTES</h2></br>			
 			<a href="ficha.php" class="span12"><i class="icon-th"></i> FICHA</a></br> 
 			<a href="lista.php" class=" span12"><i class="icon-list"></i> LISTA</a></br> 
-			<a href="resumen.php" class=" span12"><i class="icon-list-alt"></i> RESUMEN</a>
-			<a href="segmento.php" class=" span12"><i class="icon-globe"></i> SEGMENTO</a></br> 			
+			<a href="resumen.php" class=" span12"><i class="icon-list-alt"></i> RESUMEN</a></br>
+			<a href="segmento.php" class="span12"><i class="icon-signal"></i> SEGMENTO </a>  </br>
+            <a href="proyEarth.php" class="span12"><i class="icon-globe "></i> EARTH </a> 			
 			</div>
 		</div>
 	</div>
@@ -85,7 +87,8 @@ Esta pagina es accesada por todos los usuarios registrados.
 			<a href="ficha.php" class="span12"><i class="icon-th"></i> FICHA</a></br> 
 			<a href="lista.php" class=" span12"><i class="icon-list"></i> LISTA</a></br> 
 			<a href="resumen.php" class=" span12"><i class="icon-list-alt"></i> RESUMEN</a>
-			<a href="segmento.php" class=" span12"><i class="icon-globe"></i> SEGMENTO</a></br> 			
+		<a href="segmento.php" class="span12"><i class="icon-signal"></i> SEGMENTO </a>  </br>
+            <a href="proyEarth.php" class="span12"><i class="icon-globe "></i> EARTH </a> 				
 			</div>
 		</div>
 	</div>
@@ -119,7 +122,8 @@ Esta pagina es accesada por todos los usuarios registrados.
 			<a href="ficha.php" class="span12"><i class="icon-th"></i> FICHA</a></br> 
 			<a href="lista.php" class=" span12"><i class="icon-list"></i> LISTA</a></br> 
 			<a href="resumen.php" class=" span12"><i class="icon-list-alt"></i> RESUMEN</a>
-			<a href="segmento.php" class=" span12"><i class="icon-globe"></i> SEGMENTO</a></br> 			
+				<a href="segmento.php" class="span12"><i class="icon-signal"></i> SEGMENTO </a>  </br>
+            <a href="proyEarth.php" class="span12"><i class="icon-globe "></i> EARTH </a> 				
 			</div>
 		</div>
 	</div>			
@@ -143,7 +147,8 @@ Esta pagina es accesada por todos los usuarios registrados.
 			<a href="ficha.php" class="span12"><i class="icon-th"></i> FICHA</a></br> 
 			<a href="lista.php" class=" span12"><i class="icon-list"></i> LISTA</a></br> 
 			<a href="resumen.php" class=" span12"><i class="icon-list-alt"></i> RESUMEN</a>
-			<a href="segmento.php" class=" span12"><i class="icon-globe"></i> SEGMENTO</a></br> 			
+			<a href="segmento.php" class="span12"><i class="icon-signal"></i> SEGMENTO </a>  </br>
+            <a href="proyEarth.php" class="span12"><i class="icon-globe "></i> EARTH </a> 			
 			</div>
 		</div>
 	</div>
@@ -161,7 +166,8 @@ Esta pagina es accesada por todos los usuarios registrados.
 			<a href="ficha.php" class="span12"><i class="icon-th"></i> FICHA</a></br> 
 			<a href="lista.php" class=" span12"><i class="icon-list"></i> LISTA</a></br> 
 			<a href="resumen.php" class=" span12"><i class="icon-list-alt"></i> RESUMEN</a>
-			<a href="segmento.php" class=" span12"><i class="icon-globe"></i> SEGMENTO</a></br> 			
+				<a href="segmento.php" class="span12"><i class="icon-signal"></i> SEGMENTO </a>  </br>
+            <a href="proyEarth.php" class="span12"><i class="icon-globe "></i> EARTH </a> 				
 			</div>
 		</div>
 	</div>

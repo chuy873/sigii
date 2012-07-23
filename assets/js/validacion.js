@@ -292,6 +292,29 @@ $().ready(function() {
 		});
 		});
 
+//Validacion forma de consulta
+$().ready(function() { 
+    // validate signup form on keyup and submit 
+	$("#consulta").validate({		
+		rules:{
+		tabla:"required" 					
+		},
+		messages:{		
+		tabla:"Selecciona proyecto o modelo."		
+		},
+		ignore: "",
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').addClass('error');		
+		},
+		unhighlight: function(element, errorClass, validClass)
+		{
+		$(element).parents('.control-group').removeClass('error');
+		}
+		});
+		});
 /*
 //empieza pagina de registrar
 

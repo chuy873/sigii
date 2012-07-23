@@ -30,21 +30,22 @@ $porcentajeEngancheMin=$_POST["porcentajeEngancheMin"];
 $unidades=$_POST["unidadesTotales"];
 $unidadesVendidas=$_POST["unidadesVendidas"];
 //horizontal
-if($tipo=="horizontal"){
+if($tipo=="horizontal"){	
 	$absorcion=$_POST["absorcion"];
 	$precio=$_POST["precio"];
 	$creditoSobreEnganche=$_POST["creditoSobreEnganche"];
 	$m2Terreno=$_POST["m2Terreno"];
 	$precioTerreno=$_POST["precioTerreno"];
 	$contFachadas=$_POST["contFachadas"];
-	if(isset($contFachadas)){
+	
+	if(isset($contFachadas)){		
 	$fachadas[]="";
 	$i=0;
 	while($i < $contFachadas){
 		if(verificarTamañoYTipo("fachada".($i+1))){
-			$fachada[$i]= $_FILES["fachada".($i+1)]["name"];
+		$fachada[$i]= $_FILES["fachada".($i+1)]["name"];
 		}
-		$i++;
+		$i++;		
 	}
 	}
 
@@ -55,6 +56,7 @@ if($tipo=="horizontal"){
 	$precioMin=$_POST["precioMin"];
 	$precioMax=$_POST["precioMax"];
 }
+
 //imagenes
 $contDist=$_POST["contDist"];
 $distribuciones[]="";
@@ -65,6 +67,7 @@ while($i < $contDist){
 	}
 	$i++;
 }
+
 //atributos
 $atributos="SELECT * FROM atributos";
 $result = mysql_query( $atributos );
@@ -177,6 +180,7 @@ if (!$result) {
 		header("Location: ../".$_SESSION["pageFrom"].".php");		
 	}
 }
+}
 //Se guardan las imagenes en la DB y en la carpeta de img
 //En el path se agrega el id del proyecto al inicio del nombre del archivo.
 function guardarImagen($name, $tipo, $path, $id){
@@ -215,5 +219,5 @@ function verificarTamañoYTipo($nombre){
 		return true;
 	}
 }
-}
+
 ?>

@@ -6,8 +6,10 @@ Esta pagina solo es accesada por el administrador, revision y captura.
 */
 $pageTitle = "SIGII | Administrar amenidades";
 include "clases/Usuarios.php";
-
 session_start();
+if(!(isset($_SESSION["usuario"]))){
+	header("Location: index.php");
+}
 //Verificar si el usuario tiene permiso para visualizar esta página
 $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];

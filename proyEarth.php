@@ -1,11 +1,9 @@
-<?php 
-/* Pagina de reporte - Lámina
- Se despliegan los datos basicos del proyecto seleccionado y de sus respectivos modelos.
-Se despliegan imagenes, tablas, graficas, links. Los datos calculados se muestran en
-esta pagina y son calculados por el sistema.
+<?php
+/* Pagina de reporte - Google Earth
+ Se selecciona el proyecto para ver el reporte en google earth
 Esta pagina es accesada por todos los usuarios registrados.
 */
-$pageTitle = "SIGII | Reporte Ficha";
+$pageTitle = "SIGII | Reporte Earth";
 include "clases/Usuarios.php";
 session_start();
 if(!(isset($_SESSION["usuario"]))){
@@ -23,7 +21,7 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 		$usuariologueado->getTipo()=="cliente")) {
 	header("Location: index.php");
 }
- 
+
 include "includes/header_aplicacion.php";
 $proyectos="SELECT idproyecto, nombre, promotor FROM proyecto";
 $result=mysql_query($proyectos);
@@ -31,11 +29,11 @@ $result=mysql_query($proyectos);
 <div class="container-fluid">
 	<div class="row">
 		<div class="span10 offset2">
-			<form class="form-horizontal" action="fichaProyecto.php"
+			<form class="form-horizontal" action="reporteEarth.php"
 				method="post">
 				<fieldset>
 					<legend>
-						<i class="icon-th "></i> Generar ficha de proyecto
+						<i class="icon-th "></i> Visualizar proyecto en Google Earth<sup>&copy;</sup> 
 					</legend>
 					<div class="control-group">
 						<label class="control-label" for="proyecto">Selecciona el proyecto</label>
@@ -53,7 +51,7 @@ $result=mysql_query($proyectos);
 					</div>
 					<div class="form-actions">
 						<button type="submit" class="btn btn-inverse">
-							<i class="icon-th icon-white"></i> Generar ficha...
+							<i class="icon-th icon-white"></i> Ver en mapa...
 						</button>
 					</div>
 				</fieldset>

@@ -5,8 +5,10 @@ Esta pagina solo es accesada por el administrador y revision.
 */
 $pageTitle = "SIGII | Editar proyecto horizontal";
 include "clases/Usuarios.php";
-
 session_start();
+if(!(isset($_SESSION["usuario"]))){
+	header("Location: index.php");
+}
 $earth = "earth";
 $_SESSION["earth"] = $earth;
 $_SESSION["datepicker"] = "date";
@@ -15,10 +17,10 @@ $usuariologueado =  new Usuarios();
 $usuariologueado = $_SESSION['usuario'];
 if (!($usuariologueado->getTipo()=="administrador"
 		|| $usuariologueado->getTipo()=="revision")) {
-		$_SESSION['error'] = "acceso";
+	$_SESSION['error'] = "acceso";
 	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
 	$_SESSION['pageFrom']="bienvenido";
-	header("Location: error.php");	
+	header("Location: error.php");
 }
 include "includes/header_aplicacion.php";
 include "clases/Conexion.php";
@@ -49,7 +51,7 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 		$amenidadesArray[$i]= $data3["amenidad_idamenidad"];
 		$i++;
 	}
-	 
+
 	$acabadosArray[][2]="";
 	$i=0;
 	while ( $data4 = mysql_fetch_array($result4, MYSQL_ASSOC)){
@@ -72,7 +74,7 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 
 		global $acabadosArray;
 		$cumple="ND";
-		 
+			
 		foreach($acabadosArray as $value){
 			if(isset($value[0])){
 				if($value[0]==$idA){
@@ -651,7 +653,7 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 								</div>
 								<a class="btn" onclick="desplegarOtro()">Otro...</a>
 							</fieldset>
-							
+
 						</div>
 						<?php 					
 						$a = "SELECT * FROM `amenidad` ORDER BY nombre ASC";
@@ -835,9 +837,8 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 						<div class="form-actions">
 							<button class="btn btn-primary" type="submit">Editar</button>
 							<a href="#modalCancel" data-toggle="modal"
-								class="openCancel2 btn"> Cancelar</a>
-								 <span id="errorBoton"
-								style="color: red"></span>		
+								class="openCancel2 btn"> Cancelar</a> <span id="errorBoton"
+								style="color: red"></span>
 						</div>
 
 					</div>
@@ -845,15 +846,17 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 				<div id="modalCancel1" class="modal hide fade in">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">x</button>
-						<h3>Cancelar registro</h3>
+						<h3>Cancelar edici&oacute;n</h3>
 					</div>
 					<div class="modal-body">
-						<p>Atenci&oacute;n! Se borrarán los campos capturados.</p>
+						<p>Atenci&oacute;n! Los campos modificados no se guardar&aacute;n</p>
 						<p>Deseas continuar?</p>
 					</div>
 					<div class="modal-footer">
-						<button class="quit btn btn-danger" type="reset">Cancelar</button>
-						<a href="#" class="btn secondary" data-dismiss="modal">Regresar</a>
+						<a
+							href="<?php if(isset($_SESSION['pageFrom'])){echo $_SESSION['pageFrom'];} else {?>bienvenido<?php }?>.php"
+							class="quit btn btn-danger">Cancelar</a> <a href="#"
+							class="btn secondary" data-dismiss="modal">Regresar</a>
 					</div>
 				</div>
 			</form>
@@ -863,130 +866,9 @@ if (!$result1 || !$result2 || !$result3 || !$result4  || !$result5) {
 	<!-- /row -->
 </div>
 <!-- /container -->
-<script
-	type="text/javascript"
-	src="http://www.google.com/jsapi?key=ABQIAAAAwbkbZLyhsmTCWXbTcjbgbRSzHs7K5SvaUdm8ua-Xxy_-2dYwMxQMhnagaawTo7L1FE1-amhuQxIlXw"></script>
-<script type="text/javascript">
-google.load("earth", "1");
 
-var ge = null;
-var isMouseDown = false;
-var lineStringPlacemark = null;
-var coords = null;
-var pointCount = 0;
-var doc = null;
-var dibuja=false;
-function init() {
-  google.earth.createInstance("map3d", initCB, failureCB);
-  document.getElementById("posicionar").disabled=true;
-}
-
-function initCB(object) {
-	var href = 'http://localhost/sigii/img/earth/<?php echo $idProyecto?>_earth.kml';
-
-
-	  ge = object;
-	  ge.getWindow().setVisibility(true);
-
-	  google.earth.fetchKml(ge, href, function(kmlObject) {
-		   if (kmlObject){
-			   alert("yes");
-		      ge.getFeatures().appendChild(kmlObject);}
-		});
-	// add a navigation control
-	  ge.getNavigationControl().setVisibility(ge.VISIBILITY_AUTO);
-	
-  google.earth.addEventListener(ge.getGlobe(), 'mousemove', onmousemove); 
-  google.earth.addEventListener(ge.getGlobe(), 'mousedown', onmousedown);
-
-}
-function dibujar(){
-	document.getElementById("btnPoli").disabled=true;
-	dibuja=true;
-	
-	//document.getElementById("btnPoli").disabled=true;
-}
-function borrar() {
-	  var features = ge.getFeatures();	  
-	  while (features.getFirstChild()) {
-	    features.removeChild(features.getFirstChild());
-	  }	 
-	  doc = ge.createDocument('');
-	  ge.getFeatures().appendChild(doc);
-	  google.earth.addEventListener(ge.getGlobe(), 'mousemove', onmousemove); 
-	  google.earth.addEventListener(ge.getGlobe(), 'mousedown', onmousedown);
-		 
-		  
-	} 
-function onmousemove(event) {
-if(dibuja){
-	  if (isMouseDown) {
-    coords.pushLatLngAlt(event.getLatitude(), event.getLongitude(), 0);
-  }
-}
-}
-
-function convertLineStringToPolygon(placemark) {
-  var polygon = ge.createPolygon('');
-  var outer = ge.createLinearRing('');
-  polygon.setOuterBoundary(outer);
-
-  var lineString = placemark.getGeometry();
-  for (var i = 0; i < lineString.getCoordinates().getLength(); i++) {
-    var coord = lineString.getCoordinates().get(i);
-    outer.getCoordinates().pushLatLngAlt(coord.getLatitude(), 
-                                         coord.getLongitude(), 
-                                         coord.getAltitude());
-  }
-
-  placemark.setGeometry(polygon);
-}
-
-
-function onmousedown(event) {
-	if(dibuja){
-  if (isMouseDown) {
-    isMouseDown = false;
-    coords.pushLatLngAlt(event.getLatitude(), event.getLongitude(), 0);
-
-    convertLineStringToPolygon(lineStringPlacemark);
-    dibuja=false;
-    document.getElementById("btnPoli").disabled=false;
-  } else {
-    isMouseDown = true;
-
-    lineStringPlacemark = ge.createPlacemark('');
-    var lineString = ge.createLineString('');
-    lineStringPlacemark.setGeometry(lineString);
-    lineString.setTessellate(true);
-    lineString.setAltitudeMode(ge.ALTITUDE_CLAMP_TO_GROUND);
-
-    lineStringPlacemark.setStyleSelector(ge.createStyle(''));
-    var lineStyle = lineStringPlacemark.getStyleSelector().getLineStyle();
-    lineStyle.setWidth(4);
-    lineStyle.getColor().set('ddffffff');  // aabbggrr formatx
-    lineStyle.setColorMode(ge.COLOR_RANDOM);
-    var polyStyle = lineStringPlacemark.getStyleSelector().getPolyStyle();
-    polyStyle.getColor().set('ddffffff');  // aabbggrr format
-    polyStyle.setColorMode(ge.COLOR_RANDOM);
-
-    coords = lineString.getCoordinates();
-    coords.pushLatLngAlt(event.getLatitude(), event.getLongitude(), 0);
-
-    doc.getFeatures().appendChild(lineStringPlacemark);
-  }
-}
-}
-function failureCB(object) {
-}
-
-function outKml() {
-  document.getElementById('kml-out').value = doc.getKml();
-}
-
-  </script>
 <?php include "includes/footer_principal.php" ?>
- <script type="text/javascript">
+<script type="text/javascript">
 /*
  * LLamadas a seleccionador de fechas de bootstrap
  */

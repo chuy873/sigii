@@ -5,8 +5,10 @@ Esta pagina solo es accesada por el administrador, revision y captura.
 */
 $pageTitle = "SIGII | Registrar proyecto vertical";
 include "clases/Usuarios.php";
-
 session_start();
+if(!(isset($_SESSION["usuario"]))){
+	header("Location: index.php");
+}
 $earth = "earth";
 $_SESSION["earth"] = $earth;
 $_SESSION["datepicker"] = "date";
@@ -19,23 +21,25 @@ if (!($usuariologueado->getTipo()=="administrador"
 	$_SESSION['error'] = "acceso";
 	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
 	$_SESSION['pageFrom']="bienvenido";
-	header("Location: error.php");	
+	header("Location: error.php");
 }
 include "includes/header_aplicacion.php";
 include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
 ?>
-        <div class="container">         
-        <div class="row">      
-            <div class="span10 offset1">
-              <div class="alert alert-info">
-  <button class="close" data-dismiss="alert">×</button>
-  <strong>Atenci&oacute;n!</strong> Aseg&uacute;rate de llenar la informaci&oacute;n de todas las etiquetas.
-</div>
-  <form id="registroVertical" class="forma form-horizontal well" action="control/RegistrarProyecto.php" method="post" enctype="multipart/form-data">
-				<div
-					class="tabbable">
+<div class="container">
+	<div class="row">
+		<div class="span10 offset1">
+			<div class="alert alert-info">
+				<button class="close" data-dismiss="alert">×</button>
+				<strong>Atenci&oacute;n!</strong> Aseg&uacute;rate de llenar la
+				informaci&oacute;n de todas las etiquetas.
+			</div>
+			<form id="registroVertical" class="forma form-horizontal well"
+				action="control/RegistrarProyecto.php" method="post"
+				enctype="multipart/form-data">
+				<div class="tabbable">
 					<!-- Only required for left/right tabs -->
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#tab1" data-toggle="tab">Datos
@@ -455,7 +459,7 @@ $link = $conexion->dbconn();
 								</div>
 								<a class="btn" onclick="desplegarOtro()">Otro...</a>
 							</fieldset>
-						
+
 						</div>
 						<?php 
 						$a = "SELECT * FROM `amenidad` ORDER BY nombre ASC";
@@ -613,129 +617,22 @@ $link = $conexion->dbconn();
 						<p>Deseas continuar?</p>
 					</div>
 					<div class="modal-footer">
-						<button class="quit btn btn-danger" type="reset">Cancelar</button>
-						<a href="#" class="btn secondary" data-dismiss="modal">Regresar</a>
+						<a
+							href="<?php if(isset($_SESSION['pageFrom'])){echo $_SESSION['pageFrom'];} else {?>bienvenido<?php }?>.php"
+							class="quit btn btn-danger">Cancelar</a> <a href="#"
+							class="btn secondary" data-dismiss="modal">Regresar</a>
 					</div>
 				</div>
-			</form>				                 
-            </div> <!-- /span -->
-        </div><!-- /row -->
-        </div><!-- /container --> 
-           <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAwbkbZLyhsmTCWXbTcjbgbRSzHs7K5SvaUdm8ua-Xxy_-2dYwMxQMhnagaawTo7L1FE1-amhuQxIlXw"></script>
-  <script type="text/javascript">
-google.load("earth", "1");
-var ge = null;
-var isMouseDown = false;
-var lineStringPlacemark = null;
-var coords = null;
-var pointCount = 0;
-var doc = null;
-var dibuja=false;
-function init() {
-  google.earth.createInstance("map3d", initCB, failureCB);
-  document.getElementById("posicionar").disabled=true;
-}
+			</form>
+		</div>
+		<!-- /span -->
+	</div>
+	<!-- /row -->
+</div>
+<!-- /container -->
 
-function initCB(object) {
-  ge = object;
-  ge.getWindow().setVisibility(true);
-
-  doc = ge.createDocument('');
-  ge.getFeatures().appendChild(doc);
-
-  ge.getNavigationControl().setVisibility(ge.VISIBILITY_AUTO);
-  google.earth.addEventListener(ge.getGlobe(), 'mousemove', onmousemove); 
-  google.earth.addEventListener(ge.getGlobe(), 'mousedown', onmousedown);
-
-}
-function dibujar(){
-	document.getElementById("btnPoli").disabled=true;
-	dibuja=true;
-	
-	//document.getElementById("btnPoli").disabled=true;
-}
-function borrar() {
-	  var features = ge.getFeatures();	  
-	  while (features.getFirstChild()) {
-	    features.removeChild(features.getFirstChild());
-	  }	 
-	  doc = ge.createDocument('');
-	  ge.getFeatures().appendChild(doc);
-	
-	  google.earth.addEventListener(ge.getGlobe(), 'mousemove', onmousemove); 
-	  google.earth.addEventListener(ge.getGlobe(), 'mousedown', onmousedown);
-		 
-		  
-	} 
-function onmousemove(event) {
-if(dibuja){
-	  if (isMouseDown) {
-    coords.pushLatLngAlt(event.getLatitude(), event.getLongitude(), 0);
-  }
-}
-}
-
-function convertLineStringToPolygon(placemark) {
-  var polygon = ge.createPolygon('');
-  var outer = ge.createLinearRing('');
-  polygon.setOuterBoundary(outer);
-
-  var lineString = placemark.getGeometry();
-  for (var i = 0; i < lineString.getCoordinates().getLength(); i++) {
-    var coord = lineString.getCoordinates().get(i);
-    outer.getCoordinates().pushLatLngAlt(coord.getLatitude(), 
-                                         coord.getLongitude(), 
-                                         coord.getAltitude());
-  }
-
-  placemark.setGeometry(polygon);
-}
-
-
-function onmousedown(event) {
-	if(dibuja){
-  if (isMouseDown) {
-    isMouseDown = false;
-    coords.pushLatLngAlt(event.getLatitude(), event.getLongitude(), 0);
-
-    convertLineStringToPolygon(lineStringPlacemark);
-    dibuja=false;
-    document.getElementById("btnPoli").disabled=false;
-  } else {
-    isMouseDown = true;
-
-    lineStringPlacemark = ge.createPlacemark('');
-    var lineString = ge.createLineString('');
-    lineStringPlacemark.setGeometry(lineString);
-    lineString.setTessellate(true);
-    lineString.setAltitudeMode(ge.ALTITUDE_CLAMP_TO_GROUND);
-
-    lineStringPlacemark.setStyleSelector(ge.createStyle(''));
-    var lineStyle = lineStringPlacemark.getStyleSelector().getLineStyle();
-    lineStyle.setWidth(4);
-    lineStyle.getColor().set('ddffffff');  // aabbggrr formatx
-    lineStyle.setColorMode(ge.COLOR_RANDOM);
-    var polyStyle = lineStringPlacemark.getStyleSelector().getPolyStyle();
-    polyStyle.getColor().set('ddffffff');  // aabbggrr format
-    polyStyle.setColorMode(ge.COLOR_RANDOM);
-
-    coords = lineString.getCoordinates();
-    coords.pushLatLngAlt(event.getLatitude(), event.getLongitude(), 0);
-
-    doc.getFeatures().appendChild(lineStringPlacemark);
-  }
-}
-}
-function failureCB(object) {
-}
-
-function outKml() {
-  document.getElementById('kml-out').value = doc.getKml();
-}
-
-  </script>          
 <?php include "includes/footer_principal.php" ?>
- <script type="text/javascript">
+<script type="text/javascript">
 /*
  * LLamadas a seleccionador de fechas de bootstrap
  */

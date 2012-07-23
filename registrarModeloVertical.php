@@ -5,8 +5,10 @@ Esta pagina solo es accesada por el administrador, revision y captura.
 */
 $pageTitle = "SIGII | Registrar Modelo Vertical";
 include "clases/Usuarios.php";
-
 session_start();
+if(!(isset($_SESSION["usuario"]))){
+	header("Location: index.php");
+}
 //Verificar si el usuario tiene permiso para visualizar esta pÃ¡gina
 $usuariologueado = new Usuarios();
 $usuariologueado = $_SESSION["usuario"];
@@ -15,7 +17,7 @@ if (!($usuariologueado->getTipo()=="administrador" || $usuariologueado->getTipo(
 	$_SESSION['error'] = "acceso";
 	$_SESSION['errormsg'] = "No tienes permiso para acceder a esta página.";
 	$_SESSION['pageFrom']="bienvenido";
-	header("Location: error.php");	
+	header("Location: error.php");
 }
 
 include "includes/header_aplicacion.php";
@@ -23,17 +25,19 @@ include "clases/Conexion.php";
 $conexion = new Conexion();
 $link = $conexion->dbconn();
 ?>
-        <div class="container">      
-      
-        <div class="row">      
-            <div class="span7 offset2">
-              <div class="alert alert-info">
-  <button class="close" data-dismiss="alert">×</button>
-  <strong>Atenci&oacute;n!</strong> Aseg&uacute;rate de llenar la informaci&oacute;n de todas las etiquetas.
-</div>
- <form id="registroModelo" class="forma form-horizontal well" action="control/RegistrarModelo.php" method="post" enctype="multipart/form-data">
-				<div
-					class="tabbable">
+<div class="container">
+
+	<div class="row">
+		<div class="span7 offset2">
+			<div class="alert alert-info">
+				<button class="close" data-dismiss="alert">×</button>
+				<strong>Atenci&oacute;n!</strong> Aseg&uacute;rate de llenar la
+				informaci&oacute;n de todas las etiquetas.
+			</div>
+			<form id="registroModelo" class="forma form-horizontal well"
+				action="control/RegistrarModelo.php" method="post"
+				enctype="multipart/form-data">
+				<div class="tabbable">
 					<!-- Only required for left/right tabs -->
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#tab1" data-toggle="tab">Datos
@@ -47,8 +51,7 @@ $link = $conexion->dbconn();
 							<h1>Datos del modelo vertical</h1>
 							<fieldset>
 								<legend>Informaci&oacute;n necesaria</legend>
-								 <input
-										type="hidden" id="modelo" value="1">
+								<input type="hidden" id="modelo" value="1">
 								<?php 
 								$q = "SELECT idproyecto, nombre, promotor FROM proyecto WHERE tipo= 'vertical' ";
 								$proyectos = mysql_query( $q);
@@ -62,7 +65,8 @@ $link = $conexion->dbconn();
 										type="hidden" name="tipo" value="vertical">
 									<div class="controls">
 										<select class="span2" name='proyecto'>
-											<option value="" disabled="disabled" selected="selected">Selecciona el proyecto</option>										
+											<option value="" disabled="disabled" selected="selected">Selecciona
+												el proyecto</option>
 											<?php 
 											while ($data = mysql_fetch_array($proyectos, MYSQL_ASSOC)) {
 												?>
@@ -82,11 +86,12 @@ $link = $conexion->dbconn();
 									<label class="control-label" for="nombres">Nombre del modelo*</label>
 									<div class="controls">
 										<input name="nombre" id="nombre" class="input-large"
-											type="text"> 
-											 <div class="alert alert-error" id="alertNombre"	style="display: none">
-												<strong>Atenci&oacute;n!</strong> El nombre ya existe.
-												Selecciona otro.
-											</div>
+											type="text">
+										<div class="alert alert-error" id="alertNombre"
+											style="display: none">
+											<strong>Atenci&oacute;n!</strong> El nombre ya existe.
+											Selecciona otro.
+										</div>
 									</div>
 								</div>
 
@@ -308,9 +313,7 @@ $link = $conexion->dbconn();
 								y agregar otro modelo...</button>
 							<input type="hidden" id="agregar" name="agregar" /> <a
 								href="#modalCancel" data-toggle="modal" class="openCancel2 btn">
-								Cancelar</a>
-								 <span id="errorBoton"
-								style="color: red"></span>	
+								Cancelar</a> <span id="errorBoton" style="color: red"></span>
 						</div>
 
 					</div>
@@ -325,19 +328,24 @@ $link = $conexion->dbconn();
 						<p>Deseas continuar?</p>
 					</div>
 					<div class="modal-footer">
-						  <a href="<?php echo $_SESSION['pageFrom']?>.php" class="quit btn btn-danger"  >Cancelar</a>
-						<a href="#" class="btn secondary" data-dismiss="modal">Regresar</a>
+						<a
+							href="<?php if(isset($_SESSION['pageFrom'])){echo $_SESSION['pageFrom'];} else {?>bienvenido<?php }?>.php"
+							class="quit btn btn-danger">Cancelar</a> <a href="#"
+							class="btn secondary" data-dismiss="modal">Regresar</a>
 					</div>
 				</div>
-			</form>			                 
-            </div> <!-- /span -->
-        </div><!-- /row -->
-        </div><!-- /container -->  
-           <script type="text/javascript">
+			</form>
+		</div>
+		<!-- /span -->
+	</div>
+	<!-- /row -->
+</div>
+<!-- /container -->
+<script type="text/javascript">
 		function agregarOtro(){
 			document.getElementById("agregar").value=1;
 document.getElementById("registroModelo").submit();
 
 			}
-        </script>          
+        </script>
 <?php include "includes/footer_principal.php" ?>

@@ -15,15 +15,15 @@
 			<outerBoundaryIs>
 				<LinearRing>
 					<coordinates>
-						-100.2708435058594,25.62151336669922,0 -100.2728958129883,25.63402366638184,0 -100.2955322265625,25.61702156066895,0 -100.2761306762696,25.61396026611328,0 -100.2761306762696,25.61396026611328,0 -100.2708435058594,25.62151336669922,0 -100.2708435058594,25.62151336669922,0 
+						-100.2342071533203,25.64833831787109,0 -100.2727279663086,25.74713706970215,0 -100.3848419189453,25.70149993896484,0 -100.3228530883789,25.64375495910645,0 -100.2342071533203,25.64833831787109,0 -100.2342071533203,25.64833831787109,0 
 					</coordinates>
 				</LinearRing>
 			</outerBoundaryIs>
 		</Polygon>
 	</Placemark>
 	<Placemark id="marca">
-		<name>check 1Q</name>
-		<description><![CDATA[<p>Promotor: sedfsdf</p><p>Segmento: Social</p><p>Unidades totales: 3425</p><p>Unidades vendidas: 91</p><p>Tiempo en el mercado: 0</p><p>Entrega: Gris</p><p>Telefono: </p>]]></description>
+		<name>Ejemplo</name>
+		<description><![CDATA[<img src="http://www.google.com/intl/en_ALL/images/logo.gif"><br><font size=20>Earth Plugin</font><br><font size=-2>sample info window</font>]]></description>
 		<Style>
 			<IconStyle>
 				<Icon>
@@ -33,7 +33,7 @@
 		</Style>
 		<Point>
 			<altitudeMode>relativeToGround</altitudeMode>
-			<coordinates>-100.2831878662109,25.62399196624756,0</coordinates>
+			<coordinates>-100.3095245361328,25.6954460144043,0</coordinates>
 		</Point>
 	</Placemark>
 </Document>

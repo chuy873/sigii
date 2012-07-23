@@ -6,7 +6,11 @@ esta pagina y son calculados por el sistema.
 Esta pagina es accesada por todos los usuarios registrados.
 */
 $pageTitle = "SIGII | Reporte Ficha";
-
+include "clases/Usuarios.php";
+session_start();
+if(!(isset($_SESSION["usuario"]))){
+	header("Location: index.php");
+}
 include "includes/header_aplicacion.php";
 
 //Verificar si el usuario tiene permiso para visualizar esta p√°gina
@@ -46,10 +50,16 @@ $promedioM2="SELECT avg(m.metrosCuadrados) as promM2 FROM modelo m
 WHERE m.proyecto_idproyecto = '".$idproyecto."';";
 $result6=mysql_query($promedioM2);
 $dataM2=mysql_fetch_array($result6);
+if($dataProyecto["tipo"]=="horizontal"){
 //Consulta del promedio de precio y credito obtenidos del promedio de los modelos horizontales
 $precioYcredito = "SELECT avg(mf.precio) as precio, avg(mf.creditoSobreEnganche) as credito
 FROM sigii.modelofraccionamiento mf
 INNER JOIN modelo m ON mf.modelo_idmodelo= m.idmodelo AND m.proyecto_idproyecto='".$idproyecto."'";
+} else if($dataProyecto["tipo"]=="vertical"){
+	$precioYcredito = "SELECT avg(md.precioPromedio) as precio, avg(md.aumentoXPiso) as aumentoXPiso
+	FROM sigii.modelodepartamento md
+	INNER JOIN modelo m ON md.modelo_idmodelo= m.idmodelo AND m.proyecto_idproyecto='".$idproyecto."'";	
+}
 $result7=mysql_query($precioYcredito);
 $dataprecioYcredito=mysql_fetch_array($result7);
 //Consulta de datos de proyectos verticales
@@ -94,17 +104,22 @@ if (!$result) {
 	<div class="row">
 		<div class="tabbable tabs-left">
 			<!-- Only required for left/right tabs -->
-			<ul class="nav nav-tabs" >
-				<li class="active"><a href="#tab1" data-toggle="tab"><img src="assets/img/black-spot.png" /> PORTADA</a></li>
-				<li><a href="#tab2" data-toggle="tab"><img src="assets/img/black-spot.png" /> AMENIDADES</a></li>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab1" data-toggle="tab"><img
+						src="assets/img/black-spot.png" /> PORTADA</a></li>
+				<li><a href="#tab2" data-toggle="tab"><img
+						src="assets/img/black-spot.png" /> AMENIDADES</a></li>
 				<?php $i=1;
 					 while($i<=$cont["numeroModelos"]){?>
-				<li><a href="#tab<?php echo ($i+2)?>" data-toggle="tab"><img src="assets/img/black-spot.png" /> MODELO<?php echo $i?>
-				</a></li>			
+				<li><a href="#tab<?php echo ($i+2)?>" data-toggle="tab"><img
+						src="assets/img/black-spot.png" /> MODELO<?php echo $i?> </a></li>
 				<?php $i++;
 }?>
-	<li><a href="javascript:printDiv('tab1')">Imprimir esta p·gina <img src="assets/img/Printer-icon.png"  /></a> </li>
-	
+				<li><a href="javascript:printDiv('tab1')">Imprimir esta p·gina <img
+						src="assets/img/Printer-icon.png" />
+				</a>
+				</li>
+
 			</ul>
 			<div class="tab-content">
 				<!-- Portada -->
@@ -119,36 +134,42 @@ if (!$result) {
 								src="<?php echo $dataImagenPlano["path"]?>" /> </a>
 							<table class="table table-bordered table-striped">
 								<tr>
-									<th style="background-color:#343434; color:#eae7e5;">DESCRIPCI&Oacute;N</th>
+									<th style="background-color: #343434; color: #eae7e5;">DESCRIPCI&Oacute;N</th>
 								</tr>
-							<tr>
-								<td><?php echo $dataProyecto["descripcion"]?></td>
-							</tr>
-						</table>
-						<table class="table table-bordered table-striped">
 								<tr>
-									<th colspan="2" style="background-color:#343434; color:#eae7e5;">PUNTOS DE AFLUENCIA</th>									
+									<td><?php echo $dataProyecto["descripcion"]?></td>
 								</tr>
-								
+							</table>
+							<table class="table table-bordered table-striped">
+								<tr>
+									<th colspan="2"
+										style="background-color: #343434; color: #eae7e5;">PUNTOS DE
+										AFLUENCIA</th>
+								</tr>
+
 								<?php while($dataPuntos=mysql_fetch_array($result12)){?>
-							<tr>
-								<td> <img src="<?php echo $dataPuntos["logo"]?>"/> <?php echo $dataPuntos["nombre"]?> </td>
-								<td><?php echo $dataPuntos["distancia"]?> kms.</td>
-							</tr>
-							<?php }?>
-						</table>
+								<tr>
+									<td><img src="<?php echo $dataPuntos["logo"]?>" /> <?php echo $dataPuntos["nombre"]?>
+									</td>
+									<td><?php echo $dataPuntos["distancia"]?> kms.</td>
+								</tr>
+								<?php }?>
+							</table>
 						</div>
 						<!-- Div de la tabla con informacion basica -->
 						<div class="span4 offset4 fondo">
 							<!--Body content-->
 							<table class="table table-condensed">
 								<tr>
-									<th colspan="2" style="background-color:#343434; color:#eae7e5;">DATOS GENERALES</th>
+									<th colspan="2"
+										style="background-color: #343434; color: #eae7e5;">DATOS
+										GENERALES</th>
 								</tr>
 								<tr>
 									<th>Absorci&oacute;n</th>
-									<td><?php if($dataProyecto["tiempoMercado"]!=0){ echo round($dataProyecto["unidadesVendidas"]/$dataProyecto["tiempoMercado"],2);}?>
-									</td>
+									<td><?php if($dataProyecto["tiempoMercado"]!=0){ 
+										echo round($dataProyecto["unidadesVendidas"]/$dataProyecto["tiempoMercado"],2);
+									}?></td>
 								</tr>
 								<?php if($dataProyecto["vendidas1Q"]>0){?>
 								<tr>
@@ -157,7 +178,7 @@ if (!$result) {
 								</tr>
 								<?php }
 								if($dataProyecto["vendidas2Q"]>0){
-								?>
+									?>
 								<tr>
 									<th>Absorci&oacute;n 2Q</th>
 									<td><?php echo round($dataProyecto["vendidas2Q"]/3,2)?></td>
@@ -209,6 +230,10 @@ if (!$result) {
 								</tr>
 								<tr>
 									<?php if($dataProyecto["tipo"]=="vertical"){?>
+									<th>Aumento por piso</th>
+									<td><?php echo round($dataprecioYcredito["aumentoXPiso"],2)?></td>
+									</tr>
+									<tr>
 									<th>N&uacute;mero de pisos</th>
 									<td><?php echo $dataProyectoDept["pisos"]?></td>
 								</tr>
@@ -241,7 +266,8 @@ if (!$result) {
 							<!--Body content-->
 							<table class="table table-condensed table-striped">
 								<tr>
-									<th style="background-color:#343434; color:#eae7e5;">CARACTER&Iacute;STICAS GENERALES</th>
+									<th style="background-color: #343434; color: #eae7e5;">CARACTER&Iacute;STICAS
+										GENERALES</th>
 								</tr>
 								<tr>
 									<td><?php echo $dataProyecto["caracteristicas"]?></td>
@@ -253,7 +279,7 @@ if (!$result) {
 							<!--Body content-->
 							<table class="table table-condensed">
 								<tr>
-									<th style="background-color:#343434; color:#eae7e5;">AMENIDADES</th>
+									<th style="background-color: #343434; color: #eae7e5;">AMENIDADES</th>
 								</tr>
 								<?php while($dataAmenidad=mysql_fetch_array($result10)){?>
 								<tr>
@@ -273,12 +299,15 @@ if (!$result) {
 						<?php }?>
 					</div>
 					<div class="span6 fondo">
-						<table class="table table-bordered table-striped">					
-						<tr>
-								<th colspan="2" style="background-color:#343434; color:#eae7e5;">DESCRIPCI&Oacute;N DE AMENIDADES</th>								
-						</tr>
-						<tr><td>	<?php echo $dataProyecto["amenidadesDescripcion"]?></td>
-						</tr>
+						<table class="table table-bordered table-striped">
+							<tr>
+								<th colspan="2"
+									style="background-color: #343434; color: #eae7e5;">DESCRIPCI&Oacute;N
+									DE AMENIDADES</th>
+							</tr>
+							<tr>
+								<td><?php echo $dataProyecto["amenidadesDescripcion"]?></td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -304,7 +333,7 @@ if (!$result) {
 				<div class="tab-pane" id="tab<?php echo $i?>">
 					<div class="row-fluid">
 						<div class="span5 fondo">
-							<h3  style="background-color:#343434; color:#eae7e5;">
+							<h3 style="background-color: #343434; color: #eae7e5;">
 								MODELO
 								<?php echo $dataModelo["nombre"]?>
 							</h3>
@@ -314,7 +343,7 @@ if (!$result) {
 								src="<?php echo $imagenModelo["path"]?>" /> </a> </br>
 							<table class="table table-bordered table-striped">
 								<tr>
-									<th  style="background-color:#343434; color:#eae7e5;">DIFERENCIADORES</th>
+									<th style="background-color: #343434; color: #eae7e5;">DIFERENCIADORES</th>
 								</tr>
 								<tr>
 									<td>
@@ -329,11 +358,13 @@ if (!$result) {
 						</div>
 						<!-- principal -->
 						<div class="span4 fondo">
-							<table class="table table-condensed">								
-									<tr>
-									<th colspan="2" style="background-color:#343434; color:#eae7e5;">DATOS GENERALES</th>
-									</tr>
-									<tr>
+							<table class="table table-condensed">
+								<tr>
+									<th colspan="2"
+										style="background-color: #343434; color: #eae7e5;">DATOS
+										GENERALES</th>
+								</tr>
+								<tr>
 									<th>M<sup>2</sup>
 									</th>
 									<td><?php echo $dataModelo["metrosCuadrados"]?></td>
@@ -380,7 +411,8 @@ if (!$result) {
 								</tr>
 								<tr>
 									<th>Aumento por piso</th>
-									<td>$<?php echo $dataModelo["aumentoXPiso"]?></td>
+									<td>$<?php echo $dataModelo["aumentoXPiso"]?>
+									</td>
 								</tr>
 								<?php } else if($dataProyecto["tipo"]=="horizontal"){?>
 								<tr>
@@ -396,7 +428,8 @@ if (!$result) {
 								<tr>
 									<th>Precio M<sup>2</sup> Terreno
 									</th>
-									<td>$<?php echo $dataModelo["precioTerreno"]?></td>
+									<td>$<?php echo $dataModelo["precioTerreno"]?>
+									</td>
 								</tr>
 								<tr>
 									<th>Precio estimado de terreno</th>
@@ -421,7 +454,7 @@ if (!$result) {
 									</td>
 								</tr>
 
-								<?php }?>							
+								<?php }?>
 								<?php								
        while( $caracteristicasModelo=mysql_fetch_array($res1)){?>
 								<tr>
@@ -461,7 +494,8 @@ if (!$result) {
 						<div class="span3 fondo">
 							<table class="table table-condensed">
 								<tr>
-								<th colspan="2" style="background-color:#343434; color:#eae7e5;">ATRIBUTOS</th>
+									<th colspan="2"
+										style="background-color: #343434; color: #eae7e5;">ATRIBUTOS</th>
 								</tr>
 								<tr>
 									<th>Atributo</th>
@@ -485,7 +519,8 @@ if (!$result) {
 						<div class="span3 fondo">
 							<table class="table table-condensed">
 								<tr>
-								<th colspan="2" style="background-color:#343434; color:#eae7e5;">ACABADOS</th>
+									<th colspan="2"
+										style="background-color: #343434; color: #eae7e5;">ACABADOS</th>
 								</tr>
 								<tr>
 									<th>Acabado</th>
@@ -501,13 +536,15 @@ if (!$result) {
 						</div>
 					</div>
 				</div>
-				<?php $i++;}?>
+				<?php $i++;
+}?>
 			</div>
 		</div>
 	</div>
 	<!-- row -->
 </div>
-<iframe name=print_frame width=0 height=0 frameborder=0 src=about:blank></iframe>
+<iframe
+	name=print_frame width=0 height=0 frameborder=0 src=about:blank></iframe>
 
 <!-- /container -->
 <script type="text/javascript">

@@ -7,6 +7,9 @@ $pageTitle = "SIGII | Actualizar proyecto";
 include "clases/Usuarios.php";
 
 session_start();
+if(!(isset($_SESSION["usuario"]))){
+	header("Location: index.php");
+}
 $earth = "earth";
 $_SESSION["earth"] = $earth;
 $_SESSION["datepicker"] = "date";
@@ -114,8 +117,8 @@ INNER JOIN modelodepartamento md ON m.idmodelo = md.modelo_idmodelo AND m.proyec
 								</fieldset>
 								<div class="form-actions">                                   
                                    <button class="btn btn-primary" type="submit">Actualizar</button>                                					
-						 <button class="btn" type="reset">Cancelar</button>											                                 
-                                </div>
+						 					 <a href="<?php if(isset($_SESSION['pageFrom'])){echo $_SESSION['pageFrom'];} else {?>bienvenido<?php }?>.php" class="quit btn btn-danger"  >Cancelar</a>
+	       </div>
                                    
 								</form>
 								</div>
